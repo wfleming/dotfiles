@@ -1,0 +1,23 @@
+[user]
+	name = Will Fleming
+	email = will@mintdigital.com
+[alias]
+	co = checkout
+	ci = commit -a -m
+	st = status
+	br = branch
+	amend = commit -C HEAD --amend
+	sh = !git-sh
+	caa = commit -a --amend -C HEAD
+	unpushed-commits = !git-log origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)..HEAD
+	unmerged-commits = log --not HEAD
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+[core]
+	excludesfile = /Users/will/.gitignore
+	editor = mate -w
+[apply]
+	whitespace = nowarn
