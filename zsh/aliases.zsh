@@ -43,6 +43,14 @@ pdfman () {
     man -t $1 | open -a /Applications/Preview.app -f
 }
 
+# make copies of all *.example files in the current directory
+# without .example extension
+deexample() {
+ for f in `ls *.example`; do
+   cp $f `echo $f | sed s/.example//`
+ done
+}
+
 # from http://gist.github.com/634946
 # Opens `https://github.com/<repo>/blob/<branch>/public/javascripts/app.js`
 # in your browser.
