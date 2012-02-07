@@ -1,8 +1,4 @@
-# put include this in .bashrc or .bash_profile with `source .bash_funs`
-
-# for shell config that should be the same across machines.
-# i.e. prompt, aliases, handy functions. path setup & such probably shouldn't be
-# included
+[[ -s "/Users/will/.rvm/scripts/rvm" ]] && source "/Users/will/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Bash color definitions
 txtblk='\e[0;30m' # Black - Regular
@@ -46,14 +42,4 @@ spotlightcontent() {
 # display a man page in Preview
 pdfman () {
     man -t $1 | open -a /Applications/Preview.app -f
-}
-
-# from http://gist.github.com/634946
-# Opens `https://github.com/<repo>/blob/<branch>/public/javascripts/app.js`
-# in your browser.
-hubb(){
-  repo=$(git config remote.origin.url | sed "s/^git@github\.com:\(.*\)\.git$/\1/")
-  branch=$(cat .git/HEAD | sed "s/.*\/\(.*\)$/\1/")
-  kind=$([[ $1 =~ \/$ ]] && echo "tree" || echo "blob")
-  open "https://github.com/$repo/$kind/$branch/$1"
 }
