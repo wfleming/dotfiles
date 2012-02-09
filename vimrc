@@ -3,10 +3,14 @@ syntax enable
 set encoding=utf-8
 set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
-set directory=~/.vim/tmp//      " damn .swp files
+set directory=~/.vim/tmp/       " damn .swp files
 set history=100                 " keep 100 lines of command line history
 set visualbell                  " turn off auditory bell
 set autoread                    " refresh file if changed outside of vim
+
+"" show line #/cursor column
+set number
+set ruler
 
 "" Whitespace
 set nowrap                      " don't wrap lines
