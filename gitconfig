@@ -21,3 +21,5 @@
 	editor = mate -w
 [apply]
 	whitespace = nowarn
+[push]
+  default = upstream
