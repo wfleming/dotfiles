@@ -1,0 +1,2 @@
+# ignore machine-specific/private zsh config
+zsh/local
