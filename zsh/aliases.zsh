@@ -19,7 +19,8 @@ alias be='bundle exec'
 alias dbm='rake db:migrate'
 alias dbmr='rake db:migrate:redo'
 alias dbtp='rake db:test:prepare'
-
+alias kick_spin="kicker -r rails . -b 'spin push'"
+alias beep="echo -ne '\007'"
 
 ####### FUNCTIONS ##########
 
