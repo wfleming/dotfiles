@@ -1,0 +1,10 @@
+.DS_Store
+*.rbc
+.rvmrc
+tags
+.livereload
+.watchr
+*.swp
+.rbenv-version
+.rbenv-vars
+.env
