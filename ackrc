@@ -1,0 +1,3 @@
+--type-add=ruby=.rake,.builder,.erb,.feature
+--sort-files
+--ignore-dir=bundle
