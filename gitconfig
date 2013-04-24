@@ -19,7 +19,7 @@
 	ui = auto
 [core]
 	excludesfile = /Users/will/.gitignore
-	editor = mate -w
+	editor = subl -w
 [apply]
 	whitespace = nowarn
 [push]
