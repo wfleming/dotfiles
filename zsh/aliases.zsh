@@ -12,6 +12,10 @@ alias gpf='git push-feature'
 
 alias memcachedstatus='echo stats | nc 127.0.0.1 11211'
 
+# Quick way to rebuild the Launch Services database and get rid
+# of duplicates in the Open With submenu.
+alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
+
 alias rc='rails c'
 alias rdb='rails db'
 alias rg='rails g'
