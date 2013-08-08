@@ -1,5 +1,3 @@
-[[ -s "/Users/will/.rvm/scripts/rvm" ]] && source "/Users/will/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # Bash color definitions
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
