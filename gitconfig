@@ -12,6 +12,9 @@
 	unpushed-commits = !git-log origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)..HEAD
 	unmerged-commits = log --not HEAD
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	assume   = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 [color]
 	diff = auto
 	status = auto
@@ -20,6 +23,8 @@
 [core]
 	excludesfile = /Users/will/.gitignore
 	editor = subl -w
+[diff]
+	algorithm = patience
 [apply]
 	whitespace = nowarn
 [push]
