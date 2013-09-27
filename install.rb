@@ -3,9 +3,10 @@
 
 home = ENV['HOME']
 
+# symlink basic dotfiles
 Dir.chdir File.dirname(__FILE__) do
   dotfiles_dir = Dir.pwd.sub(home + '/', '')
-  
+
   Dir['*'].each do |file|
     next if file == 'install.rb'
     target_name = file == 'bin' ? file : ".#{file}"
