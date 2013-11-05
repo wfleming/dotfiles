@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+# Brew
+brew update
+brew upgrade
+
+# Install core utils, Mac OS X is outdated
+brew install coreutils
+brew install findutils
+brew install zsh
+
+# Git
+brew install git
+
+# Tmux + dependency
+brew install tmux
+# brew install reattach-to-user-namespace
+# brew install ctags
+# brew install ack
+# brew install tree
+# brew install ctags-exuberant
+# brew install youtube-dl
+# brew wkhtmltopdf
+# brew install imagemagick
+# brew install ghostscript
+# brew install go
+# brew install hg
+# go get github.com/heroku/hk
+
+# Rbenv + ruby
+brew install rbenv
+brew install ruby-build
+# rbenv install 2.0.0-p294
+# rbenv global 2.0.0-p294
+
+# Databases
+## MySQL
+brew install mysql
+ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+## PSQL
+brew install postgres --no-python
+initdb /usr/local/var/postgres -E utf8
+## Redis
+brew install redis
+
+# Native apps
+brew tap phinze/homebrew-cask
+brew install brew-cask
+
+function installcask() {
+    brew cask install "${@}" 2> /dev/null
+}
+
+installcask dropbox
+installcask virtualbox
+installcask google-chrome
+installcask vlc
+installcask size-up
+installcask hip-chat
+installcask sparrow
+installcask lastfm
+installcask caffeine
+installcask the-unarchiver
+installcask rdio
+brew install sequel-pro
+
+brew clean
