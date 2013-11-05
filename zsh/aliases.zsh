@@ -20,6 +20,7 @@ alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/
 alias rc='rails c'
 alias rdb='rails db'
 alias rg='rails g'
+alias bi='bundle install'
 alias be='bundle exec'
 alias dbm='rake db:migrate'
 alias dbmr='rake db:migrate:redo'
@@ -71,5 +72,5 @@ deexample() {
 
 # top history
 function tophist {
-    cat ~/.bash_history | awk '{CMD[$1]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
+  cat ~/.zsh_history|cut -d ';' -f 2- 2>/dev/null| awk '{a[$1]++ } END{for(i in a){print a[i] " " i}}'|sort -rn|head
 }
