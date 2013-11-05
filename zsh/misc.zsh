@@ -7,5 +7,5 @@ export PAGER=less
 export LC_CTYPE=en_US.UTF-8
 export EDITOR="subl -w"
 
-## chrome is used for JS tests, esp. testacular with node
-export CHROME_BIN="~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+## PhantomJS needs chrome path sometimes
+export CHROME_BIN="$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
