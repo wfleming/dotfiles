@@ -33,6 +33,9 @@ brew install ruby-build
 # rbenv install 2.0.0-p294
 # rbenv global 2.0.0-p294
 
+# Node
+brew install node
+
 # Databases
 ## MySQL
 brew install mysql
