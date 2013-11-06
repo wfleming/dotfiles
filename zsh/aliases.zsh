@@ -9,6 +9,7 @@ alias ll='ls -AFGl'
 alias gu='git up'
 alias gs='git st'
 alias gc='git commit'
+alias gp='git push'
 alias go='git checkout'
 
 alias memcachedstatus='echo stats | nc 127.0.0.1 11211'
