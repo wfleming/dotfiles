@@ -1,3 +1,13 @@
---type-add=ruby=.rake,.builder,.erb,.feature
+--type-add=ruby=.rb,.yml,.rake,.builder,.erb,.feature
+--type-add=objc=.pch
+--type-add=php=.php,.ini
+--type-set=xcode=.pbxproj,.pbxuser,.perspectivev3
+--type-set=nib=.xib
+--type-set=plist=.plist
+--type-set=tmstuff=.tmproj,.tm_build_errors
+--type-set=erb=.erb
+--nonib
+--notmstuff
+--noxcode
 --sort-files
 --ignore-dir=bundle
