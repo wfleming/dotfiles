@@ -22,8 +22,9 @@
 	ui = auto
 [core]
 	excludesfile = /Users/will/.gitignore
-	editor = subl -w
+	editor = vim
 [diff]
+  # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
 	algorithm = patience
 [apply]
 	whitespace = nowarn
