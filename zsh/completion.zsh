@@ -9,6 +9,9 @@ WORDCHARS=''
 autoload -U compinit
 compinit -i
 
+# aliases need to be listed for completion to work
+compdef g=git
+
 zmodload -i zsh/complist
 
 ## case-insensitive (all),partial-word and then substring completion
