@@ -1,9 +1,11 @@
+# run `gem env` to confirm settings
 ---
-gem: --no-ri --no-rdoc
 :backtrace: false
-:benchmark: false
 :bulk_threshold: 1000
+:sources:
+- https://rubygems.org/
 :update_sources: true
 :verbose: true
-# :sources:
-# - https://rubygems.org
+# note at some point these will be deprecated for --no-document
+gem: --no-rdoc --no-ri
+:benchmark: false
