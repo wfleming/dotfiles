@@ -1,1 +1,20 @@
-# this will document where to link/install all files
+# `manifest.yml` documents where to link/install all files.
+#
+# FORMAT
+# The manifest is a hash map, with keys being glob patterns relative to cwd,
+# and the values they point to being either target strings or a further
+# hash map of options.
+#
+# OPTIONS
+# `target` is a required option, and is either a directory
+# (for globs that may match multiple files), or particular filepaths (for
+# keys that will only match one file). Directories that need to be created,
+# will be.
+#
+# `dotify` makes the install script make the target path for a file
+# be the name of the source file, but with a `'.'` prepended.
+---
+'home/*':
+  target: '~'
+  dotify: true
+'other/sublime-preferences.sublime-settings': '~/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings'
