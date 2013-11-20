@@ -121,7 +121,7 @@ module DotFilesInstaller
       elsif target_exists_or_is_broken_link?
         if last_chance
           $stderr.puts <<-ERR.split.map(&:strip).join(' ')
-          We already tried to fix this existing file at #{target},
+          We already tried to fix this existing file at #{@target_path},
           but we appear to have failed. You should look into that.
           ERR
         else
@@ -203,7 +203,7 @@ module DotFilesInstaller
       if target_exists_as_real_file? # real file, delete it
         $stdout.puts "#{@target_path} is a real file. Deleting it so we can link."
         begin
-          File.delete(target) unless dry_run?
+          File.delete(@target_path) unless dry_run?
         rescue => ex
           $stderr.puts "Delete failed: #{ex}"
         end
