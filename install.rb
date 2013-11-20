@@ -201,7 +201,9 @@ module DotFilesInstaller
       end
 
       if target_exists_as_real_file? # real file, delete it
-        $stdout.puts "#{@target_path} is a real file. Deleting it so we can link."
+        $stdout.puts <<-MSG.split.map(&:strip).join(' ')
+        "#{@target_path} is a real file. Deleting it so we can link."
+        MSG
         begin
           File.delete(@target_path) unless dry_run?
         rescue => ex
