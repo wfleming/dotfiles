@@ -194,8 +194,8 @@ module DotFilesInstaller
     def delete_or_unlink_existing_target
       if !force?
         $stderr.puts <<-ERR.split.map(&:strip).join(' ')
-        WARNING: #{target} exists, but is not a symlink to our dotfile
-        equivalent.
+        WARNING: #{@target_path} exists, but is not a symlink to our
+        dotfile equivalent.
         ERR
         return
       end
