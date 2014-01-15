@@ -2,4 +2,4 @@
 BUNDLE_BUILD__MYSQL2:  --with-mysql-config=/usr/local/bin/mysql_config
 BUNDLE_PATH: .bundle/bundle
 BUNDLE_WITHOUT: deploy
-BUNDLE_BIN: bundler_bin
+BUNDLE_BIN: bundle_bin
