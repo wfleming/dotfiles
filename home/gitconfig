@@ -30,3 +30,5 @@
 	whitespace = nowarn
 [push]
   default = upstream
+[github]
+	user = wfleming
