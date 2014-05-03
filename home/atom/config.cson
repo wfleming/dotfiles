@@ -1,7 +1,7 @@
 'exception-reporting':
   'userId': '93a012d5-4d06-b05f-8cf0-846cc83ba675'
 'release-notes':
-  'viewedVersion': '0.86.0'
+  'viewedVersion': '0.92.0'
 'welcome':
   'showOnStartup': false
 'metrics':
@@ -14,9 +14,5 @@
     'atom-dark-ui'
     'atom-dark-syntax'
   ]
-  'ignoredNames': [
-    '.git'
-    '.svn'
-    '.DS_Store'
-  ]
   'projectHome': '/Users/will/Projects'
+  'excludeVcsIgnoredPaths': false
