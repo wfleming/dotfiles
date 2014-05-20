@@ -7,7 +7,6 @@
 	st = status
 	br = branch
 	amend = commit -C HEAD --amend
-	sh = !git-sh
 	caa = commit -a --amend -C HEAD
 	unpushed-commits = !git-log origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)..HEAD
 	unmerged-commits = log --not HEAD
@@ -15,9 +14,10 @@
 	assume   = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
-	# prune-local will delete local unmerged branches whose remote tracking was deleted as well. run `git remote prune origin` beforehand
+	# prune-local will delete local branches whose remote tracking was deleted. run `git remote prune origin` beforehand
 	# http://stackoverflow.com/questions/13064613/git-how-to-prune-local-tracking-branches-that-do-not-exist-on-remote-anymore
-	prune-local = "!git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
+	prune-local = "!git branch --merged master | grep -v 'master$' | xargs git branch -d"
+	prune-all = "!git remote prune origin && git prune-local"
 [color]
 	diff = auto
 	status = auto
