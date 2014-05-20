@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/will/Projects/fox-mobile-de'
-let g:netrw_dirhist_2='/Users/will/Projects/fox-mobile-de/app'
-let g:netrw_dirhist_3='/Users/will/Projects/fox-mobile-de/app/models'
-let g:netrw_dirhist_4='/Users/will/Projects/fox-mock-billing-api'
-let g:netrw_dirhist_5='/Users/will/Projects/fox-mobile-de'
-let g:netrw_dirhist_6='/Users/will/Projects/aqualab-web/config/deploy'
