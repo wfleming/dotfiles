@@ -6,11 +6,11 @@ alias apinfo='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/
 alias ls='ls -FG'
 alias ll='ls -AFGl'
 
-alias gu='git up'
-alias gs='git st'
-alias gc='git commit'
-alias gp='git push'
-alias go='git checkout'
+# gc & go are used by go-lang. sigh.
+# alias gs='git st'
+# alias gp='git push'
+# alias gc='git commit'
+# alias go='git checkout'
 
 alias memcachedstatus='echo stats | nc 127.0.0.1 11211'
 
@@ -25,8 +25,6 @@ alias bi='bundle install'
 alias be='bundle exec'
 alias dbm='rake db:migrate'
 alias dbmr='rake db:migrate:redo'
-alias dbtp='rake db:test:prepare'
-alias kick_spin="kicker -r rails . -b 'spin push'"
 alias beep="echo -ne '\007'"
 
 

@@ -2,9 +2,12 @@
 	name = Will Fleming
 	email = will@mintdigital.com
 [alias]
+	o = checkout
 	co = checkout
-	ci = commit -a -m
+	c  = commit
+	ci = commit
 	st = status
+	p = push
 	br = branch
 	amend = commit -C HEAD --amend
 	caa = commit -a --amend -C HEAD
