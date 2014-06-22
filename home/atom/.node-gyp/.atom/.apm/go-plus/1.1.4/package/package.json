@@ -1,0 +1,40 @@
+{
+  "name": "go-plus",
+  "description": "Adds `gofmt`, `goimports`, `go vet`, `golint`, `go build` and `go test` functionality for the go language.",
+  "keywords": [
+    "go",
+    "golang",
+    "gofmt",
+    "format",
+    "fmt",
+    "goimports",
+    "gocode",
+    "vet",
+    "go fmt",
+    "go vet"
+  ],
+  "version": "1.1.4",
+  "main": "./lib/go-plus",
+  "license": "Apache-2.0",
+  "engines": {
+    "atom": ">0.70.0",
+    "node": "*"
+  },
+  "author": "Joe Fitzgerald <jfitzgerald@gopivotal.com> (http://github.com/joefitzgerald)",
+  "homepage": "https://atom.io/packages/go-plus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joefitzgerald/go-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joefitzgerald/go-plus/issues"
+  },
+  "dependencies": {
+    "atom-message-panel": ">=1.0.0",
+    "emissary": "1.x",
+    "fs-plus": "2.x",
+    "glob": "3.x",
+    "temp": ">=0.7.0",
+    "underscore-plus": "1.x"
+  }
+}
