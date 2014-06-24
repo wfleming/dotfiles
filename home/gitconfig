@@ -6,6 +6,7 @@
 	co = checkout
 	c  = commit
 	ci = commit
+	d = diff
 	st = status
 	p = push
 	br = branch
