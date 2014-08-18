@@ -1,6 +1,6 @@
 {
   "name": "language-scala",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Scala language support in Atom",
   "repository": {
     "type": "git",
@@ -17,10 +17,10 @@
     "url": "https://github.com/jroesch/language-scala/issues"
   },
   "homepage": "https://github.com/jroesch/language-scala",
-  "_id": "language-scala@0.3.0",
+  "_id": "language-scala@1.0.0",
   "dist": {
-    "shasum": "f7dd3ef33866d6b46c8e4dbb87387f8898c3ddd2"
+    "shasum": "b3ef55418b108c84c9b3ad07b495edbb7d77020e"
   },
-  "_resolved": "/var/folders/ww/vb6st2xd663gzxm4kf2xmgt00000gn/T/d-114522-55733-pcj01e/package.tgz",
-  "_from": "/var/folders/ww/vb6st2xd663gzxm4kf2xmgt00000gn/T/d-114522-55733-pcj01e/package.tgz"
+  "_resolved": "/var/folders/ww/vb6st2xd663gzxm4kf2xmgt00000gn/T/d-114717-63455-iw06zg/package.tgz",
+  "_from": "/var/folders/ww/vb6st2xd663gzxm4kf2xmgt00000gn/T/d-114717-63455-iw06zg/package.tgz"
 }
