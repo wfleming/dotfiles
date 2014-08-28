@@ -41,6 +41,28 @@ function g {
   fi
 }
 
+# Add an ip to the MintWhitelist for a certain project
+# Usage: add-whitelist-ip 'jelmer' 'my-ip'
+# Optionally, you can add the app name.
+# This only works with heroku projects
+function add-whitelist-ip {
+    KEY=$1
+    IP=$2
+    if [[ "$KEY" == "" ]] || [[ "$IP" == "" ]]
+    then
+        echo "add-whitelist-ip <key> <ip> [heroku-name]"
+    else
+        if [[ "$3" == "" ]]
+        then
+            APP=$(--app $3)
+        else
+            APP=''
+        fi
+
+        bundle exec heroku run rails runner "MintWhitelist::Ip.create\(\'$KEY\',\'$IP\'\)" $APP
+    fi
+}
+
 #function for staging log messages
 staginglog() {
   git log --pretty="* %s [%an, %h]" $1...HEAD
