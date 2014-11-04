@@ -41,6 +41,7 @@ repos=(
   https://github.com/scrooloose/nerdtree.git
   https://github.com/tpope/vim-fugitive.git
   https://github.com/tpope/vim-markdown.git
+  https://github.com/tpope/vim-sensible.git
   https://github.com/vim-ruby/vim-ruby.git
 
   )
