@@ -17,5 +17,4 @@
 'home/*':
   target: '~'
   dotify: true
-'other/sublime2/Preferences.sublime-settings': '~/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings'
 'other/sublime3/Preferences.sublime-settings': '~/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings'
