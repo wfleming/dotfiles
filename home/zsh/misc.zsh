@@ -6,7 +6,7 @@ zle -N self-insert url-quote-magic
 export PAGER=less
 export LC_CTYPE=en_US.UTF-8
 export EDITOR="vim"
-export BUNDLER_EDITOR="atom"
+export BUNDLER_EDITOR="subl"
 
 ## PhantomJS needs chrome path sometimes
 export CHROME_BIN="$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
