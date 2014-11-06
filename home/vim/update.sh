@@ -62,6 +62,7 @@ case "$mode" in
   # GIT -----------------------------------------------------------------
   repos|repo)
     mkdir -p $bundledir
+    mkdir -p $vimdir/tmp
     for url in ${repos[@]}; do
       if [ -n "$2" ]; then
         if ! (echo "$url" | grep "$2" &>/dev/null) ; then
@@ -80,6 +81,7 @@ case "$mode" in
   other)
     set -x
     mkdir -p $bundledir
+    mkdir -p $vimdir/tmp
     rm -rf $tmp
     mkdir $tmp
     pushd $tmp
