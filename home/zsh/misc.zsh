@@ -8,5 +8,8 @@ export LC_CTYPE=en_US.UTF-8
 export EDITOR="vim"
 export BUNDLER_EDITOR="subl"
 
+export GOPATH="$HOME/projects/go"
+export PATH="$PATH:$GOPATH/bin"
+
 # Docker Daemon needs this (http://docs.docker.io/en/latest/installation/mac/)
 export DOCKER_HOST=tcp://
