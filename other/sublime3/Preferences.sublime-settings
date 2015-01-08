@@ -3,8 +3,17 @@
 	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"tmp/*",
+		".bundle/*",
+		".meteor/*"
+	],
 	"font_face": "Menlo",
-	"font_size": 15.0,
+	"font_size": 16.0,
 	"ignored_packages":
 	[
 		"Vintage"
