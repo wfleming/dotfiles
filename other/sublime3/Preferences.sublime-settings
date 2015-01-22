@@ -8,9 +8,9 @@
 		".svn",
 		".git",
 		".hg",
-		"tmp/*",
-		".bundle/*",
-		".meteor/*"
+		"tmp",
+		".bundle",
+		".meteor/local"
 	],
 	"font_face": "Menlo",
 	"font_size": 16.0,
