@@ -18,3 +18,4 @@
   target: '~'
   dotify: true
 'other/sublime3/Preferences.sublime-settings': '~/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings'
+'other/sublime3/GoSublime.sublime-settings': '~/Library/Application Support/Sublime Text 3/Packages/User/GoSublime.sublime-settings'
