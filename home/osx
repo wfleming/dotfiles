@@ -11,7 +11,7 @@ defaults write com.apple.Dock autohide-delay -float 0
 defaults write com.apple.dock autohide -bool true
 
 # Remove Top Sites, Bookmarks from Safari's Bookmark Bar
-defaults write com.apple.Safari ProxiesInBookmarksBar ‘()’
+#defaults write com.apple.Safari ProxiesInBookmarksBar ‘()’
 
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
