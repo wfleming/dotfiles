@@ -19,3 +19,5 @@ export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 # for Mint BloomBox
 export PATH="$PATH:/usr/local/bloombox/bin"
+
+eval "$(boot2docker shellinit)"
