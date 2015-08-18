@@ -6,12 +6,6 @@ alias apinfo='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/
 alias ls='ls -FG'
 alias ll='ls -AFGl'
 
-# gc & go are used by go-lang. sigh.
-# alias gs='git st'
-# alias gp='git push'
-# alias gc='git commit'
-# alias go='git checkout'
-
 alias memcachedstatus='echo stats | nc 127.0.0.1 11211'
 
 # Quick way to rebuild the Launch Services database and get rid
@@ -49,30 +43,8 @@ function b2denv {
   fi
   echo "pipe_stderr $pipe_stderr"
   local cmd="boot2docker shellinit $pipe_stderr"
-  echo $cmd
-  eval $($cmd)
-}
-
-# Add an ip to the MintWhitelist for a certain project
-# Usage: add-whitelist-ip 'jelmer' 'my-ip'
-# Optionally, you can add the app name.
-# This only works with heroku projects
-function add-whitelist-ip {
-    KEY=$1
-    IP=$2
-    if [[ "$KEY" == "" ]] || [[ "$IP" == "" ]]
-    then
-        echo "add-whitelist-ip <key> <ip> [heroku-name]"
-    else
-        if [[ "$3" == "" ]]
-        then
-            APP=$(--app $3)
-        else
-            APP=''
-        fi
-
-        bundle exec heroku run rails runner "MintWhitelist::Ip.create\(\'$KEY\',\'$IP\'\)" $APP
-    fi
+  local new_env=$($cmd)
+  eval $new_env
 }
 
 #function for staging log messages
