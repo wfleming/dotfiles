@@ -98,7 +98,7 @@ pdfman () {
 # make copies of all *.example files in the current directory
 # without .example extension
 deexample() {
- for f in `ls *.example`; do
+ for f in *.example; do
    cp $f `echo $f | sed s/.example//`
  done
 }
