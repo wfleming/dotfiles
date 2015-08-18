@@ -8,6 +8,7 @@ brew upgrade
 brew install coreutils
 brew install findutils
 brew install zsh
+brew install vim
 
 # Git
 brew install git
@@ -30,17 +31,15 @@ brew install tmux
 # Rbenv + ruby
 brew install rbenv
 brew install ruby-build
-# rbenv install 2.0.0-p294
-# rbenv global 2.0.0-p294
 
 # Node
 brew install node
 
 # Databases
 ## MySQL
-brew install mysql
-ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+#brew install mysql
+#ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+#mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
 ## PSQL
 brew install postgres --no-python
 initdb /usr/local/var/postgres -E utf8
@@ -59,7 +58,7 @@ installcask dropbox
 installcask virtualbox
 installcask google-chrome
 installcask vlc
-installcask size-up
+installcask sizeup
 installcask hip-chat
 installcask sparrow
 installcask lastfm
