@@ -28,7 +28,6 @@ alias dbmr='rake db:migrate:redo'
 alias beep="echo -ne '\007'"
 
 
-
 ####### FUNCTIONS ##########
 
 # Shorten git to one letter, execute status by default if no
@@ -39,6 +38,19 @@ function g {
   else
     git status
   fi
+}
+
+# shortcut for loading boot2docker env vars as needed.
+# accepts --quiet flag to supress output
+function b2denv {
+  local pipe_stderr=""
+  if [[ $1 = "--quiet" ]]; then
+    pipe_stderr="2>/dev/null"
+  fi
+  echo "pipe_stderr $pipe_stderr"
+  local cmd="boot2docker shellinit $pipe_stderr"
+  echo $cmd
+  eval $($cmd)
 }
 
 # Add an ip to the MintWhitelist for a certain project
@@ -70,17 +82,17 @@ staginglog() {
 
 #search for file by name in spotlight
 spotlightfile() {
-    mdfind "kMDItemDisplayName == '$@'wc";
+  mdfind "kMDItemDisplayName == '$@'wc";
 }
 
 # Search for file by contenti in spotlight
 spotlightcontent() {
-    mdfind -interpret "$@";
+  mdfind -interpret "$@";
 }
 
 # display a man page in Preview
 pdfman () {
-    man -t $1 | open -a /Applications/Preview.app -f
+  man -t $1 | open -a /Applications/Preview.app -f
 }
 
 # make copies of all *.example files in the current directory
