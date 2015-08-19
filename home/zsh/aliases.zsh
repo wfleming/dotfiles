@@ -34,19 +34,6 @@ function g {
   fi
 }
 
-# shortcut for loading boot2docker env vars as needed.
-# accepts --quiet flag to supress output
-function b2denv {
-  local pipe_stderr=""
-  if [[ $1 = "--quiet" ]]; then
-    pipe_stderr="2>/dev/null"
-  fi
-  echo "pipe_stderr $pipe_stderr"
-  local cmd="boot2docker shellinit $pipe_stderr"
-  local new_env=$($cmd)
-  eval $new_env
-}
-
 #function for staging log messages
 staginglog() {
   git log --pretty="* %s [%an, %h]" $1...HEAD

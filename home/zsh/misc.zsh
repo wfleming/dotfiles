@@ -8,6 +8,7 @@ export LC_CTYPE=en_US.UTF-8
 export EDITOR="vim"
 export BUNDLER_EDITOR="subl"
 
+# Add Go to path
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:$GOPATH/bin"
 
@@ -15,4 +16,4 @@ export PATH="$PATH:$GOPATH/bin"
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 # for boot2docker
-eval "$(boot2docker shellinit)"
+eval "$(boot2docker shellinit 2> /dev/null)"
