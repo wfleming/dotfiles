@@ -1,7 +1,6 @@
 .DS_Store
 *.rbc
 .rvmrc
-./tags
 .livereload
 .watchr
 *.swp
