@@ -11,10 +11,8 @@ export BUNDLER_EDITOR="subl"
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:$GOPATH/bin"
 
-# Docker Daemon needs this (http://docs.docker.io/en/latest/installation/mac/)
-export DOCKER_HOST=tcp://
-
 # nokogiri doesn't like building from homebrew libxml2
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
+# for boot2docker
 eval "$(boot2docker shellinit)"
