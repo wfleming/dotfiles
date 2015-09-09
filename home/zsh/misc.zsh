@@ -15,5 +15,9 @@ export PATH="$PATH:$GOPATH/bin"
 # nokogiri doesn't like building from homebrew libxml2
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
-# for boot2docker
-eval "$(boot2docker shellinit 2> /dev/null)"
+# for boot2docker/docker machine
+if command -v boot2docker > /dev/null 2>&1; then
+  eval "$(boot2docker shellinit 2> /dev/null)"
+else
+  eval "$(docker-machine env default)"
+fi
