@@ -1,8 +1,10 @@
 ---
-BUNDLE_BUILD__MYSQL2: ' --with-mysql-config=/usr/local/bin/mysql_config'
 BUNDLE_PATH: .bundle/bundle
 BUNDLE_WITHOUT: deploy
 BUNDLE_BIN: .bundle/bin
-BUNDLE_BUILD__OPENCV: ' --with-opencv-dir=/usr/local/Cellar/opencv/2.4.7.1'
-BUNDLE_BUILD__LIBV8: ' --with-system-v8'
+BUNDLE_JOBS: '4'
+# build settings for specfic gems that come up and have env issues
+#BUNDLE_BUILD__MYSQL2: ' --with-mysql-config=/usr/local/bin/mysql_config'
+#BUNDLE_BUILD__OPENCV: ' --with-opencv-dir=/usr/local/Cellar/opencv/2.4.7.1'
+#BUNDLE_BUILD__LIBV8: ' --with-system-v8'
 #BUNDLE_BUILD__THERUBYRACER: ' --with-v8-dir=""'
