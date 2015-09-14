@@ -11,6 +11,7 @@ export BUNDLER_EDITOR="subl"
 # Add Go to path
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:$GOPATH/bin"
+export GO15VENDOREXPERIMENT=1 
 
 # nokogiri doesn't like building from homebrew libxml2
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
