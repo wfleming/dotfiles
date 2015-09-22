@@ -4,8 +4,8 @@
 .livereload
 .watchr
 *.swp
+.bundle
 .rbenv-version
 .rbenv-vars
 .env
 .powder
-bundle_bin
