@@ -20,6 +20,7 @@ alias be='bundle exec'
 alias dbm='rake db:migrate'
 alias dbmr='rake db:migrate:redo'
 alias beep="echo -ne '\007'"
+alias cca='codeclimate analyze'
 
 
 ####### FUNCTIONS ##########
