@@ -7,7 +7,6 @@ execute pathogen#infect()
 syntax enable                   " enable syntax highlighting
 filetype plugin indent on       " load file type plugins + indentation
 
-set encoding=utf-8
 set showcmd                     " display incomplete commands
 set directory=~/.vim/tmp/       " damn .swp files
 set history=1000                " keep 100 lines of command line history
