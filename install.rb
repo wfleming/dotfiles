@@ -145,7 +145,9 @@ module DotFilesInstaller
     # true if our target is already linked to our source file,
     # and nothing needs to be done
     def source_already_linked?
-      File.exist?(@target_path) && File.realpath(@target_path) == @source_path
+      File.exist?(@target_path) && (File.realpath(@target_path) == @source_path)
+    rescue Errno::ENOENT
+      false
     end
 
     def existing_link_target_path
