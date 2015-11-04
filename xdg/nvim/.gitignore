@@ -1,0 +1,6 @@
+# these files are symlinked from vim
+autoload
+bundle
+doc
+tmp
+update.sh
