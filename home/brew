@@ -8,7 +8,7 @@ brew upgrade
 brew install coreutils
 brew install findutils
 brew install zsh
-brew install vim
+brew install neovim/neovim/neovim
 
 # Git
 brew install git
@@ -20,31 +20,19 @@ brew install tmux
 # brew install ack
 # brew install tree
 # brew install ctags-exuberant
-# brew install youtube-dl
-# brew wkhtmltopdf
-# brew install imagemagick
-# brew install ghostscript
-# brew install go
-# brew install hg
-# go get github.com/heroku/hk
 
-# Rbenv + ruby
+# Dev tools/languages
+brew install go
 brew install rbenv
 brew install ruby-build
-
-# Node
 brew install node
 
 # Databases
-## MySQL
-#brew install mysql
-#ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-#mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
 ## PSQL
-brew install postgres --no-python
-initdb /usr/local/var/postgres -E utf8
+# brew install postgres --no-python
+# initdb /usr/local/var/postgres -E utf8
 ## Redis
-brew install redis
+# brew install redis
 
 # Native apps
 brew tap phinze/homebrew-cask
