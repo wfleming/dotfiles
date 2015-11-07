@@ -33,7 +33,6 @@ repos=(
   https://github.com/ap/vim-css-color.git
   https://github.com/bling/vim-airline.git
   https://github.com/docunext/closetag.vim.git
-  https://github.com/elzr/vim-json.git
   https://github.com/fatih/vim-go.git
   https://github.com/kchmck/vim-coffee-script.git
   https://github.com/pangloss/vim-javascript.git
