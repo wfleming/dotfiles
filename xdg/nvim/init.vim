@@ -1,8 +1,10 @@
 """"""""" pathogen load & setup """""""""""""
 
+autocmd!
+let mapleader = "\<Space>"
 execute pathogen#infect()
 
-"" vim-go 
+"" vim-go
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -17,18 +19,19 @@ nnoremap <leader>d :NERDTreeToggle \| :silent NERDTreeMirror<CR>
 
 """"""""" Stock VIM config """"""""""""""""""
 
-syntax enable                   " enable syntax highlighting
-filetype plugin indent on       " load file type plugins + indentation
+syntax enable                " enable syntax highlighting
+filetype plugin indent on    " load file type plugins + indentation
 
-set showcmd                     " display incomplete commands
-set directory=~/.vim/tmp/       " damn .swp files
-set history=1000                " keep 100 lines of command line history
-set visualbell                  " turn off auditory bell
-set autoread                    " refresh file if changed outside of vim
+set showcmd                  " display incomplete commands
+set directory=~/.vim/tmp/    " damn .swp files
+set history=1000             " keep 100 lines of command line history
+set visualbell               " turn off auditory bell
+set autoread                 " refresh file if changed outside of vim
+set clipboard=unnamedplus,unnamed  " for system pastboard integration
+inoremap jk <ESC>            " use jk to get out of insert mode
 
-" color scheme
-set background=dark
-colorscheme solarized
+"" color scheme
+colorscheme distinguished
 
 "" show line #/cursor column
 set number
@@ -45,3 +48,47 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital
+
+"" Golang
+autocmd FileType go set noexpandtab tabstop=8
+
+"" Selecta
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
+
+"" Tab behavior: indent at beginning of line, otherwise autocomplete
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+
+"" strip trailing whitespace on save
+function! StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+autocmd BufWritePre * :call StripTrailingWhitespaces()
