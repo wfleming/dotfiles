@@ -21,7 +21,7 @@ syntax enable                " enable syntax highlighting
 filetype plugin indent on    " load file type plugins + indentation
 
 set showcmd                  " display incomplete commands
-set directory=~/.vim/tmp/    " damn .swp files
+set directory=~/.config/nvim/tmp/  " damn .swp files
 set history=1000             " keep 100 lines of command line history
 set visualbell               " turn off auditory bell
 set autoread                 " refresh file if changed outside of vim
