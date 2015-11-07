@@ -9,6 +9,7 @@ brew install coreutils
 brew install findutils
 brew install zsh
 brew install neovim/neovim/neovim
+brew install selecta
 
 # Git
 brew install git
