@@ -35,6 +35,7 @@ repos=(
   https://github.com/docunext/closetag.vim.git
   https://github.com/fatih/vim-go.git
   https://github.com/kchmck/vim-coffee-script.git
+  https://github.com/kien/ctrlp.vim.git
   https://github.com/pangloss/vim-javascript.git
   https://github.com/rking/ag.vim.git
   https://github.com/scrooloose/nerdtree.git
