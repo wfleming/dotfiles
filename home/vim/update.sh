@@ -28,7 +28,8 @@ me=.vim/update.sh
 # This is a list of all plugins which are available via Git repos. git:// URLs
 # don't work.
 repos=(
-https://github.com/Lokaltog/vim-distinguished.git
+
+  https://github.com/Lokaltog/vim-distinguished.git
   https://github.com/ap/vim-css-color.git
   https://github.com/bling/vim-airline.git
   https://github.com/docunext/closetag.vim.git
@@ -36,6 +37,7 @@ https://github.com/Lokaltog/vim-distinguished.git
   https://github.com/fatih/vim-go.git
   https://github.com/kchmck/vim-coffee-script.git
   https://github.com/pangloss/vim-javascript.git
+  https://github.com/rking/ag.vim.git
   https://github.com/scrooloose/nerdtree.git
   https://github.com/tpope/vim-fugitive.git
   https://github.com/tpope/vim-markdown.git
