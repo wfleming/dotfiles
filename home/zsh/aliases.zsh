@@ -6,8 +6,6 @@ alias apinfo='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/
 alias ls='ls -FG'
 alias ll='ls -AFGl'
 
-alias memcachedstatus='echo stats | nc 127.0.0.1 11211'
-
 # Quick way to rebuild the Launch Services database and get rid
 # of duplicates in the Open With submenu.
 alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
@@ -18,7 +16,6 @@ alias rg='rails g'
 alias bi='bundle install'
 alias be='bundle exec'
 alias dbm='rake db:migrate'
-alias dbmr='rake db:migrate:redo'
 alias beep="echo -ne '\007'"
 alias cca='codeclimate analyze'
 alias vim=nvim
@@ -33,21 +30,6 @@ function g {
   else
     git status
   fi
-}
-
-#function for staging log messages
-staginglog() {
-  git log --pretty="* %s [%an, %h]" $1...HEAD
-}
-
-#search for file by name in spotlight
-spotlightfile() {
-  mdfind "kMDItemDisplayName == '$@'wc";
-}
-
-# Search for file by contenti in spotlight
-spotlightcontent() {
-  mdfind -interpret "$@";
 }
 
 # display a man page in Preview
