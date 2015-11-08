@@ -26,7 +26,8 @@ set history=1000             " keep 100 lines of command line history
 set visualbell               " turn off auditory bell
 set autoread                 " refresh file if changed outside of vim
 set clipboard=unnamedplus,unnamed  " for system pastboard integration
-inoremap jk <ESC>            " use jk to get out of insert mode
+"this mapping is acting weird: the cursor moves on exiting insert
+"inoremap qq  <ESC>    " use letters to get out of insert mode
 
 "" color scheme
 colorscheme distinguished
