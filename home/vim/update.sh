@@ -39,6 +39,7 @@ repos=(
   https://github.com/pangloss/vim-javascript.git
   https://github.com/rking/ag.vim.git
   https://github.com/scrooloose/nerdtree.git
+  https://github.com/slim-template/vim-slim.git
   https://github.com/tpope/vim-fugitive.git
   https://github.com/tpope/vim-markdown.git
   https://github.com/tpope/vim-sensible.git
