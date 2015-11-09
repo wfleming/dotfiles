@@ -27,7 +27,7 @@ set visualbell               " turn off auditory bell
 set autoread                 " refresh file if changed outside of vim
 set clipboard=unnamedplus,unnamed  " for system pastboard integration
 "this mapping is acting weird: the cursor moves on exiting insert
-"inoremap qq  <ESC>    " use letters to get out of insert mode
+inoremap jk <ESC>hhh    " use letters to get out of insert mode
 
 "" color scheme
 colorscheme distinguished
