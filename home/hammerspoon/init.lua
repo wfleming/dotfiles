@@ -14,3 +14,10 @@ hotkey.bind(tilemash, "f", function() tiling.goToLayout("fullscreen") end)
 tiling.set('layouts', {
   'fullscreen', 'main-vertical', 'ga-vertical'
 })
+
+-- window size management
+--local layout = require "hs.layout"
+hotkey.bind(tilemash, "m", function()
+  local win = hs.window.focusedWindow()
+  win:setFrame(win:screen():frame())
+end)
