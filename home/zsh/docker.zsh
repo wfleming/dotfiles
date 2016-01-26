@@ -1,7 +1,8 @@
 # for boot2docker/docker machine
 function docker-env {
-  if command -v boot2docker > /dev/null 2>&1; then
-    eval "$(boot2docker shellinit 2> /dev/null)"
+  if [ -S /var/run/docker.sock ]; then
+    # for dlite support, backing away from docker-machine
+    unset DOCKER_TLS_VERIFY DOCKER_HOST DOCKER_CERT_PATH DOCKER_MACHINE_NAME
   elif command -v docker-machine > /dev/null 2>&1; then
     eval "$(docker-machine env default)"
   fi
