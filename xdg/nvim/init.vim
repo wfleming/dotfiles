@@ -51,6 +51,13 @@ set smartcase                   " ... unless they contain at least one capital
 "" Golang
 autocmd FileType go set noexpandtab tabstop=8
 
+""""""""""" NeoVim term settings """""""""""""""""""
+
+"" space-e to exit insert mode of term
+tnoremap <Leader>e <C-\><C-c>
+
+""""""""""" Commands, etc. """""""""""""""""
+
 "" ctrlp (fuzzy file search)
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
