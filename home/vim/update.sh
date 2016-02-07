@@ -36,7 +36,7 @@ repos=(
   https://github.com/fatih/vim-go.git
 #  https://github.com/kchmck/vim-coffee-script.git
   https://github.com/kien/ctrlp.vim.git
-  https://github.com/pangloss/vim-javascript.git
+#  https://github.com/pangloss/vim-javascript.git
   https://github.com/rking/ag.vim.git
   https://github.com/scrooloose/nerdcommenter.git
   https://github.com/scrooloose/nerdtree.git
@@ -45,6 +45,7 @@ repos=(
   https://github.com/tpope/vim-markdown.git
   https://github.com/tpope/vim-sensible.git
   https://github.com/tpope/vim-surround.git
+  https://github.com/wfleming/vim-codeclimate.git
   https://github.com/vim-ruby/vim-ruby.git
 
   )
