@@ -65,7 +65,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 nnoremap <leader>f :CtrlP<cr>
 
 " Code Climate CLI
-let g:vimcodeclimate_analyze_cmd = 'codeclimate analyze --dev '
+let g:vimcodeclimate_analyze_cmd = '/usr/local/bin/codeclimate analyze --dev '
 nmap <Leader>a :CodeClimateAnalyzeCurrentFile<CR>
 
 "" Tab behavior: indent at beginning of line, otherwise autocomplete
