@@ -38,6 +38,8 @@
 	algorithm = patience
 [apply]
 	whitespace = nowarn
+[merge]
+  ff = only
 [push]
   default = upstream
 [github]
