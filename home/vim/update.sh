@@ -45,7 +45,7 @@ repos=(
   https://github.com/tpope/vim-markdown.git
   https://github.com/tpope/vim-sensible.git
   https://github.com/tpope/vim-surround.git
-  https://github.com/wfleming/vim-codeclimate.git
+#  https://github.com/wfleming/vim-codeclimate.git
   https://github.com/vim-ruby/vim-ruby.git
 
   )
