@@ -3,7 +3,6 @@
 	email = will@flemi.ng
 [alias]
 	o = checkout
-	co = checkout
 	c  = commit
 	ci = commit
 	d = diff
@@ -21,10 +20,6 @@
 	assume   = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
-	# prune-local will delete local branches whose remote tracking was deleted. run `git remote prune origin` beforehand
-	# http://stackoverflow.com/questions/13064613/git-how-to-prune-local-tracking-branches-that-do-not-exist-on-remote-anymore
-	prune-local = "!git branch --merged master | grep -v 'master$' | xargs git branch -d"
-	prune-all = "!git remote prune origin && git prune-local"
 [color]
 	diff = auto
 	status = auto
