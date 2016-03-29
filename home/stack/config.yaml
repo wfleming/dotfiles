@@ -1,0 +1,9 @@
+local-bin-path: /Users/will/local/bin
+
+templates:
+  params:
+    author-email: will@flemi.ng
+    author-name: Will Fleming
+    authorName: "Will Fleming <will@flemi.ng>"
+    copyright: "Copyright: (c) 2016 Will Fleming"
+    github-username: wfleming
