@@ -30,7 +30,7 @@ set clipboard=unnamedplus,unnamed  " for system pastboard integration
 inoremap jk <ESC>hhh    " use letters to get out of insert mode
 
 "" color scheme
-colorscheme distinguished
+colorscheme nofrils-dark
 
 "" show line #/cursor column
 set number
@@ -88,3 +88,9 @@ function! StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 autocmd BufWritePre * :call StripTrailingWhitespaces()
+
+
+""""""""""" File-type settings """"""""""""""""
+
+autocmd FileType make set noexpandtab tabstop=8 shiftwidth=8
+autocmd FileType go set noexpandtab tabstop=8 shiftwidth=8
