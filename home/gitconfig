@@ -1,6 +1,7 @@
 [user]
 	name = Will Fleming
 	email = will@flemi.ng
+	signingkey = AE1BBCB2
 [alias]
 	o = checkout
 	c  = commit
@@ -42,3 +43,7 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
