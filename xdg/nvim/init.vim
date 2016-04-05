@@ -30,7 +30,9 @@ set clipboard=unnamedplus,unnamed  " for system pastboard integration
 inoremap jk <ESC>hhh    " use letters to get out of insert mode
 
 "" color scheme
-colorscheme nofrils-dark
+"colorscheme nofrils-dark
+set background=dark
+colorscheme off
 
 "" show line #/cursor column
 set number
