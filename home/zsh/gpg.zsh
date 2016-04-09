@@ -1,9 +1,10 @@
 if command -v gpg-agent > /dev/null 2>&1; then
-  export GPG_TTY=$(tty)
-  if [ -f "${HOME}/.gpg-agent-info" ]; then
-    source "${HOME}/.gpg-agent-info"
+  GPG_TTY=$(tty)
+  export GPG_TTY
+  if [ -f "${HOME}/.gnupg/gpg-agent-info" ]; then
+    source "${HOME}/.gnupg/gpg-agent-info"
     export GPG_AGENT_INFO
   else
-    gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info"
+    eval "$(gpg-agent --daemon --write-env-file "${HOME}/.gnupg/gpg-agent-info")"
   fi
 fi
