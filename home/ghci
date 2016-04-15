@@ -1,0 +1,4 @@
+:set -iapp
+:set -isrc
+:set -itest
+:set -XOverloadedStrings
