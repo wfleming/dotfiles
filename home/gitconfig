@@ -32,6 +32,7 @@
 [diff]
   # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
 	algorithm = patience
+  compactionHeuristic = true
 [apply]
 	whitespace = nowarn
 [merge]
