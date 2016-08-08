@@ -1,1 +1,7 @@
+# dwm status bar
+while true; do
+  xsetroot -name "$(/usr/local/bin/dwmstatus)"
+  sleep 30s
+done &
+
 exec dwm
