@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+def all_image_names
+  `docker images | fgrep codeclimate`.split("\n").map { |l| l.split[0] }
+end
+
+def build_tags(image)
+  `docker images | grep "^#{image}\s"`.split("\n").map { |l| l.split[1] }.select do |tag|
+    /^b[0-9]+$/ =~ tag
+  end.sort do |a, b|
+    b[1..-1].to_i <=> a[1..-1].to_i
+  end
+end
+
+def cli_tags
+  `docker images | grep "^codeclimate/codeclimate\s"`.split("\n").map { |l| l.split[1] }.select do |tag|
+    /^[\.0-9]+$/ =~ tag
+  end.sort do |a, b|
+    a_pieces = a.split(".").map(&:to_i)
+    b_pieces = b.split(".").map(&:to_i)
+    res = 0
+    (0..2).each do |idx|
+      res = b_pieces[idx] <=> a_pieces[idx] if res == 0
+    end
+    res
+  end
+end
+
+
+all_image_names.each do |image|
+  tags_to_del = build_tags(image)[1..-1]
+  if tags_to_del && tags_to_del.count > 0
+    puts "Removing #{tags_to_del.count} old tags of #{image}"
+    tags_to_del.each { |tag| `docker rmi #{image}:#{tag}` }
+  end
+end
+
+cli_tags_to_del = cli_tags[1..-1]
+if cli_tags_to_del && cli_tags_to_del.count > 0
+  puts "Removing #{cli_tags_to_del.count} old tags of codeclimate/codeclimate"
+  cli_tags_to_del.each { |tag| `docker rmi codeclimate/codeclimate:#{tag}` }
+end
