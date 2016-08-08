@@ -1,8 +1,0 @@
-{
-  "tab_size": 8,
-  "translate_tabs_to_spaces": false,
-  "shell": ["/usr/local/bin/zsh", "--login", "-c", "$CMD"],
-  "env": {
-    "GOPATH": "$HOME/projects/go"
-  }
-}

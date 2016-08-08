@@ -20,6 +20,4 @@
 'home_nodot/*':
   target: '~'
   dotify: false
-'xdg/*': '~/.config'
-'other/sublime3/Preferences.sublime-settings': '~/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings'
 'other/gpg-agent.conf': '~/.gnupg/gpg-agent.conf'

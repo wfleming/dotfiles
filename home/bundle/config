@@ -3,4 +3,3 @@ BUNDLE_PATH: ".bundle/bundle"
 BUNDLE_WITHOUT: deploy
 BUNDLE_BIN: ".bundle/bin"
 BUNDLE_JOBS: '4'
-BUNDLE_BUILD__EVENTMACHINE: "--with-cppflags=-I/usr/local/opt/openssl/include"

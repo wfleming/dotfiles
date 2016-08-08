@@ -16,12 +16,12 @@
 #   ./update.sh repos powerline
 #
 
-cd ~
+cd ~/.config/
 
-vimdir=$PWD/.vim
+vimdir=$PWD/nvim
 bundledir=$vimdir/bundle
 tmp=/tmp/$LOGNAME-vim-update
-me=.vim/update.sh
+me=nvim/update.sh
 
 # URLS --------------------------------------------------------------------
 
