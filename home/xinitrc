@@ -1,7 +1,10 @@
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 # dwm status bar
 while true; do
   xsetroot -name "$(/usr/local/bin/dwmstatus)"
   sleep 30s
 done &
 
-exec dwm
+# launch dwm, re-launch when klled (makes changing config easy)
+exec ~/bin/start_dwm
