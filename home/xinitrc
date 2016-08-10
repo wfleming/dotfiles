@@ -10,6 +10,8 @@ urxvtd --quiet --fork #--opendisplay
 # https://github.com/knopwob/dunst/issues/238 (and from pbrisbin's dotfiles)
 eval $(dbus-launch --sh-syntax --exit-with-session)
 
+xbindkeys
+
 # dwm status bar
 while true; do slstatus; done &
 
