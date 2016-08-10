@@ -1,9 +1,9 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 # dwm status bar
-#while true; do
-  #slstatus
-#done &
+while true; do
+  slstatus
+done &
 
 # launch dwm, re-launch when klled (makes changing config easy)
 exec ~/bin/start_dwm
