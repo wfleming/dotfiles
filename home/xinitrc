@@ -2,8 +2,8 @@
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-xset s off # turn off screensaver
-xautolock -time 10 -locker slock -secure &
+xset s 600 # 10 minutes to lock
+xss-lock --quiet slock &
 
 urxvtd --quiet --fork #--opendisplay
 
