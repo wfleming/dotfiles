@@ -2,9 +2,9 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"mononoki:size=18"
+	"mononoki:size=14"
 };
-static const char dmenufont[]       = "mononoki:size=20";
+static const char dmenufont[]       = "mononoki:size=14";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
