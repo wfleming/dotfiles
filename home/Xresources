@@ -3,5 +3,5 @@ urxvt.font: xft:mononoki:size=16
 urxvt.letterspace: -1
 urxvt.background: #000000
 urxvt.foreground: #ffffff
-urxvt.cursorColor: #ffffff
+urxvt.cursorColor: #999999
 urxvt.scrollBar_right: True
