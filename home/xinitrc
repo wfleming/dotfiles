@@ -1,9 +1,17 @@
+#!/bin/sh
+
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-# dwm status bar
-while true; do
-  slstatus
-done &
+xset s off # turn off screensaver
+xautolock -time 10 -locker slock -secure &
 
-# launch dwm, re-launch when klled (makes changing config easy)
+urxvtd --quiet --fork #--opendisplay
+
+# https://github.com/knopwob/dunst/issues/238 (and from pbrisbin's dotfiles)
+eval $(dbus-launch --sh-syntax --exit-with-session)
+
+# dwm status bar
+while true; do; slstatus; done &
+
+# launch dwm, re-launch when killed (makes testing changed config easy)
 exec ~/bin/start_dwm
