@@ -11,7 +11,7 @@ urxvtd --quiet --fork #--opendisplay
 eval $(dbus-launch --sh-syntax --exit-with-session)
 
 # dwm status bar
-while true; do; slstatus; done &
+while true; do slstatus; done &
 
 # launch dwm, re-launch when killed (makes testing changed config easy)
 exec ~/bin/start_dwm
