@@ -1,1 +1,1 @@
-eval $(keychain --eval --quiet --noask id_rsa)
+eval $(keychain --dir ~/.config/ --eval --quiet --systemd id_rsa)
