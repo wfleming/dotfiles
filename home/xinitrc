@@ -12,6 +12,9 @@ eval $(dbus-launch --sh-syntax --exit-with-session)
 
 xbindkeys
 
+# set a background
+feh --nofehbg --randomize --bg-fill ~/.local/share/wallpapers/space/*
+
 # dwm status bar
 while true; do slstatus; done &
 
