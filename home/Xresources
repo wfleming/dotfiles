@@ -1,7 +1,15 @@
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintingStyle: hintslight
+
 ! urxvt settings
-urxvt.font: xft:mononoki:size=14
-urxvt.letterspace: -1
 urxvt.background: #000000
-urxvt.foreground: #ffffff
 urxvt.cursorColor: #999999
+urxvt.font: xft:mononoki:size=14
+urxvt.foreground: #ffffff
+urxvt.internalBorder: 0
+urxvt.letterspace: -1
 urxvt.scrollBar_right: True
+urxvt.scrollStyle: plain
+urxvt.perl-ext-common: default,matcher,selection-to-clipboard
+urxvt.matcher.button: 1
