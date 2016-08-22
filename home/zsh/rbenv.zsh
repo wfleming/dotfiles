@@ -1,3 +1,3 @@
 eval "$(rbenv init - zsh)"
 # for Bundler/Rails stubs
-export PATH="./bin:.bundle/bin:$PATH" 
+export PATH=".bundle/bin:$PATH"
