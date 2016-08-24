@@ -1,7 +1,7 @@
 ###### ALIASES #####
 
-alias ls='ls -FG'
-alias ll='ls -AFGl'
+alias ls='ls -F --color=auto'
+alias ll='ls -AFhl'
 
 alias rc='rails c'
 alias rdb='rails db'
