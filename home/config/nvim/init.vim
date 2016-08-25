@@ -25,7 +25,7 @@ set directory=~/.config/nvim/tmp/  " damn .swp files
 set history=1000             " keep 100 lines of command line history
 set visualbell               " turn off auditory bell
 set autoread                 " refresh file if changed outside of vim
-set clipboard=unnamedplus,unnamed  " for system pastboard integration
+set clipboard+=unnamedplus   " for system pastboard integration
 "this mapping is acting weird: the cursor moves on exiting insert
 inoremap jk <ESC>hhh    " use letters to get out of insert mode
 
