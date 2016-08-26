@@ -7,21 +7,22 @@ set -e
 # * https://wiki.archlinux.org/index.php/Udev#Writing_udev_rules
 #
 # /etc/udev/rules.d/10-monitor.rules
-# ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/will/bin/msu"
+# ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/will/bin/runx /home/will/bin/msu"
 
+# TODO -- make this an argument for udev triggers
+sleep 2
 
-display=":0"
 intern="eDP1"
 extern="DP1"
 
 printf "RUNNING \n" >> ~will/msu.log
-xrandr --display "$display" 2>&1 >> ~will/msu.log
+xrandr 2>&1 >> ~will/msu.log
 printf "ran xrandr \n" >> ~will/msu.log
-if xrandr --display "$display" | grep "$extern disconnected"; then
+if xrandr | grep "$extern disconnected"; then
   printf "extern disconnected \n" >> ~will/msu.log
-  xrandr --display "$display" --output "$extern" --off --output "$intern" --auto
+  xrandr --output "$extern" --off --output "$intern" --auto
 else
   printf "extern connected \n" >> ~will/msu.log
-  xrandr --display "$display" --output "$intern" --off --output "$extern" --auto
+  xrandr --output "$intern" --off --output "$extern" --auto
 fi
 printf "ENDING \n\n\n" >> ~will/msu.log
