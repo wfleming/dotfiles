@@ -5,24 +5,47 @@ set -e
 # Refs:
 # * https://wiki.archlinux.org/index.php/Xrandr#Toggle_external_monitor
 # * https://wiki.archlinux.org/index.php/Udev#Writing_udev_rules
+# * https://wiki.archlinux.org/index.php/Acpid
 #
 # /etc/udev/rules.d/10-monitor.rules
-# ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/will/bin/runx /home/will/bin/msu"
+# ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/will/bin/runx /home/will/bin/msu -s 1 && /home/will/bin/runx /home/will/bin/wallpaper"
+#
+# /etc/acpi/handler.sh (add the following for open/close events
+# /home/will/bin/runx /home/will/bin/msu
+# /home/will/bin/runx /home/will/bin/wallpaper
 
-# TODO -- make this an argument for udev triggers
-sleep 2
+while getopts ":s:" opt; do
+  case $opt in
+    s)
+      sleep $OPTARG;;
+    \?)
+      printf "Invalid option -%s\n" $OPTARG
+      exit 64;;
+    \:)
+      printf "Option -%s requires an argument\n" $OPTARG
+      exit 64;;
+  esac
+done
 
+command="xrandr"
 intern="eDP1"
-extern="DP1"
-
-printf "RUNNING \n" >> ~will/msu.log
-xrandr 2>&1 >> ~will/msu.log
-printf "ran xrandr \n" >> ~will/msu.log
-if xrandr | grep "$extern disconnected"; then
-  printf "extern disconnected \n" >> ~will/msu.log
-  xrandr --output "$extern" --off --output "$intern" --auto
+connected_outputs=$(xrandr | grep -v "$intern" | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
+if ! grep --quiet open /proc/acpi/button/lid/LID/state; then
+  # if there are no external connected displays, just exit:
+  # we could be putting the laptop to sleep
+  if [ -z "$connected_outputs" ]; then
+    exit
+  fi
+  command="$command --output $intern --off"
 else
-  printf "extern connected \n" >> ~will/msu.log
-  xrandr --output "$intern" --off --output "$extern" --auto
+  command="$command --output $intern --auto"
 fi
-printf "ENDING \n\n\n" >> ~will/msu.log
+
+
+last_output=$intern
+for output in $connected_outputs; do
+  command="$command --output $output --right-of $last_output --auto"
+  last_output=$output
+done
+
+$command
