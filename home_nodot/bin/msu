@@ -17,19 +17,20 @@ set -e
 while getopts ":s:" opt; do
   case $opt in
     s)
-      sleep $OPTARG;;
-    \?)
-      printf "Invalid option -%s\n" $OPTARG
+      sleep "$OPTARG";;
+    "?")
+      printf "Invalid option -%s\n" "$OPTARG"
       exit 64;;
-    \:)
-      printf "Option -%s requires an argument\n" $OPTARG
+    ":")
+      printf "Option -%s requires an argument\n" "$OPTARG"
       exit 64;;
   esac
 done
 
 command="xrandr"
 intern="eDP1"
-connected_outputs=$(xrandr | grep -v "$intern" | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
+current_monitors=$(xrandr --listmonitors | tail --lines=+2 | grep -v "$intern" | sed -e "s/.* \([a-zA-Z0-9]\+\)$/\1/")
+connected_outputs=$(xrandr | grep -v "$intern" | grep " connected" | sed -e "s/\([a-zA-Z0-9]\+\) connected.*/\1/")
 if ! grep --quiet open /proc/acpi/button/lid/LID/state; then
   # if there are no external connected displays, just exit:
   # we could be putting the laptop to sleep
@@ -42,10 +43,18 @@ else
 fi
 
 
+# add each connected output
 last_output=$intern
 for output in $connected_outputs; do
   command="$command --output $output --right-of $last_output --auto"
   last_output=$output
 done
+# turn off any just-disconnected outputs
+for output in $current_monitors; do
+  if [[ "$command" != *"$output"* ]]; then
+    command="$command --output $output --off"
+  fi
+done
 
+printf "msu command=%s\n" "$command"
 $command
