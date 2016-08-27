@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --nofehbg --randomize --bg-fill ~/.local/share/wallpapers/space/*
+feh --randomize --bg-fill ~/.local/share/wallpapers/space/*
