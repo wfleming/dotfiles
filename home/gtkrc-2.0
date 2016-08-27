@@ -1,1 +1,33 @@
-gtk-key-theme-name = "Emacs"
+#gtk-key-theme-name = "Emacs"
+
+# some handy emacs keybindings, but not the whole theme:
+# some bindings interfere with certain app's shortcuts
+binding "wf-emacs-text"
+{
+  bind "<ctrl>b" { "move-cursor" (logical-positions, -1, 0) }
+  bind "<shift><ctrl>b" { "move-cursor" (logical-positions, -1, 1) }
+  bind "<ctrl>f" { "move-cursor" (logical-positions, 1, 0) }
+  bind "<shift><ctrl>f" { "move-cursor" (logical-positions, 1, 1) }
+
+  bind "<alt>b" { "move-cursor" (words, -1, 0) }
+  bind "<shift><alt>b" { "move-cursor" (words, -1, 1) }
+  bind "<alt>f" { "move-cursor" (words, 1, 0) }
+  bind "<shift><alt>f" { "move-cursor" (words, 1, 1) }
+
+  bind "<ctrl>a" { "move-cursor" (paragraph-ends, -1, 0) }
+  bind "<shift><ctrl>a" { "move-cursor" (paragraph-ends, -1, 1) }
+  bind "<ctrl>e" { "move-cursor" (paragraph-ends, 1, 0) }
+  bind "<shift><ctrl>e" { "move-cursor" (paragraph-ends, 1, 1) }
+
+  bind "<ctrl>d" { "delete-from-cursor" (chars, 1) }
+  bind "<alt>d" { "delete-from-cursor" (word-ends, 1) }
+  bind "<ctrl>k" { "delete-from-cursor" (paragraph-ends, 1) }
+  bind "<alt>backslash" { "delete-from-cursor" (whitespace, 1) }
+
+  # custom select all: Win+a
+  bind "<alt>a" { "move-cursor" (buffer-ends, -1, 0)
+                   "move-cursor" (buffer-ends,  1, 1) }
+}
+
+ class "GtkEntry" binding "wf-emacs-text"
+ class "GtkTextView" binding "wf-emacs-text"
