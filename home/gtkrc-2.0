@@ -4,10 +4,10 @@
 # some bindings interfere with certain app's shortcuts
 binding "wf-emacs-text"
 {
-  bind "<ctrl>b" { "move-cursor" (logical-positions, -1, 0) }
-  bind "<shift><ctrl>b" { "move-cursor" (logical-positions, -1, 1) }
-  bind "<ctrl>f" { "move-cursor" (logical-positions, 1, 0) }
-  bind "<shift><ctrl>f" { "move-cursor" (logical-positions, 1, 1) }
+  bind "<ctrl>b" { "move-cursor" (words, -1, 0) }
+  bind "<shift><ctrl>b" { "move-cursor" (words, -1, 1) }
+  bind "<ctrl>f" { "move-cursor" (words, 1, 0) }
+  bind "<shift><ctrl>f" { "move-cursor" (words, 1, 1) }
 
   bind "<alt>b" { "move-cursor" (words, -1, 0) }
   bind "<shift><alt>b" { "move-cursor" (words, -1, 1) }
