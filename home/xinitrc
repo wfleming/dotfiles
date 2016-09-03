@@ -10,13 +10,13 @@ urxvtd --quiet --fork #--opendisplay
 # https://github.com/knopwob/dunst/issues/238 (and from pbrisbin's dotfiles)
 eval $(dbus-launch --sh-syntax --exit-with-session)
 
-xbindkeys
-
 # set a background
 ~/bin/wallpaper
 
-# dwm status bar
-while true; do slstatus; done &
+# systray, vol widget
+trayer --edge top --align right --SetDockType true --SetPartialStrut True --expand True \
+  --width 5 --height 20 --transparent true --tint 0x000000 &
+pnmixer &
 
-# launch dwm, re-launch when killed (makes testing changed config easy)
-exec ~/bin/start_dwm
+# window manager
+exec xmonad
