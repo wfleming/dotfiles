@@ -20,4 +20,3 @@
 'home_nodot/*':
   target: '~'
   dotify: false
-'other/gpg-agent.conf': '~/.gnupg/gpg-agent.conf'
