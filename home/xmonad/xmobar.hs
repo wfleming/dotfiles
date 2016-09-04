@@ -13,10 +13,11 @@ Config {
   , allDesktops = True
   , hideOnStart = False
   , pickBroadest = False -- multi monitor
+  , iconRoot = "/home/will/.xmonad/icons"
 
   , commands = [
     -- cpu activity monitor
-    Run Cpu              [ "--template" , "Cpu: <total>%"
+    Run Cpu              [ "--template" , "<icon=cpu.xbm/> <total>%"
                          , "--Low"      , "50"         -- units: %
                          , "--High"     , "85"         -- units: %
                          , "--low"      , "darkgreen"
@@ -25,7 +26,7 @@ Config {
                          ] 10
 
     -- memory usage monitor
-    , Run Memory         [ "--template" ,"Mem: <usedratio>%"
+    , Run Memory         [ "--template" ,"<icon=mem.xbm/> <usedratio>%"
                          , "--Low"      , "20"        -- units: %
                          , "--High"     , "90"        -- units: %
                          , "--low"      , "darkgreen"
@@ -35,13 +36,14 @@ Config {
 
     -- battery monitor
     , Run BatteryP       ["AC", "BAT0", "BAT1"]
-                         [ "--template" , "Batt: <left>% (<timeleft>)"
+                         [ "--template" , "<icon=bat_full_01.xbm/> <left>% (<timeleft>)"
                          , "--Low"      , "10"        -- units: %
                          , "--High"     , "80"        -- units: %
                          , "--low"      , "darkred"
                          , "--normal"   , "darkorange"
                          , "--high"     , "darkgreen"
 
+                         -- These aren't working: <actstatus> is always "N/A" /shrug
                          , "--" -- battery specific options
                                    -- discharging status
                                    , "-o"	, "<left>% (<timeleft>)"
