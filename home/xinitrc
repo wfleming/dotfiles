@@ -15,7 +15,7 @@ eval $(dbus-launch --sh-syntax --exit-with-session)
 
 # systray, vol widget
 trayer --edge top --align right --SetDockType true --SetPartialStrut True --expand True \
-  --width 5 --height 20 --transparent true --tint 0x000000 &
+  --width 5 --height 23 --transparent true --tint 0x000000 &
 pnmixer &
 
 # window manager
