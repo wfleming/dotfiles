@@ -53,7 +53,7 @@ Config {
                                    , "-i"	, "<fc=#006000>Charged</fc>"
                          ] 50
 
-    , Run Volume         "default" "Master" [] 10
+    --, Run Volume         "default" "Master" [] 10
 
     -- time and date indicator
     --   (<date> <month> HH::MM)
