@@ -2,8 +2,8 @@
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-xset s 600 # 10 minutes to lock
-xss-lock --quiet slock &
+xset s off # 10 minutes to lock
+xautolock -time 5 -locker slock -secure &
 
 urxvtd --quiet --fork #--opendisplay
 
