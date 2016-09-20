@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# From http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+set -e
+
+# file-based mutex to avoid excessive ctags during rebases
+trap 'rmdir .git/tags_lock; rm -f "$dir/$$.tags"' EXIT
+mkdir .git/tags_lock 2>/dev/null || exit 0
+
+dir="`git rev-parse --git-dir`"
+git ls-files | \
+  ctags --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript
+mv "$dir/$$.tags" "$dir/tags"
