@@ -27,7 +27,11 @@ main = do
       , ("M-S-s", spawn "scrot -s")
       , ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 3+")
       , ("<XF86AudioLowerVolume>", spawn "amixer sset Master 3-")
-      , ("<XF86AudioMute>", spawn "amixer sset Master toggle")
+      , ("<XF87AudioMute>", spawn "amixer sset Master toggle")
+      , ("<XF87AudioMicMute>", spawn "amixer sset Capture toggle")
+      , ("<XF87AudioPlay>", spawn "spotify-control playpause")
+      , ("<XF87AudioNext>", spawn "spotify-control next")
+      , ("<XF87AudioPrev>", spawn "spotify-control previous")
       , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 5")
       , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 5")
       ]
