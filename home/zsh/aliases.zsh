@@ -11,6 +11,7 @@ alias be='bundle exec'
 alias dbm='bin/rake db:migrate'
 alias beep="echo -ne '\007'"
 alias cca='codeclimate analyze'
+alias pacman-rm-orphans='sudo pacman -Rsn $(pacman -Qqdt)'
 
 ####### FUNCTIONS ##########
 
