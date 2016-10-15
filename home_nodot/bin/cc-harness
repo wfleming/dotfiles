@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+docker_compose() {
+  cd ~/src/cc/harness
+  exec docker-compose \
+    --file docker-compose.yml \
+    --file docker-compose.local.yml \
+    "$@"
+}
+
+if [ "$1" = "describe-topics" ]; then
+  # WTF do you sleep .1, you may ask? https://github.com/docker/compose/issues/3267
+  # ignore shellcheck about quoting: we want those vars expanded in-container
+  # shellcheck disable=SC2016
+  docker_compose run --rm -T \
+    kafka sh -c \
+    'sleep .1; $KAFKA_HOME/bin/kafka-topics.sh --describe --zookeeper $KAFKA_ZOOKEEPER_CONNECT'
+else
+  docker_compose "$@"
+fi
+
