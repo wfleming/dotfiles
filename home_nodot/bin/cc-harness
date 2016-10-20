@@ -9,7 +9,19 @@ docker_compose() {
     "$@"
 }
 
-if [ "$1" = "describe-topics" ]; then
+docker_compose_noexec() {
+  cd ~/src/cc/harness
+  docker-compose \
+    --file docker-compose.yml \
+    --file docker-compose.local.yml \
+    "$@"
+}
+
+if [ "$1" = "restart" ]; then
+    docker_compose_noexec stop "$2"
+    docker_compose_noexec rm -f "$2"
+    docker_compose_noexec up -d "$2"
+elif [ "$1" = "describe-topics" ]; then
   # WTF do you sleep .1, you may ask? https://github.com/docker/compose/issues/3267
   # ignore shellcheck about quoting: we want those vars expanded in-container
   # shellcheck disable=SC2016
