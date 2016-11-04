@@ -1,4 +1,4 @@
-local-bin-path: /Users/will/local/bin
+local-bin-path: /home/will/local/bin
 
 templates:
   params:
