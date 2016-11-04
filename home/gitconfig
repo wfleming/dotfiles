@@ -51,3 +51,7 @@
 	program = gpg2
 [init]
 	templatedir = ~/.config/git_template/
+[url "git@github.com:"]
+	insteadOf = gh:
+[url "git@github.com:codeclimate/"]
+	insteadOf = cc:
