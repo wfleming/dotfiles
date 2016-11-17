@@ -39,8 +39,11 @@ set number
 set ruler
 
 "" Whitespace
+set list listchars=trail:.,tab:→→,extends:>,precedes:<
+set textwidth=80
+set colorcolumn=+1
 set nowrap                      " don't wrap lines
-set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set tabstop=2 shiftwidth=2      " a tab is two spaces
 set expandtab                   " use spaces, not tabs
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
@@ -49,9 +52,6 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital
-
-"" Golang
-autocmd FileType go set noexpandtab tabstop=8
 
 """"""""""" NeoVim term settings """""""""""""""""""
 
