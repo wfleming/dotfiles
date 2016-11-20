@@ -30,7 +30,6 @@ set clipboard+=unnamedplus   " for system pastboard integration
 inoremap jk <ESC>hhh    " use letters to get out of insert mode
 
 "" color scheme
-"colorscheme nofrils-dark
 set background=dark
 colorscheme off
 
@@ -96,3 +95,7 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 autocmd FileType make set noexpandtab tabstop=8 shiftwidth=8
 autocmd FileType go set noexpandtab tabstop=8 shiftwidth=8
+
+"" Mutt
+autocmd BufRead /tmp/mutt-* set tw=72
+
