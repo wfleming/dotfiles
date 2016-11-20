@@ -4,11 +4,8 @@ alias ls='ls -F --color=auto'
 alias ll='ls -AFhl'
 
 alias rc='bin/rails c'
-alias rdb='bin/rails db'
-alias rg='bin/rails g'
 alias bi='bundle install'
 alias be='bundle exec'
-alias dbm='bin/rake db:migrate'
 alias beep="echo -ne '\007'"
 alias cca='codeclimate analyze'
 alias pacman-rm-orphans='sudo pacman -Rsn $(pacman -Qqdt)'
