@@ -93,6 +93,7 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 """"""""""" File-type settings """"""""""""""""
 
+autocmd FileType * set expandtab tabstop=2 shiftwidth=2
 autocmd FileType make set noexpandtab tabstop=8 shiftwidth=8
 autocmd FileType go set noexpandtab tabstop=8 shiftwidth=8
 
