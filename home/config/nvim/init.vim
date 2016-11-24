@@ -38,7 +38,7 @@ set number
 set ruler
 
 "" Whitespace
-set list listchars=trail:.,tab:→→,extends:>,precedes:<
+set list listchars=trail:.,tab:>-,extends:>,precedes:<
 set textwidth=80
 set colorcolumn=+1
 set nowrap                      " don't wrap lines
