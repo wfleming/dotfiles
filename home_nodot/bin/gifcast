@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# adapted from pbrisbin
+#
+###
+set -e
+
+tmp=/tmp/gifcast.gif
+out="${1:-$HOME/Desktop/gifcast_$(date +%y%m%d%H%M%S).gif}"
+
+post_process() {
+  echo # newline
+  convert -loop 0 "$tmp" "$out"
+  rm "$tmp" "$out"
+}
+
+trap post_process EXIT
+
+echo "Select area to record"
+geometry_args="$(xrectsel "--x=%x --y=%y --width=%w --height=%h")"
+
+printf "Recording %s. Press ^C when done.\n" "$out"
+# word-splitting intended for geometry
+byzanz-record --cursor --delay 2 --duration 3600 $geometry_args "$tmp"
