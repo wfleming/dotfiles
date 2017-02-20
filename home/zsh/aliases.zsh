@@ -6,7 +6,6 @@ alias ll='ls -AFhl'
 alias rc='bin/rails c'
 alias bi='bundle install'
 alias be='bundle exec'
-alias beep="echo -ne '\007'"
 alias cca='codeclimate analyze'
 alias pacman-rm-orphans='sudo pacman -Rsn $(pacman -Qqdt)'
 
@@ -14,7 +13,7 @@ alias pacman-rm-orphans='sudo pacman -Rsn $(pacman -Qqdt)'
 
 # Shorten git to one letter, execute status by default if no
 # subcommand is specified
-function g {
+g() {
   if [[ $# > 0 ]]; then
     git $@
   else
@@ -30,7 +29,15 @@ deexample() {
  done
 }
 
+# It would seem my thinkpads don't have motherboard speakers, so
+# `echo -e "\a"` doesn't work
+beep() {
+  ( speaker-test -t sine -f 800 > /dev/null )& pid=$!
+  sleep 0.05s
+  kill -9 $pid > /dev/null
+}
+
 # top history
-function tophist {
+tophist() {
   cat ~/.zsh_history|cut -d ';' -f 2- 2>/dev/null| awk '{a[$1]++ } END{for(i in a){print a[i] " " i}}'|sort -rn|head
 }
