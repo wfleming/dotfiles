@@ -11,7 +11,7 @@ out="${1:-$HOME/Desktop/gifcast_$(date +%y%m%d%H%M%S).gif}"
 post_process() {
   echo # newline
   convert -loop 0 "$tmp" "$out"
-  rm "$tmp" "$out"
+  rm "$tmp"
 }
 
 trap post_process EXIT
