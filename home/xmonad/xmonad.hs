@@ -1,3 +1,5 @@
+module Main (main) where
+
 import System.IO
 import XMonad
 import XMonad.Config.Desktop
@@ -10,7 +12,7 @@ baseConfig = desktopConfig
 
 main :: IO ()
 main = do
-  xmobarProc <- spawnPipe "/usr/bin/xmobar /home/will/.xmonad/xmobar.hs"
+  xmobarProc <- spawnPipe "xmobar /home/will/.xmonad/xmobar.hs"
   xmonad $ baseConfig
     { terminal = "urxvt"
     , modMask = mod4Mask
