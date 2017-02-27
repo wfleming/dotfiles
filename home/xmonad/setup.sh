@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-stack install xmonad
-stack build
+git clone git@github.com:wfleming/taffybar.git vendor/taffybar
 
-# TODO: clone taffybar to vendor/taffybar & install it as well.
+stack install xmonad
+stack install taffybar
+
+stack build

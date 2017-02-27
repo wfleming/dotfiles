@@ -3,6 +3,7 @@
 !/aurgetrc
 !/dunst
 !/git_template
-!/nvim
 !/gnupg
+!/nvim
 !/systemd
+!/taffybar

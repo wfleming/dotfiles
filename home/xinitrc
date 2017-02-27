@@ -19,8 +19,7 @@ urxvtd --quiet --fork #--opendisplay
 ~/bin/wallpaper
 
 # systray, vol widget
-trayer --edge top --align right --SetDockType true --SetPartialStrut True --expand True \
-  --width 5 --height 23 --transparent true --tint 0x000000 &
+(cd ~/.xmonad/vendor/taffybar && stack exec taffybar &)
 pnmixer &
 
 # window manager

@@ -1,14 +1,13 @@
-resolver: lts-8.0
+resolver: lts-6.26
 
 packages:
   - "."
-  #- "./vendor/taffybar"
 
 extra-deps:
+  - X11-1.8
   - X11-xft-0.3.1
-  #- dbus-0.10.12
-  #- gtk-0.13.9
-  #- gtk-traymanager-0.1.6
-  #- gtk-traymanager-0.1.6
+  - directory-1.2.7.1
+  - gtk-traymanager-0.1.6
+  - taffybar-0.4.6
+  - xmonad-0.13
   - xmonad-contrib-0.13
-  #- libxml-sax-0.7.5
