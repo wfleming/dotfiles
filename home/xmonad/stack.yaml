@@ -2,6 +2,7 @@ resolver: lts-6.26
 
 packages:
   - "."
+  - "vendor/taffybar"
 
 extra-deps:
   - X11-1.8

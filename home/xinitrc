@@ -19,7 +19,7 @@ urxvtd --quiet --fork #--opendisplay
 ~/bin/wallpaper
 
 # systray, vol widget
-(cd ~/.xmonad/vendor/taffybar && stack exec taffybar &)
+(cd ~/.xmonad && stack exec taffybar &)
 pnmixer &
 
 # window manager
