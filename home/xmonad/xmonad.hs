@@ -24,7 +24,7 @@ main = xmonad $
     ewmh $
     pagerHints $
     baseConfig
-      { borderWidth = 2
+      { borderWidth = 4
       , terminal = "urxvt"
       , modMask = mod4Mask
       , normalBorderColor = "#333333"
