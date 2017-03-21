@@ -20,9 +20,8 @@ gpg-connect-agent "/bye" &
 # set a background
 ~/bin/wallpaper
 
-# systray, vol widget
+# systray
 (cd ~/.xmonad && stack exec taffybar &)
-pnmixer &
 
 # window manager
 exec xmonad
