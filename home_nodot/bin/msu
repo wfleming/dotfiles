@@ -14,6 +14,14 @@ set -e
 # /home/will/bin/runx /home/will/bin/msu
 # /home/will/bin/runx /home/will/bin/wallpaper
 
+# set modes for specific screens to use instead of `auto`
+mode_eDP1="--mode 1920x1080"
+
+screen_mode () {
+  vname="mode_$1"
+  printf "%s\n" "${!vname:---auto}"
+}
+
 while getopts ":s:" opt; do
   case $opt in
     s)
@@ -39,14 +47,14 @@ if ! grep --quiet open /proc/acpi/button/lid/LID/state; then
   fi
   command="$command --output $intern --off"
 else
-  command="$command --output $intern --auto"
+  command="$command --output $intern $(screen_mode "$intern")"
 fi
 
 
 # add each connected output
 last_output=$intern
 for output in $connected_outputs; do
-  command="$command --output $output --right-of $last_output --auto"
+  command="$command --output $output --right-of $last_output $(screen_mode "$output")"
   last_output=$output
 done
 # turn off any just-disconnected outputs
