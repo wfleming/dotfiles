@@ -1,0 +1,28 @@
+# vim: ft=muttrc
+
+# unbind some standard keys I don't want or use
+bind index \* noop
+bind index \# noop
+
+#  More vim-like bindings + handy stuff
+bind index gg first-entry
+bind index G  last-entry
+bind index N  search-opposite
+bind pager /  search
+bind pager j  next-line
+bind pager k  previous-line
+bind pager gg top
+bind pager G  bottom
+bind index,pager R group-reply
+
+# View HTML in real browser from attachment list
+macro attach V \
+  "<pipe-entry>cat > ~/.mutt/tmp/mail.html && xdg-open ~/.mutt/tmp/mail.html<enter>" \
+  "view in chrome"
+
+# sidebar bindings
+macro index,pager b "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
+bind index \CJ sidebar-next
+bind index \CK sidebar-prev
+bind index \CO sidebar-open
+

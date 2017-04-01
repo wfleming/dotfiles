@@ -4,6 +4,8 @@
 !/dunst
 !/git_template
 !/gnupg
+!/msmtprc.gpg
+!/mbsyncrc.gpg
 !/nvim
 !/systemd
 !/taffybar

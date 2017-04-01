@@ -1,0 +1,17 @@
+# vim: ft=muttrc
+
+set from="will@codeclimate.com"
+
+set sendmail = "msmtp -C /home/will/.config/msmtprc -a codeclimate"
+set mbox = "+codeclimate/[Gmail]/.All Mail"
+set postponed = "+codeclimate/[Gmail]/.Drafts"
+set trash = "+codeclimate/[Gmail]/.Trash"
+
+macro index ,c "<change-folder>+personal/INBOX<enter>" "change accounts"
+
+macro index,pager ,a \
+  "<tag-prefix><save-message>+codeclimate/[Gmail]/.All<quote-char> Mail<enter>" \
+  "archive message"
+macro index,pager ,s \
+  "<tag-prefix><save-message>+codeclimate/[Gmail]/.Spam<enter>" \
+  "mark as spam"

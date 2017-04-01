@@ -1,0 +1,8 @@
+[Unit]
+Description=Keep local mailboxes up to date
+
+[Timer]
+OnUnitInactiveSec=5m
+
+[Install]
+WantedBy=timers.target

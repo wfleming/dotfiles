@@ -1,0 +1,9 @@
+[Unit]
+Description=Keep local mailboxes up to date
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env %h/bin/imap-sync
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,29 @@
+# Mail
+
+## Packages
+
+- neomutt (aur)
+- isync (provides mbsync)
+- msmtp (send email)
+- elinks (text browser for reading html email)
+- urlview (aur; open urls from emails externally)
+
+## Setup
+
+- Need to manually create ~/mail/(personal|codeclimate) for mbsync
+- Make sure you have decrypted config for msmtprc & mbsync
+  (Obviously only applicable to me, Will: if you're reading my dotfiles, refer to
+  https://wiki.archlinux.org/index.php/Msmtp &
+  https://wiki.archlinux.org/index.php/isync for useful info on configuring
+  those tools.)
+- enable & activate the `systemctl --user` `imap-sync.timer` unit to get
+  automatic periodic mail sync
+
+## TODO (Things I need to figure out still)
+
+- show when have unread mail in taffybar/systray somehow
+- specific macro for GH emails to open links in one step?
+
+# Notes
+
+- `flag_chars` in `man muttrc` helps with what status flag chars mean

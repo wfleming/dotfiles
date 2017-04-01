@@ -1,0 +1,58 @@
+set realname = "Will Fleming"
+
+# Mailboxes
+set mbox_type = Maildir
+set folder = "~/mail"
+mailboxes "+personal/INBOX" "+codeclimate/INBOX" \
+  "+codeclimate/github-mentioned" "+codeclimate/github-requested-review"
+
+set spoolfile = "+personal/INBOX"
+folder-hook personal/* source ~/.mutt/accounts/personal
+folder-hook codeclimate/* source ~/.mutt/accounts/codeclimate
+
+# Cache, tmp, etc storage
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set tmpdir = "~/.mutt/tmp"
+
+# Writing mail
+set editor = vim
+set edit_headers = yes
+set fast_reply = yes # on reply, don't prompt for subject/to
+set include = yes # include original in replies
+
+# Mailbox view: group, sort, pager behavior
+set sort = threads
+set sort_browser = date
+set sort_aux = reverse-last-date-received
+set strict_threads = yes
+set mail_check_stats = yes
+
+set pager_index_lines = 4
+set pager_context = 5
+set pager_stop
+unset markers
+set delete  # do really delete messages when deleting
+unset record # do not save extra copies of sent mail (server does that)
+
+set status_format = "%f %r [Msgs: %m%?u? (%u)?]   (%s/%S%?V?|%V?)%> (%P)   "
+
+# manage headers I want to see
+ignore *                               # first, ignore all headers
+unignore from: to: cc: date: subject:  # then, show only these
+hdr_order from: to: cc: date: subject: # and in this order
+
+# Manage the sidebar
+set sidebar_format = "%B%* %S (%N)"
+set sidebar_width = 20
+set sidebar_visible = yes
+set sidebar_short_path = yes
+
+# HTML emails
+set mailcap_path="~/.mutt/mailcap"
+auto_view text/html
+alternative_order text/plain text/html
+
+source ~/.mutt/bindings
+source ~/.mutt/colors

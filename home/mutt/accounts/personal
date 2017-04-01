@@ -1,0 +1,23 @@
+# vim: ft=muttrc
+
+set from="will@flemi.ng"
+
+set sendmail = "msmtp -C /home/will/.config/msmtprc -a personal"
+set mbox = "+personal/Archive"
+set postponed = "+personal/Drafts"
+set trash = "+personal/Trash"
+
+set sig_dashes = no
+set sig_on_top = yes
+set signature=~/.mutt/signatures/personal
+
+alternates "will@jwock.org" "wmf22@cornell.edu" "will.fleming@gmail.com"
+
+macro index ,c "<change-folder>+codeclimate/INBOX<enter>" "change accounts"
+
+macro index,pager ,a \
+  "<tag-prefix><save-message>+personal/Archive<enter>" \
+  "archive message"
+macro index,pager ,s \
+  "<tag-prefix><save-message>+personal/Learn Spam<enter>" \
+  "mark as spam"
