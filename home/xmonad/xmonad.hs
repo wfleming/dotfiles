@@ -34,8 +34,8 @@ main = xmonad $
       } `additionalKeysP`
         [ ("M-S-l", spawn "slock")
         , ("M-S-s", spawn "scrot -s")
-        , ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 3+")
-        , ("<XF86AudioLowerVolume>", spawn "amixer sset Master 3-")
+        , ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 3%+")
+        , ("<XF86AudioLowerVolume>", spawn "amixer sset Master 3%-")
         , ("<XF86AudioMute>", spawn "amixer sset Master toggle")
         , ("<XF86AudioMicMute>", spawn "amixer sset Capture toggle")
         , ("<XF86AudioPlay>", spawn "spotify-control playpause")
