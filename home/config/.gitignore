@@ -4,8 +4,10 @@
 !/dunst
 !/git_template
 !/gnupg
-!/msmtprc.gpg
+!/khal
 !/mbsyncrc.gpg
+!/msmtprc.gpg
 !/nvim
 !/systemd
 !/taffybar
+!/vdirsyncer

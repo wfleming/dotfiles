@@ -1,0 +1,27 @@
+[calendars]
+
+[[personal]]
+path = "~/calendars/personal/954b9369-a037-4c44-9cad-d0de258ba275"
+color = "dark blue"
+
+[[codeclimate]]
+path = "~/calendars/codeclimate/will@codeclimate.com/"
+color = "light red"
+
+[[engineering]]
+path = "~/calendars/codeclimate/codeclimate.com_phhbu4l2f9boul8jm1d8isfrnk@group.calendar.google.com/"
+color = "dark green"
+
+[default]
+highlight_event_days = "true"
+timedelta = "5d"
+
+[locale]
+dateformat = "%m-%d"
+datetimeformat = "%m-%d %H:%M"
+longdateformat = "%Y-%m-%d"
+longdatetimeformat = "%Y-%m-%d %H:%M"
+
+[highlight_days]
+method = "fg"
+multiple = "dark magenta"
