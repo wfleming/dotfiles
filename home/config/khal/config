@@ -12,6 +12,11 @@ color = "light red"
 path = "~/calendars/codeclimate/codeclimate.com_phhbu4l2f9boul8jm1d8isfrnk@group.calendar.google.com/"
 color = "dark green"
 
+[[cc_pto]]
+path = "~/calendars/cc_pto"
+color = "dark gray"
+readonly = True
+
 [default]
 highlight_event_days = "true"
 timedelta = "5d"
