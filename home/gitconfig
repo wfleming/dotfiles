@@ -1,58 +1,60 @@
 [user]
-	name = Will Fleming
-	email = will@flemi.ng
-	signingkey = AE1BBCB2
+  name = Will Fleming
+  email = will@flemi.ng
+  signingkey = AE1BBCB2
 [alias]
-	o = checkout
-	c  = commit
-	ci = commit
-	d = diff
-	st = status
-	p = push
-	br = branch
-	amend = commit -C HEAD --amend
-	caa = commit -a --amend -C HEAD
+  o = checkout
+  c  = commit
+  ci = commit
+  d = diff
+  st = status
+  p = push
+  br = branch
+  amend = commit -C HEAD --amend
+  caa = commit -a --amend -C HEAD
   fix = commit -a --fixup
   fix-rebase = rebase -i --autosquash origin/master
   pr-rebase = !git fetch && git rebase origin/master && git push --force
-	unpushed-commits = !git-log origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)..HEAD
-	unmerged-commits = log --not HEAD
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	assume   = update-index --assume-unchanged
-	unassume = update-index --no-assume-unchanged
-	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+  unpushed-commits = !git-log origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)..HEAD
+  unmerged-commits = log --not HEAD
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  assume   = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
   ctags = "!.git/hooks/ctags"
   pr = "!hub pull-request"
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
 [core]
-	excludesfile = /Users/will/.gitignore
-	editor = nvim
+  excludesfile = /Users/will/.gitignore
+  editor = nvim
 [diff]
   # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
-	algorithm = patience
+  algorithm = patience
   compactionHeuristic = true
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
+[fetch]
+  prune = true
 [merge]
   ff = only
 [push]
   default = upstream
 [github]
-	user = wfleming
+  user = wfleming
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 [commit]
-	gpgsign = true
+  gpgsign = true
 [gpg]
-	program = gpg2
+  program = gpg2
 [init]
-	templatedir = ~/.config/git_template/
+  templatedir = ~/.config/git_template/
 [url "git@github.com:"]
-	insteadOf = gh:
+  insteadOf = gh:
 [url "git@github.com:codeclimate/"]
-	insteadOf = cc:
+  insteadOf = cc:
