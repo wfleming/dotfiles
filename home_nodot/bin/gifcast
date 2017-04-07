@@ -2,23 +2,63 @@
 #
 # adapted from pbrisbin
 #
+# deps: recordmydesktop, ffmpeg, xorg-xwininfo, xrectsel
+#
+# Usage: by default prompts you to select a rect to record.
+# Pass -w to select a specific window to record.
+# Pass -a to record your entire screen.
+# Default is to record a file in ~/Desktop: pass a filename to specify target.
 ###
 set -e
 
-tmp=/tmp/gifcast.gif
+# these settings help manage size/quality of the final gif
+fps=15
+scalewidth=-1 # -1 means "do not scale"
+
+record_opts="default"
+while getopts ":wa" opt; do
+  case $opt in
+    a)
+      echo "Will record your entire screen"
+      record_opts=""
+      break
+      ;;
+    w)
+      echo "Select window to record"
+      record_opts="--windowid $(xwininfo | grep "Window id" | cut -d " " -f 4)"
+      ;;
+    "?")
+      echo "Invalid option: -$OPTARG" >&2
+      exit 64
+      ;;
+  esac
+done
+shift $((OPTIND-1))
+
+if [ "$record_opts" = "default" ]; then
+  echo "Select area to record"
+  record_opts="$(xrectsel "-x %x -y %y --width %w --height %h")"
+fi
+
+tmp=/tmp/gifcast.ogv
+tmp_palette=/tmp/gifcast_palette.png
 out="${1:-$HOME/Desktop/gifcast_$(date +%y%m%d%H%M%S).gif}"
 
 post_process() {
-  echo # newline
-  convert -loop 0 "$tmp" "$out"
-  rm "$tmp"
+  #Generate palette for better quality
+  ffmpeg -i "$tmp" \
+    -vf fps=$fps,scale=$scalewidth:-1:flags=lanczos,palettegen \
+    "$tmp_palette"
+
+  #Generate gif using palette
+  ffmpeg -i "$tmp" -i "$tmp_palette" -loop 0 \
+    -filter_complex "fps=$fps,scale=$scalewidth:-1:flags=lanczos[x];[x][1:v]paletteuse" \
+    "$out"
+
+  rm "$tmp" "$tmp_palette"
 }
 
-trap post_process EXIT
-
-echo "Select area to record"
-geometry_args="$(xrectsel "--x=%x --y=%y --width=%w --height=%h")"
-
-printf "Recording %s. Press ^C when done.\n" "$out"
-# word-splitting intended for geometry
-byzanz-record --cursor --delay 2 --duration 3600 $geometry_args "$tmp"
+printf "Recording %s. Press Ctl-Alt-s when done.\n" "$out"
+# shellcheck disable=SC2086
+recordmydesktop --no-frame --no-sound --delay 2 $record_opts -o "$tmp"
+post_process
