@@ -19,8 +19,8 @@ while getopts "edED" opt; do
       printf "Invalid option -%s\n" "$OPTARG"
       exit 64;;
   esac
-  shift
 done
+shift $((OPTIND-1))
 
 fail() {
   printf "%s\n" "$1"
