@@ -45,7 +45,7 @@ makepkg_options='--syncdeps'
 
 # When true, aurget will source PKGBUILDs and attempt to resolve
 # dependencies.
-resolve_dependencies=false
+resolve_dependencies=true
 
 # The default way to process packages for -S and -Su. Can be one of
 # download, build, or install.
