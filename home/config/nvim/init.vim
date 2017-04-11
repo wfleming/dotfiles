@@ -65,8 +65,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 nnoremap <leader>f :CtrlP<cr>
 
 " Code Climate CLI
-let g:vimcodeclimate_analyze_cmd = '/usr/local/bin/codeclimate analyze --dev '
-nmap <Leader>a :CodeClimateAnalyzeOpenFiles<CR>
+nmap <Leader>aa :CodeClimateAnalyzeCurrentFile<CR>
 
 "" Tab behavior: indent at beginning of line, otherwise autocomplete
 function! InsertTabWrapper()
@@ -92,8 +91,11 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 """"""""""" File-type settings """"""""""""""""
 
-autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8
 autocmd FileType go setlocal noexpandtab tabstop=8 shiftwidth=8
+autocmd FileType javascript let b:codeclimateflags="--engine eslint"
+autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8
+autocmd FileType ruby let b:codeclimateflags="--engine rubocop"
+autocmd FileType scss let b:codeclimateflags="--engine scss-lint"
 
 "" Mutt
 autocmd BufRead /tmp/mutt-* setlocal tw=72
