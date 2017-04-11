@@ -92,10 +92,9 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 """"""""""" File-type settings """"""""""""""""
 
-autocmd FileType * set expandtab tabstop=2 shiftwidth=2
-autocmd FileType make set noexpandtab tabstop=8 shiftwidth=8
-autocmd FileType go set noexpandtab tabstop=8 shiftwidth=8
+autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8
+autocmd FileType go setlocal noexpandtab tabstop=8 shiftwidth=8
 
 "" Mutt
-autocmd BufRead /tmp/mutt-* set tw=72
+autocmd BufRead /tmp/mutt-* setlocal tw=72
 
