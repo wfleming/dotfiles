@@ -98,5 +98,5 @@ autocmd FileType ruby let b:codeclimateflags="--engine rubocop"
 autocmd FileType scss let b:codeclimateflags="--engine scss-lint"
 
 "" Mutt
-autocmd BufRead /tmp/mutt-* setlocal tw=72
+autocmd BufRead /tmp/mutt-* setlocal textwidth=72
 
