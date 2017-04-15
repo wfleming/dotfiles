@@ -4,6 +4,15 @@ autocmd!
 let mapleader = "\<Space>"
 execute pathogen#infect()
 
+"" airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.linenr = ''
+let g:airline_extensions = []
+let g:airline_extensions = ['branch', 'ctrlp', 'tabline']
+
 "" vim-go
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -22,7 +31,7 @@ filetype plugin indent on    " load file type plugins + indentation
 
 set showcmd                  " display incomplete commands
 set directory=~/.config/nvim/tmp/  " damn .swp files
-set history=1000             " keep 100 lines of command line history
+set history=1000             " keep 1000 lines of command line history
 set visualbell               " turn off auditory bell
 set autoread                 " refresh file if changed outside of vim
 set clipboard+=unnamedplus   " for system pastboard integration
@@ -91,11 +100,13 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 """"""""""" File-type settings """"""""""""""""
 
-autocmd FileType go setlocal noexpandtab tabstop=8 shiftwidth=8
-autocmd FileType javascript let b:codeclimateflags="--engine eslint"
-autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8
-autocmd FileType ruby let b:codeclimateflags="--engine rubocop"
-autocmd FileType scss let b:codeclimateflags="--engine scss-lint"
+augroup vimrc
+  autocmd FileType go setlocal noexpandtab tabstop=8 shiftwidth=8
+  autocmd FileType javascript let b:codeclimateflags='--engine eslint'
+  autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8
+  autocmd FileType ruby let b:codeclimateflags='--engine rubocop'
+  autocmd FileType scss let b:codeclimateflags='--engine scss-lint'
+augroup END
 
 "" Mutt
 autocmd BufRead /tmp/mutt-* setlocal textwidth=72
