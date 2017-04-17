@@ -11,7 +11,7 @@ endif
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.linenr = ''
 let g:airline_extensions = []
-let g:airline_extensions = ['branch', 'ctrlp', 'tabline']
+let g:airline_extensions = ['branch', 'ctrlp']
 
 "" vim-go
 let g:go_highlight_functions = 1
