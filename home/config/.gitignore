@@ -8,6 +8,7 @@
 !/mbsyncrc.gpg
 !/msmtprc.gpg
 !/nvim
+!/redshift.conf
 !/systemd
 !/taffybar
 !/vdirsyncer
