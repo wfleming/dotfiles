@@ -24,12 +24,11 @@ set include = yes # include original in replies
 
 # Mailbox view: group, sort, pager behavior
 set sort = threads
-set sort_browser = date
-set sort_aux = reverse-last-date-received
+set sort_aux = last-date-received
 set strict_threads = yes
 set mail_check_stats = yes
 
-set pager_index_lines = 4
+set pager_index_lines = 8
 set pager_context = 5
 set pager_stop
 unset markers
