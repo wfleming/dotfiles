@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# A dmenu script for `pass otp` (https://github.com/tadfisher/pass-otp)
+set -e
+shopt -s nullglob globstar
+
+prefix=${PASSWORD_STORE_DIR-~/.password-store}
+entry_files=( "$prefix"/**/*.gpg )
+entry_files=( "${entry_files[@]#"$prefix"/}" )
+entry_files=( "${entry_files[@]%.gpg}" )
+
+entry=$(printf '%s\n' "${entry_files[@]}" | dmenu -i "$@")
+
+[[ -n "$entry" ]] || exit
+
+pass otp --clip "$entry" 2>/dev/null
