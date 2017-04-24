@@ -108,6 +108,6 @@ augroup vimrc
   autocmd FileType scss let b:codeclimateflags='--engine scss-lint'
 augroup END
 
-"" Mutt
-autocmd BufRead /tmp/mutt-* setlocal textwidth=72
-
+augroup mutt
+  autocmd FileType mail setlocal textwidth=72 | normal! }
+augroup END
