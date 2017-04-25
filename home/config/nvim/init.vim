@@ -24,6 +24,12 @@ let g:go_highlight_build_constraints = 1
 let NERDTreeCaseSensitiveSort = 1
 nnoremap <leader>d :NERDTreeToggle \| :silent NERDTreeMirror<CR>
 
+"" ctrlp
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_buffer_func = { 'enter': 'CtrlPBufferEnter', 'exit': 'CtrlPBufferExit' }
+
 """"""""" Stock VIM config """"""""""""""""""
 
 syntax enable                " enable syntax highlighting
@@ -39,10 +45,10 @@ set clipboard+=unnamedplus   " for system pastboard integration
 inoremap jk <ESC>hhh    " use letters to get out of insert mode
 
 "" color scheme
-set background=dark
-colorscheme off
+colorscheme meh
 
 "" show line #/cursor column
+set cursorline
 set number
 set ruler
 
@@ -67,10 +73,14 @@ tnoremap <Leader>e <C-\><C-c>
 
 """"""""""" Commands, etc. """""""""""""""""
 
-"" ctrlp (fuzzy file search)
-" Find all files in all non-dot directories starting in the working directory.
-" Fuzzy select one of those. Open the selected file with :e.
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"" ctrlp buffer funcs
+function! CtrlPBufferEnter()
+  highlight CursorLine gui=NONE guibg=#424242 cterm=NONE ctermbg=8
+endfunction
+function! CtrlPBufferExit()
+  highlight CursorLine gui=NONE guibg=NONE cterm=NONE ctermbg=NONE
+endfunction
+
 nnoremap <leader>f :CtrlP<cr>
 
 " Code Climate CLI
@@ -96,7 +106,6 @@ function! StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 autocmd BufWritePre * :call StripTrailingWhitespaces()
-
 
 """"""""""" File-type settings """"""""""""""""
 
