@@ -6,14 +6,6 @@
 # Update everything (long):
 #
 #   ./update.sh
-#
-# Update just the things from Git:
-#
-#   ./update.sh repos
-#
-# Update just one plugin from the list of Git repos:
-#
-#   ./update.sh repos powerline
 set -e
 
 cd ~/.config/
@@ -26,7 +18,6 @@ bundledir="$vimdir/bundle"
 # This is a list of all plugins which are available via Git repos. git:// URLs
 # don't work.
 repos=(
-  http://github.com/pbrisbin/vim-colors-off.git
   https://github.com/ap/vim-css-color.git
   https://github.com/bling/vim-airline.git
   https://github.com/fatih/vim-go.git
