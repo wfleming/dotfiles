@@ -1,0 +1,41 @@
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount personal
+Host imap.fastmail.com
+User willfleming@fastmail.fm
+PassCmd "pass fastmail.com/imap"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore personal-remote
+Account personal
+
+MaildirStore personal-local
+Path ~/mail/personal/
+Inbox ~/mail/personal/INBOX
+
+Channel personal
+Master :personal-remote:
+Slave :personal-local:
+Patterns * !Notes
+
+IMAPAccount codeclimate
+Host imap.gmail.com
+User will@codeclimate.com
+PassCmd "pass cc/imap"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore codeclimate-remote
+Account codeclimate
+
+MaildirStore codeclimate-local
+Path ~/mail/codeclimate/
+Inbox ~/mail/codeclimate/INBOX
+
+Channel codeclimate
+Master :codeclimate-remote:
+Slave :codeclimate-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"

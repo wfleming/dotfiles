@@ -1,0 +1,53 @@
+[general]
+status_path = "~/.config/vdirsyncer/status/"
+
+[pair personal_calendar]
+a = "personal_calendar_local"
+b = "personal_calendar_remote"
+#collections = ["from a", "from b"]
+collections = ["954b9369-a037-4c44-9cad-d0de258ba275"]
+conflict_resolution = "b wins"
+
+[storage personal_calendar_local]
+type = "filesystem"
+path = "~/calendars/personal/"
+fileext = ".ics"
+
+[storage personal_calendar_remote]
+type = "caldav"
+url = "https://caldav.fastmail.com/"
+username = "willfleming@fastmail.fm"
+password.fetch = ["command", "pass", "fastmail.com/imap"]
+
+[pair codeclimate_calendar]
+a = "codeclimate_calendar_local"
+b = "codeclimate_calendar_remote"
+collections = ["from a", "from b"]
+conflict_resolution = "b wins"
+
+[storage codeclimate_calendar_local]
+type = "filesystem"
+path = "~/calendars/codeclimate/"
+fileext = ".ics"
+
+# https://console.developers.google.com/apis/dashboard?project=vdirsyncer-khal
+[storage codeclimate_calendar_remote]
+type = "google_calendar"
+token_file = "~/.config/vdirsyncer/codeclimate_google_auth"
+client_id.fetch = ["command", "pass", "cc/vdirsyncer/id"]
+client_secret.fetch = ["command", "pass", "cc/vdirsyncer/secret"]
+
+[pair cc_pto_calendar]
+a = "cc_pto_calendar_local"
+b = "cc_pto_calendar_remote"
+collections = null
+conflict_resolution = "b wins"
+
+[storage cc_pto_calendar_local]
+type = "filesystem"
+path = "~/calendars/cc_pto/"
+fileext = ".ics"
+
+[storage cc_pto_calendar_remote]
+type = "http"
+url.fetch = ["command", "pass", "cc/pto_cal_url"]

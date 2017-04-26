@@ -5,8 +5,8 @@
 !/git_template
 !/gnupg
 !/khal
-!/mbsyncrc.gpg
-!/msmtprc.gpg
+!/mbsyncrc
+!/msmtprc
 !/nvim
 !/redshift.conf
 !/systemd
