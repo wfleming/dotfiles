@@ -24,7 +24,7 @@ binding "wf-emacs-text"
   bind "<ctrl>k" { "delete-from-cursor" (paragraph-ends, 1) }
   bind "<alt>backslash" { "delete-from-cursor" (whitespace, 1) }
 
-  # custom select all: Win+a
+  # custom select all: Alt+a
   bind "<alt>a" { "move-cursor" (buffer-ends, -1, 0)
                    "move-cursor" (buffer-ends,  1, 1) }
 }
