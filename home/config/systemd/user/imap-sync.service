@@ -4,6 +4,7 @@ Description=Keep local mailboxes up to date
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/env %h/bin/imap-sync
+TiemoutStartSec=10min
 
 [Install]
 WantedBy=default.target

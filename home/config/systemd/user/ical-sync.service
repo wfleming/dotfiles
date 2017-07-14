@@ -4,6 +4,7 @@ Description=Keep local calendars up to date
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/env /usr/bin/vdirsyncer sync
+TiemoutStartSec=10min
 
 [Install]
 WantedBy=default.target
