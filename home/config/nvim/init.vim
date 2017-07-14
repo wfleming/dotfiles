@@ -66,6 +66,9 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital
 
+"" Preview :substitute changes (nvim only)
+set inccommand=split
+
 """"""""""" NeoVim term settings """""""""""""""""""
 
 "" space-e to exit insert mode of term
