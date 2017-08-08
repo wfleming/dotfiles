@@ -144,6 +144,8 @@
     # Align icons left/right/off
     icon_position = right
 
+    max_icon_size = 100
+
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/32x32/status/:/usr/share/icons/gnome/32x32/devices/:/usr/share/icons/gnome/32x32/apps/:/usr/share/icons/gnome/32x32/emblems/:/usr/share/icons/gnome/32x32/actions/:/usr/share/icons/hicolor/32x32/apps/
 
