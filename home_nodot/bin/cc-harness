@@ -31,5 +31,12 @@ case "$1" in
       kafka sh -c \
       'sleep .1; $KAFKA_HOME/bin/kafka-topics.sh --describe --zookeeper $KAFKA_ZOOKEEPER_CONNECT'
   ;;
+  up-retry)
+    docker_compose_noexec up -d
+    sleep 3
+    docker_compose_noexec up -d
+    sleep 3
+    docker_compose_noexec up -d
+  ;;
   *) docker_compose "$@";;
 esac
