@@ -20,6 +20,7 @@ bundledir="$vimdir/bundle"
 repos=(
   https://github.com/ap/vim-css-color.git
   https://github.com/bling/vim-airline.git
+  https://github.com/elixir-lang/vim-elixir.git
   https://github.com/fatih/vim-go.git
   https://github.com/kien/ctrlp.vim.git
   https://github.com/rking/ag.vim.git
