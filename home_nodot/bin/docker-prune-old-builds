@@ -29,6 +29,11 @@ end
 
 all_image_names.each do |image|
   tags_to_del = build_tags(image)[1..-1]
+  if image =~ /builder$/
+    # these builder tags are hardcoded for local dev, shouldn't delete
+    tags_to_del.delete("b9000")
+    tags_to_del.delete("b90000")
+  end
   if tags_to_del && tags_to_del.count > 0
     puts "Removing #{tags_to_del.count} old tags of #{image}"
     tags_to_del.each { |tag| `docker rmi #{image}:#{tag}` }
