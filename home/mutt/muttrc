@@ -28,7 +28,7 @@ set sort_aux = last-date-received
 set strict_threads = yes
 set mail_check_stats = yes
 
-set pager_index_lines = 8
+set pager_index_lines = 15
 set pager_context = 5
 set pager_stop
 unset markers
