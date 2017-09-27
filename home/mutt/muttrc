@@ -59,6 +59,9 @@ set sidebar_folder_indent=yes
 set sidebar_indent_string="  "
 set sidebar_short_path = yes
 
+# Shared signature options: see account specific files for more
+set sig_on_top = yes
+
 # HTML emails
 set mailcap_path="~/.mutt/mailcap"
 auto_view text/html

@@ -7,6 +7,9 @@ set mbox = "+codeclimate/[Gmail]/.All Mail"
 set postponed = "+codeclimate/[Gmail]/.Drafts"
 set trash = "+codeclimate/[Gmail]/.Trash"
 
+set sig_dashes = yes
+set signature=~/.mutt/signatures/codeclimate
+
 macro index ,c "<change-folder>+personal/INBOX<enter>" "change accounts"
 
 macro index,pager ,a \
