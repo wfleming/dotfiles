@@ -3,8 +3,16 @@ set realname = "Will Fleming"
 # Mailboxes
 set mbox_type = Maildir
 set folder = "~/mail"
-mailboxes "+personal/INBOX" "+codeclimate/INBOX" \
-  "+codeclimate/github-mentioned" "+codeclimate/github-requested-review"
+mailboxes \
+  "+personal" \
+  "+personal/INBOX" \
+  "+personal/INBOX/.Archive" \
+  "+personal/INBOX/.Archive/.transactional" \
+  "+codeclimate" \
+  "+codeclimate/INBOX" \
+  "+codeclimate/github-mentioned" \
+  "+codeclimate/github-requested-review" \
+  "+codeclimate/[Gmail]/.All Mail"
 
 set spoolfile = "+personal/INBOX"
 folder-hook personal/* source ~/.mutt/accounts/personal
@@ -44,8 +52,11 @@ hdr_order from: to: cc: date: subject: # and in this order
 
 # Manage the sidebar
 set sidebar_format = "%B%* %S (%N)"
-set sidebar_width = 20
+set sidebar_width = 30
 set sidebar_visible = yes
+set sidebar_delim_chars = "/"
+set sidebar_folder_indent=yes
+set sidebar_indent_string="  "
 set sidebar_short_path = yes
 
 # HTML emails
