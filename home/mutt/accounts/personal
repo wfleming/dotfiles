@@ -18,8 +18,8 @@ macro index,pager ,a \
   "<tag-prefix><save-message>+personal/Archive<enter>" \
   "archive message"
 macro index,pager ,t \
-  "<tag-prefix><save-message>+personal/INBOX/.Archive/.transactional<enter>" \
+  "<tag-prefix><save-message>+personal/INBOX/Archive/transactional<enter>" \
   "archive transactional"
 macro index,pager ,s \
-  "<tag-prefix><save-message>+personal/Learn Spam<enter>" \
+  "<tag-prefix><save-message>+personal/Learn<quote-char> Spam<enter>" \
   "mark as spam"

@@ -6,13 +6,13 @@ set folder = "~/mail"
 mailboxes \
   "+personal" \
   "+personal/INBOX" \
-  "+personal/INBOX/.Archive" \
-  "+personal/INBOX/.Archive/.transactional" \
+  "+personal/Archive" \
+  "+personal/Archive/transactional" \
   "+codeclimate" \
   "+codeclimate/INBOX" \
   "+codeclimate/github-mentioned" \
   "+codeclimate/github-requested-review" \
-  "+codeclimate/[Gmail]/.All Mail"
+  "+codeclimate/[Gmail]/All Mail"
 
 set spoolfile = "+personal/INBOX"
 folder-hook personal/* source ~/.mutt/accounts/personal
