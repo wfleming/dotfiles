@@ -17,11 +17,15 @@ urxvtd --quiet --fork #--opendisplay
 
 gpg-connect-agent "/bye" &
 
+# https://wiki.archlinux.org/index.php/Java#Non-reparenting_window_managers
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # set a background
 ~/bin/wallpaper
 
 # systray
 (cd ~/.xmonad && stack exec taffybar &)
+
 
 # window manager
 exec xmonad
