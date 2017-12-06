@@ -67,5 +67,13 @@ set mailcap_path="~/.mutt/mailcap"
 auto_view text/html
 alternative_order text/plain text/html
 
+## Khard (address book) config
+set query_command= "khard email --parsable %s"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+macro index,pager A \
+    "<pipe-message>khard add-email<return>" \
+    "add the sender email address to khard"
+
 source ~/.mutt/bindings
 source ~/.mutt/colors
