@@ -31,7 +31,7 @@ deexample() {
 # `echo -e "\a"` doesn't work
 beep() {
   ( speaker-test -t sine -f 800 > /dev/null )& pid=$!
-  sleep 0.05s
+  sleep 0.25s
   kill -9 $pid > /dev/null
 }
 
