@@ -1,0 +1,21 @@
+# Symlink this to /lib/systemd/system/nordvpn.service
+#
+# Prompts for user & pass on TTY when started manually.
+# Not configured to be started automatically.
+#
+# Config profiles can be downloaded at
+# https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
+# Unzip & move into /etc/openvpn
+[Unit]
+Description=OpenVPN connection to nordvpn
+After=network.target network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/openvpn --daemon ovpn-nordvpn --status /run/openvpn-client/nordvpn.status 10 --cd /etc/openvpn --config /etc/openvpn/nordvpn/us1178.nordvpn.com.tcp.ovpn
+ExecReload=/bin/kill -HUP $MAINPID
+WorkingDirectory=/etc/openvpn
+
+[Install]
+WantedBy=multi-user.target
+
