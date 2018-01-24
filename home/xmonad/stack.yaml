@@ -1,4 +1,4 @@
-resolver: lts-6.26
+resolver: lts-10.3
 
 packages:
   - "."
@@ -7,8 +7,13 @@ packages:
 extra-deps:
   - X11-1.8
   - X11-xft-0.3.1
-  - directory-1.2.7.1
-  - gtk-traymanager-0.1.6
-  - taffybar-0.4.6
   - xmonad-0.13
   - xmonad-contrib-0.13
+  # taffybar deps
+  - gio-0.13.4.1
+  - gtk-0.14.7
+  - gtk-traymanager-0.1.6
+  - rate-limit-1.4.0
+  - time-1.6.0.1
+  - time-units-1.0.0
+  - xml-helpers-1.0.0

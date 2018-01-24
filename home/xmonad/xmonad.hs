@@ -21,6 +21,7 @@ layouts = smartBorders tiled ||| smartBorders (Mirror tiled) ||| noBorders Full
 
 main :: IO ()
 main = xmonad $
+    docks $
     ewmh $
     pagerHints $
     baseConfig
@@ -29,7 +30,6 @@ main = xmonad $
       , modMask = mod4Mask
       , normalBorderColor = "#333333"
       , focusedBorderColor = "#FFBF00"
-      , manageHook = manageDocks <+> manageHook baseConfig
       , layoutHook = avoidStruts $ layouts
       } `additionalKeysP`
         [ ("M-S-l", spawn "slock")
