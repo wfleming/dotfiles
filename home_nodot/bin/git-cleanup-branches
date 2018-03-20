@@ -18,7 +18,7 @@ all_branches=$(git branch | removeCurrentBranch | leftTrim)
 
 # write branches to file
 for branch in $all_branches; do
-  printf "keep %s" "$branch" >> "$file"
+  printf "keep %s\n" "$branch" >> "$file"
 done
 
 # write instructions to file
