@@ -21,7 +21,7 @@ case "$1" in
   ;;
   rake)
     shift
-    docker_compose run web rake "$@"
+    docker_compose run -e DATABASE_STATEMENT_TIMEOUT="" web rake "$@"
   ;;
   rails)
     shift
