@@ -42,7 +42,7 @@
 [merge]
   ff = only
 [push]
-  default = upstream
+  default = current
 [github]
   user = wfleming
 [filter "media"]
