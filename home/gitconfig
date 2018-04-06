@@ -3,26 +3,26 @@
   email = will@flemi.ng
   signingkey = AE1BBCB2
 [alias]
-  o = checkout
-  c  = commit
-  ci = commit
-  d = diff
-  st = status
-  p = push
-  br = branch
   amend = commit -C HEAD --amend
+  assume   = update-index --assume-unchanged
+  assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+  br = branch
+  c  = commit
   caa = commit -a --amend -C HEAD
+  ci = commit
+  ctags = "!.git/hooks/ctags"
+  d = diff
   fix = commit -a --fixup
   fix-rebase = rebase -i --autosquash origin/master
-  pr-rebase = !git fetch && git rebase origin/master && git push --force
-  unpushed-commits = !git-log origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)..HEAD
-  unmerged-commits = log --not HEAD
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  assume   = update-index --assume-unchanged
-  unassume = update-index --no-assume-unchanged
-  assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
-  ctags = "!.git/hooks/ctags"
+  o = checkout
+  p = push
   pr = "!hub pull-request"
+  pr-rebase = !git fetch && git rebase origin/master && git push --force
+  st = status
+  unassume = update-index --no-assume-unchanged
+  unmerged-commits = log --not HEAD
+  unpushed-commits = !git-log origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)..HEAD
 [color]
   diff = auto
   status = auto
