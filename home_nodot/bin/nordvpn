@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -e
+
+# borrowed from pass(1)
+tmpdir() {
+  [[ -n $SECURE_TMPDIR ]] && return
+  local warn=1
+  [[ $1 == "nowarn" ]] && warn=0
+  local template="nordvpn.XXXXXXXXXXXXX"
+  if [[ -d /dev/shm && -w /dev/shm && -x /dev/shm ]]; then
+    SECURE_TMPDIR="$(mktemp -d "/dev/shm/$template")"
+    remove_tmpfile() {
+      rm -rf "$SECURE_TMPDIR"
+    }
+    trap remove_tmpfile INT TERM EXIT
+  else
+    [[ $warn -eq 1 ]] && cat <<-_EOF >&2
+    Your system does not have /dev/shm, which means that it may
+    be difficult to entirely erase the temporary non-encrypted
+    password file after editing.
+_EOF
+
+    SECURE_TMPDIR="$(mktemp -d "${TMPDIR:-/tmp}/$template")"
+    shred_tmpfile() {
+      find "$SECURE_TMPDIR" -type f -exec shred {} +
+      rm -rf "$SECURE_TMPDIR"
+    }
+    trap shred_tmpfile INT TERM EXIT
+  fi
+}
+
+write_auth() {
+  tmpdir # setup the SECURE_TMPDIR dir
+  #echo "DEBUG: secure tmpdir is $SECURE_TMPDIR"
+  pass show nordvpn.com | head -2 | tail -1 | sed 's/Username: //' > "$SECURE_TMPDIR/nordvpn_auth"
+  pass show nordvpn.com | head -1 >> "$SECURE_TMPDIR/nordvpn_auth"
+}
+
+write_auth
+(sleep 10 && rm -rf "$SECURE_TMPDIR") &
+exec sudo /usr/sbin/openvpn \
+  --daemon ovpn-nordvpn \
+  --status /run/openvpn-client/nordvpn.status 10 \
+  --cd /etc/openvpn \
+  --config /etc/openvpn/nordvpn/us1178.nordvpn.com.tcp.ovpn \
+  --auth-user-pass "$SECURE_TMPDIR/nordvpn_auth"
