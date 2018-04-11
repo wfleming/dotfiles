@@ -26,7 +26,7 @@ main = xmonad $
     pagerHints $
     baseConfig
       { borderWidth = 4
-      , terminal = "alacritty"
+      , terminal = "st"
       , modMask = mod4Mask
       , normalBorderColor = "#333333"
       , focusedBorderColor = "#FFBF00"
