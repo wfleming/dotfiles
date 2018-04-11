@@ -26,6 +26,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # systray
 (cd ~/.xmonad && stack exec taffybar &)
 
-
 # window manager
 exec xmonad
