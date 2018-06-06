@@ -38,5 +38,9 @@ case "$1" in
     sleep 3
     docker_compose_noexec up -d
   ;;
+  down)
+    echo "FYI: down deletes volumes, this probably wasn't what you wanted! Stopping instead."
+    docker_compose stop
+  ;;
   *) docker_compose "$@";;
 esac

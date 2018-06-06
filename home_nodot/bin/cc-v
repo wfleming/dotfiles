@@ -27,6 +27,10 @@ case "$1" in
     shift
     docker_compose run web rails "$@"
   ;;
+  down)
+    echo "FYI: down deletes volumes, this probably wasn't what you wanted! Stopping instead."
+    docker_compose stop
+  ;;
   psql)
     docker_compose run postgres psql \
       --host=postgres \
