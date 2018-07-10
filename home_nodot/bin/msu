@@ -37,7 +37,7 @@ done
 
 command="xrandr"
 intern="eDP1"
-current_monitors=$(xrandr --listmonitors | tail --lines=+2 | grep -v "$intern" | sed -e "s/.* \([a-zA-Z0-9]\+\)$/\1/")
+current_monitors=$(xrandr --listmonitors | tail --lines=+2 | grep -v "$intern" | sed -e "s/[ 0-9:+*]*\([a-zA-Z0-9]\+\).*/\1/")
 connected_outputs=$(xrandr | grep -v "$intern" | grep " connected" | sed -e "s/\([a-zA-Z0-9]\+\) connected.*/\1/")
 if ! grep --quiet open /proc/acpi/button/lid/LID/state; then
   # if there are no external connected displays, just exit:
@@ -50,7 +50,6 @@ else
   command="$command --output $intern $(screen_mode "$intern")"
 fi
 
-
 # add each connected output
 last_output=$intern
 for output in $connected_outputs; do
@@ -59,7 +58,7 @@ for output in $connected_outputs; do
 done
 # turn off any just-disconnected outputs
 for output in $current_monitors; do
-  if [[ "$command" != *"$output"* ]]; then
+  if [[ "$command" != *"--output $output"* ]]; then
     command="$command --output $output --off"
   fi
 done
