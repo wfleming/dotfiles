@@ -67,6 +67,10 @@ set mailcap_path="~/.mutt/mailcap"
 auto_view text/html
 alternative_order text/plain text/html
 
+# PGP
+set pgp_use_gpg_agent = yes
+set pgp_timeout = 3600
+
 ## Khard (address book) config
 set query_command= "khard email --parsable %s"
 bind editor <Tab> complete-query
