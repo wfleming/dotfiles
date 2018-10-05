@@ -17,6 +17,26 @@ docker_compose_noexec() {
     "$@"
 }
 
+update_repo() {
+  printf "=== Updating %s\n" "$1"
+  set +e
+  cd "$1" && git checkout -q master && git pull -q
+  if [ $? -ne 0 ]; then
+    printf "=== WARN: %s failed to update successfully\n" "$1"
+  fi
+  set -e
+}
+
+update_repos() {
+  cd ~/src/cc
+  echo "== git pull all repos"
+  for repo in *; do
+    update_repo "$repo"
+  done
+  echo "== docker-compose build"
+  docker_compose build
+}
+
 case "$1" in
   restart)
     docker_compose_noexec stop "$2"
@@ -41,6 +61,9 @@ case "$1" in
   down)
     echo "FYI: down deletes volumes, this probably wasn't what you wanted! Stopping instead."
     docker_compose stop
+  ;;
+  git-update)
+    update_repos;
   ;;
   *) docker_compose "$@";;
 esac
