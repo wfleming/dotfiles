@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+sudo pacman -Syu
+
+# ignore slack-desktop: versions after 3.1.1 seem to crash/hang when coming back
+# from sleep with my setup
+aurget -Syu --ignore slack-desktop --noconfirm
