@@ -89,6 +89,7 @@ function! CtrlPBufferExit()
 endfunction
 
 nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
 
 " Code Climate CLI
 nmap <Leader>aa :CodeClimateAnalyzeCurrentFile<CR>
