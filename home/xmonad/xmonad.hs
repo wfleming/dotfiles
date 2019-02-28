@@ -12,7 +12,8 @@ baseConfig = desktopConfig
 
 -- The default, except no borders in fullscreen or when only one window
 -- see https://github.com/xmonad/xmonad/blob/master/src/XMonad/Config.hs
-layouts = smartBorders tiled ||| smartBorders (Mirror tiled) ||| noBorders Full
+-- layouts = smartBorders tiled ||| smartBorders (Mirror tiled) ||| noBorders Full
+layouts = tiled ||| (Mirror tiled) ||| Full
   where
      tiled   = Tall nmaster delta ratio
      nmaster = 1
