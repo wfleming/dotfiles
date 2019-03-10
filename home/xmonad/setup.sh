@@ -5,7 +5,9 @@ set -e
 # to work with stack-static, see
 # https://github.com/commercialhaskell/stack/issues/2712
 
-git clone git@github.com:wfleming/taffybar.git vendor/taffybar
+if [ ! -d vendor/taffybar ]; then
+  git clone git@github.com:wfleming/taffybar.git vendor/taffybar
+fi
 
 stack install alex
 stack install happy
