@@ -32,11 +32,16 @@ case "$1" in
     docker_compose stop
   ;;
   psql)
-    docker_compose run postgres psql \
+    docker_compose run --rm postgres psql \
       --host=postgres \
       --port=5432 \
       --username=postgres \
       --dbname=velocity_development
+  ;;
+  rebuild-test-db)
+    docker_compose --file docker-compose.test.development.yml \
+      run --rm app rake \
+      db:drop db:create db:structure:load db:migrate benchmark:import
   ;;
   *) docker_compose "$@";;
 esac
