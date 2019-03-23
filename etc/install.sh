@@ -1,12 +1,20 @@
 #!/bin/sh
 #
-# Install dotfiles symlinks in $HOME
+# Install dotfiles symlinks in /etc.
+# Kept separate from home config management in install.sh since mucking with
+# /etc requires sudo and is hence a bit riskier and likely to be done more
+# carefully/after other system setup.
 #
 # USAGE:
-# Just run it.
+# Just run it from `dotfiles`, e.g. `./etc/install.sh`
 #
 # Run with `-n` to see a dry run of what the script will do.
 set -e
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
 
 ############# SETUP: variables, flags #############
 colorR=$(tput setaf 1)
@@ -57,17 +65,10 @@ link() {
   fi
 }
 
-# ARGS (source, base_target, prefix)
-target_path() {
-  printf "%s/%s%s" "$2" "$3" "$(basename "$1")"
-}
-
 ############# DO THE LINKING #############
 
-for f in home/*; do
-  link "$(realpath "$f")" "$(target_path "$f" "$HOME" ".")"
+for f in $(find ./etc -type f -not -name install.sh); do
+  rel_target=$(realpath --relative-to="$PWD" "$f")
+  link "$(realpath "$f")" "/$rel_target"
 done
 
-for f in home_nodot/*; do
-  link "$(realpath "$f")" "$(target_path "$f" "$HOME")"
-done

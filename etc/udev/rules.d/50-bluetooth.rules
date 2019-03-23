@@ -1,0 +1,3 @@
+# https://wiki.archlinux.org/index.php/Power_management#Bluetooth
+# disable bluetooth
+SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{state}="0"
