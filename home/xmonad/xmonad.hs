@@ -1,6 +1,6 @@
 module Main (main) where
 
-import System.Taffybar.Hooks.PagerHints (pagerHints)
+import System.Taffybar.Support.PagerHints (pagerHints)
 import XMonad
 import XMonad.Config.Desktop
 import XMonad.Hooks.EwmhDesktops (ewmh)

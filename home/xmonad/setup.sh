@@ -5,14 +5,21 @@ set -e
 # to work with stack-static, see
 # https://github.com/commercialhaskell/stack/issues/2712
 
-if [ ! -d vendor/taffybar ]; then
-  git clone git@github.com:wfleming/taffybar.git vendor/taffybar
-fi
+# if [ ! -d vendor/taffybar ]; then
+#   git clone git@github.com:wfleming/taffybar.git vendor/taffybar
+# fi
 
-stack install alex
-stack install happy
-stack install gtk2hs-buildtools
-stack install xmonad
-stack install taffybar
+log_header() {
+  printf "==== %s ====\n" "$1"
+}
 
+stack_install() {
+  log_header "stack install $1"
+  stack install "$1"
+}
+
+stack_install xmonad
+stack_install taffybar
+
+log_header "stack build"
 stack build
