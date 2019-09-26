@@ -33,6 +33,7 @@ let g:ctrlp_buffer_func = { 'enter': 'CtrlPBufferEnter', 'exit': 'CtrlPBufferExi
 """"""""" Stock VIM config """"""""""""""""""
 
 syntax enable                " enable syntax highlighting
+syntax sync minlines=100
 filetype plugin indent on    " load file type plugins + indentation
 
 set showcmd                  " display incomplete commands
@@ -48,7 +49,8 @@ inoremap jk <ESC>hhh    " use letters to get out of insert mode
 colorscheme meh
 
 "" show line #/cursor column
-set cursorline
+set nocursorline
+set nocursorcolumn
 set number
 set ruler
 
