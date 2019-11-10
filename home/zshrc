@@ -2,9 +2,4 @@
 export PATH="$HOME/bin:$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
 
 # Load zsh module config files
-for config_file ($HOME/.zsh/**/*.zsh) source $config_file
-
-# Load machine-specific/secret config files
-if [[ -d $HOME/.zsh_local ]]; then
-  for config_file ($HOME/.zsh_local/**/*.zsh) source $config_file
-fi
+for config_file ($HOME/.config/zsh/**/*.zsh) source $config_file

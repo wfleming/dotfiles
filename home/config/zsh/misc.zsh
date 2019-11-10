@@ -7,4 +7,3 @@ export COLORTERM=xterm-256color
 export PAGER=less
 export LC_CTYPE=en_US.UTF-8
 export EDITOR="nvim"
-export BUNDLER_EDITOR="subl"

@@ -1,5 +1,3 @@
-###### ALIASES #####
-
 alias cpwd='pwd|xargs echo -n|pbcopy'
 alias apinfo='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I'
 
@@ -10,12 +8,6 @@ alias ll='ls -AFGl'
 # of duplicates in the Open With submenu.
 alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
 
-alias rc='rails c'
-alias rdb='rails db'
-alias rg='rails g'
-alias bi='bundle install'
-alias be='bundle exec'
-alias dbm='rake db:migrate'
 alias beep="echo -ne '\007'"
 alias cca='codeclimate analyze'
 alias vim=nvim
@@ -35,14 +27,6 @@ function g {
 # display a man page in Preview
 pdfman () {
   man -t $1 | open -a /Applications/Preview.app -f
-}
-
-# make copies of all *.example files in the current directory
-# without .example extension
-deexample() {
- for f in *.example; do
-   cp $f `echo $f | sed s/.example//`
- done
 }
 
 # top history
