@@ -1,0 +1,15 @@
+#!/bin/sh
+
+root_dir="$HOME/Dropbox/diary"
+month_dir="$root_dir/$(date +"%Y/%m")"
+
+mkdir -p "$month_dir"
+
+day_file="$month_dir/$(date +"%d").txt"
+
+# populate header if file is new
+if [ ! -e "$day_file" ]; then
+  printf "# %s\n\n\n" "$(date +"%A %Y-%m-%d")" > "$day_file"
+fi
+
+vim "$day_file"
