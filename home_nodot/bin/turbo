@@ -1,0 +1,42 @@
+#!/bin/sh
+# based on
+# https://github.com/keysh/intel-turbo/blob/master/src/turbo.sh
+#
+# run without args to see status.
+set -e
+
+SYS_FILE=/sys/devices/system/cpu/intel_pstate/no_turbo
+
+print_help() {
+  echo "USAGE: turbo [options]"
+  echo -e "Enable or disable CPU turbo boost.\n"
+  echo "Options:"
+  echo -e "  -s\tPrint status (default if no options given)"
+  echo -e "  -e\tEnable turbo boost"
+  echo -e "  -d\tDisable turbo boost"
+  echo -e "  -h\tShow this help"
+}
+
+print_status() {
+    turbo_status=$(cat  $SYS_FILE)
+
+    if [[ $turbo_status -eq 1 ]]
+    then
+        printf "Turbo boost is DISABLED.\n"
+    else
+        printf "Turbo boost is ENABLED.\n"
+    fi
+}
+
+case $1 in
+  -e)
+    echo -n 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
+    print_status
+    ;;
+  -d)
+    echo -n 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
+    print_status
+    ;;
+  -h) print_help;;
+  *) print_status;;
+esac
