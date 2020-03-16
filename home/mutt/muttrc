@@ -4,15 +4,15 @@ set realname = "Will Fleming"
 set mbox_type = Maildir
 set folder = "~/mail"
 mailboxes \
-  "+personal" \
+  # "+personal" \
   "+personal/INBOX" \
   "+personal/Archive" \
-  "+personal/Archive/transactional" \
-  "+codeclimate" \
-  "+codeclimate/INBOX" \
-  "+codeclimate/github-mentioned" \
-  "+codeclimate/github-requested-review" \
-  "+codeclimate/[Gmail]/All Mail"
+  "+personal/Archive/transactional"
+  # "+codeclimate" \
+  # "+codeclimate/INBOX" \
+  # "+codeclimate/github-mentioned" \
+  # "+codeclimate/github-requested-review" \
+  # "+codeclimate/[Gmail]/All Mail"
 
 set spoolfile = "+personal/INBOX"
 folder-hook personal/* source ~/.mutt/accounts/personal
