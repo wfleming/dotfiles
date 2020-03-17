@@ -1,12 +1,9 @@
-autoload colors; colors;
+autoload -U colors && colors
 setopt prompt_subst
 
 PROMPT='%{$fg[green]%}[%c] %{$reset_color%} '
 GIT_PROMPT='%{$fg[green]%}$(git_prompt_info)%{$reset_color%}'
 RPS1="$GIT_PROMPT"
-
-ZSH_THEME_GIT_PROMPT_PREFIX=""
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
 # show VI insert mode
 function zle-line-init zle-keymap-select {
