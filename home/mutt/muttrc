@@ -4,7 +4,6 @@ set realname = "Will Fleming"
 set mbox_type = Maildir
 set folder = "~/mail"
 mailboxes \
-  # "+personal" \
   "+personal/INBOX" \
   "+personal/Archive" \
   "+personal/Archive/transactional"
