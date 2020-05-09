@@ -6,12 +6,11 @@ set folder = "~/mail"
 mailboxes \
   "+personal/INBOX" \
   "+personal/Archive" \
-  "+personal/Archive/transactional"
-  # "+codeclimate" \
-  # "+codeclimate/INBOX" \
-  # "+codeclimate/github-mentioned" \
-  # "+codeclimate/github-requested-review" \
-  # "+codeclimate/[Gmail]/All Mail"
+  "+personal/Archive/transactional" \
+  "+codeclimate/INBOX" \
+  "+codeclimate/github-mentioned" \
+  "+codeclimate/github-requested-review" \
+  "+codeclimate/All Mail"
 
 set spoolfile = "+personal/INBOX"
 folder-hook personal/* source ~/.mutt/accounts/personal
@@ -56,7 +55,6 @@ set sidebar_visible = yes
 set sidebar_delim_chars = "/"
 set sidebar_folder_indent=yes
 set sidebar_indent_string="  "
-set sidebar_short_path = yes
 
 # Shared signature options: see account specific files for more
 set sig_on_top = yes

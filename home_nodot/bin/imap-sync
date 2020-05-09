@@ -1,4 +1,8 @@
 #!/bin/sh
 set -e
 
-exec mbsync --config ~/.config/mbsyncrc -a
+# sync personal mail
+mbsync --config ~/.config/mbsyncrc -a
+
+# sync work mail via gmail oauth
+offlineimap

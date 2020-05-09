@@ -11,6 +11,7 @@
 !/mbsyncrc
 !/msmtprc
 !/nvim
+!/offlineimap
 !/redshift.conf
 !/systemd
 !/taffybar

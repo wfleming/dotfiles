@@ -1,0 +1,28 @@
+[general]
+metadata = ~/.config/offlineimap
+accounts = CodeClimate
+pythonfile = ~/.config/offlineimap/utils.py
+
+[Account CodeClimate]
+localRepository = CodeClimateLocal
+remoteRepository = CodeClimateRemote
+
+[Repository CodeClimateLocal]
+type = Maildir
+localfolders = ~/mail/codeclimate
+nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Trash', 'All Mail', 'Sent Mail'] else f
+
+[Repository CodeClimateRemote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteuser = will@codeclimate.com
+ssl = yes
+starttls = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = XOAUTH2
+oauth2_request_url = https://accounts.google.com/o/oauth2/token
+oauth2_client_id_eval = pass_entry("cc/gmail-api/oauth-client-id")
+oauth2_client_secret_eval = pass_entry("cc/gmail-api/oauth-client-secret")
+oauth2_refresh_token_eval = pass_entry("cc/gmail-api/refresh-token")
+nametrans = lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f
+

@@ -21,23 +21,3 @@ Channel personal
 Master :personal-remote:
 Slave :personal-local:
 Patterns * !Notes
-
-# IMAPAccount codeclimate
-# Host imap.gmail.com
-# User will@codeclimate.com
-# PassCmd "pass cc/imap"
-# SSLType IMAPS
-# CertificateFile /etc/ssl/certs/ca-certificates.crt
-#
-# IMAPStore codeclimate-remote
-# Account codeclimate
-#
-# MaildirStore codeclimate-local
-# Path ~/mail/codeclimate/
-# Inbox ~/mail/codeclimate/INBOX
-# SubFolders Verbatim
-#
-# Channel codeclimate
-# Master :codeclimate-remote:
-# Slave :codeclimate-local:
-# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
