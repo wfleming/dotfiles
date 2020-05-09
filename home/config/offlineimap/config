@@ -25,4 +25,5 @@ oauth2_client_id_eval = pass_entry("cc/gmail-api/oauth-client-id")
 oauth2_client_secret_eval = pass_entry("cc/gmail-api/oauth-client-secret")
 oauth2_refresh_token_eval = pass_entry("cc/gmail-api/refresh-token")
 nametrans = lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f
-
+# for some reason it wants to resync the entire trash every time right now
+folderfilter = lambda foldername: not re.search('Trash', foldername)
