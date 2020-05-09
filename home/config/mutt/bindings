@@ -19,7 +19,7 @@ bind index,pager R group-reply
 
 # View HTML in real browser from attachment list
 macro attach V \
-  "<pipe-entry>cat > ~/.mutt/tmp/mail.html && xdg-open ~/.mutt/tmp/mail.html<enter>" \
+  "<pipe-entry>cat > ~/.config/mutt/tmp/mail.html && xdg-open ~/.config/mutt/tmp/mail.html<enter>" \
   "view in chrome"
 
 # sidebar bindings

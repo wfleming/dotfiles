@@ -4,18 +4,14 @@
 
 - neomutt (aur)
 - isync (provides mbsync)
+- offlineimap (for gmail oauth imap sync)
 - msmtp (send email)
 - elinks (text browser for reading html email)
 - urlview (aur; open urls from emails externally)
 
 ## Setup
 
-- Need to manually create ~/mail/(personal|codeclimate) for mbsync
-- Make sure you have decrypted config for msmtprc & mbsync
-  (Obviously only applicable to me, Will: if you're reading my dotfiles, refer to
-  https://wiki.archlinux.org/index.php/Msmtp &
-  https://wiki.archlinux.org/index.php/isync for useful info on configuring
-  those tools.)
+- Need to manually create ~/mail/personal for mbsync
 - enable & activate the `systemctl --user` `imap-sync.timer` unit to get
   automatic periodic mail sync
 

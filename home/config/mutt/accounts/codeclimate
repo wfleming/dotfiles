@@ -3,9 +3,9 @@
 set from="will@codeclimate.com"
 
 set sendmail = "msmtp -C /home/will/.config/msmtprc -a codeclimate"
-set mbox = "+codeclimate/[Gmail]/All Mail"
-set postponed = "+codeclimate/[Gmail]/Drafts"
-set trash = "+codeclimate/[Gmail]/Trash"
+set mbox = "+codeclimate/All Mail"
+set postponed = "+codeclimate/Drafts"
+set trash = "+codeclimate/Trash"
 
 set sig_dashes = yes
 set signature=~/.mutt/signatures/codeclimate
@@ -13,8 +13,8 @@ set signature=~/.mutt/signatures/codeclimate
 macro index ,c "<change-folder>+personal/INBOX<enter>" "change accounts"
 
 macro index,pager ,a \
-  "<tag-prefix><save-message>+codeclimate/[Gmail]/All<quote-char> Mail<enter>" \
+  "<tag-prefix><save-message>+codeclimate/All<quote-char> Mail<enter>" \
   "archive message"
 macro index,pager ,s \
-  "<tag-prefix><save-message>+codeclimate/[Gmail]/Spam<enter>" \
+  "<tag-prefix><save-message>+codeclimate/Spam<enter>" \
   "mark as spam"
