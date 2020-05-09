@@ -8,9 +8,7 @@ mailboxes \
   "+personal/Archive" \
   "+personal/Archive/transactional" \
   "+codeclimate/INBOX" \
-  "+codeclimate/github-mentioned" \
-  "+codeclimate/github-requested-review" \
-  "+codeclimate/All Mail"
+  "+codeclimate/[Gmail].All Mail"
 
 set spoolfile = "+personal/INBOX"
 folder-hook personal/* source ~/.config/mutt/accounts/personal
