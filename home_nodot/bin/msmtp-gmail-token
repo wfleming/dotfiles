@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# based on:
+# https://wiki.archlinux.org/index.php/Msmtp#Using_XOAUTH2_Authentication_for_Gmail
+# https://aur.archlinux.org/cgit/aur.git/tree/get-gmail-token?h=msmtp-oauth2
+# https://gist.github.com/LindaLawton/cff75182aac5fa42930a09f58b63a309
+set -e
+
+user="will@codeclimate.com"
+client_id=$(pass cc/gmail-api/oauth-client-id)
+client_secret=$(pass cc/gmail-api/oauth-client-secret)
+refresh_token=$(pass cc/gmail-api/refresh-token)
+
+post_data="client_id=$client_id"
+post_data="$post_data&client_secret=$client_secret"
+post_data="$post_data&refresh_token=$refresh_token"
+post_data="$post_data&grant_type=refresh_token"
+
+access_token=$(
+  curl \
+    --silent \
+    --request POST \
+    --data "$post_data" \
+    https://accounts.google.com/o/oauth2/token | jq --raw-output .access_token
+)
+
+# https://developers.google.com/gmail/imap/xoauth2-protocol#the_sasl_xoauth2_mechanism
+base64_input="user=${user}\001auth=Bearer ${access_token}\001\001"
+echo -ne "$base64_input" | base64 -w0

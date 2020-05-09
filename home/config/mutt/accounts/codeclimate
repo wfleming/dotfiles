@@ -2,7 +2,7 @@
 
 set from="will@codeclimate.com"
 
-set sendmail = "msmtp -C /home/will/.config/msmtprc -a codeclimate"
+set sendmail = "msmtp-oauth2 -C /home/will/.config/msmtprc -a codeclimate"
 set mbox = "+codeclimate/[Gmail].All Mail"
 set postponed = "+codeclimate/[Gmail].Drafts"
 set trash = "+codeclimate/[Gmail].Trash"
