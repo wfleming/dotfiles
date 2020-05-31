@@ -1,0 +1,12 @@
+[Unit]
+Description=Update the pacman mirrorlist
+Requires=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/will/bin/pac-gen-mirrorlist
+TimeoutStartSec=1min
+
+[Install]
+WantedBy=default.target
+
