@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Generate a new pacman mirrorlist
+#
+set -e
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
+
+tmp_mirrorlist=$(mktemp)
+
+printf "Writing mirrorlist to %s\n" "${tmp_mirrorlist}"
+
+curl "https://www.archlinux.org/mirrorlist/?country=CA&country=US&protocol=https&ip_version=4&use_mirror_status=on" \
+  | sed 's/#Server/Server/' > "${tmp_mirrorlist}"
+
+if [ $(grep -c https "${tmp_mirrorlist}") = 0 ]; then
+  echo "New mirrorlist does not seem to have any servers, aborting"
+  exit 1
+fi
+
+echo "Copying mirrorlist to /etc/pacman.d/mirrorlist"
+mv "${tmp_mirrorlist}" /etc/pacman.d/mirrorlist
+chmod 0644 /etc/pacman.d/mirrorlist
+
+if [ -e /etc/pacman.d/mirrorlist.pacnew ]; then
+  echo "Cleaning up mirrorlist.pacnew"
+  rm /etc/pacman.d/mirrorlist.pacnew
+fi
