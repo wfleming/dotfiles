@@ -1,5 +1,0 @@
-#!/bin/sh
-set -e
-
-sudo pacman -Syu
-aurget -Syu --noconfirm
