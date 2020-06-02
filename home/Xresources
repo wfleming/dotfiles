@@ -1,17 +1,3 @@
 Xft.antialias: true
 Xft.hinting: true
 Xft.hintingStyle: hintslight
-
-! urxvt settings
-urxvt.background: #000000
-urxvt.cursorColor: #999999
-urxvt.font: xft:mononoki:size=14
-urxvt.foreground: #ffffff
-urxvt.internalBorder: 0
-urxvt.letterspace: -1
-urxvt.scrollBar: false
-urxvt.perl-ext: default,matcher
-urxvt.url-launcher: /usr/bin/xdg-open
-! left mouse to activate URL or Alt-u to open most recent
-! urxvt.matcher.button: 1
-! urxvt.keysym.M-u: matcher:last
