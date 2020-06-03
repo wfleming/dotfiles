@@ -1,7 +1,7 @@
 /*
 !/.gitignore
 !/alacritty
-!/aurgetrc
+!/environment.d
 !/dunst
 !/fontconfig
 !/git_template
