@@ -57,6 +57,9 @@ link() {
   elif [ "$dry_run" = 1 ]; then
     success "[DRY RUN] Would link $1 to $2"
   else
+    if [ ! -d "$(dirname "$2")" ]; then
+      mkdir -p "$(dirname "$2")"
+    fi
     if ln -s "$1" "$2"; then
       success "Linked $1 to $2"
     else
