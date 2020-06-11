@@ -65,7 +65,16 @@ target_path() {
 ############# DO THE LINKING #############
 
 for f in home/*; do
-  link "$(realpath "$f")" "$(target_path "$f" "$HOME" ".")"
+  if [ "$f" != "home/config" ]; then
+    link "$(realpath "$f")" "$(target_path "$f" "$HOME" ".")"
+  fi
+done
+
+if [ "$dry_run" != 1 ]; then
+  mkdir -p ~/.config
+fi
+for f in home/config/*; do
+  link "$(realpath "$f")" "$(target_path "$f" "$HOME/.config")"
 done
 
 for f in home_nodot/*; do
