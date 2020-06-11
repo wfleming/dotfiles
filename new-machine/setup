@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# Start with https://wiki.archlinux.org/index.php/Installation_guide
+#
+# After booting the Arch install media, run /installer/setup
+set -e
+
+setup_base_dir=$(dirname $0)
+. "${setup_base_dir}/setup_scripts/shared.sh"
+
+type pacstrap &> /dev/null || (
+  echo "pacstrap not installed - this doesn't look like an Arch installer environment!" &&
+  exit 2
+)
+
+console_font="sun12x22"
+
+############### PRE-SETUP ##################
+
+# modern laptop screen and boot media kernel mode == teeeeeensy fonts
+setfont "${console_font}"
+
+check_internet
+
+"${setup_base_dir}/setup_scripts/boot_disk.sh"
+
+echo "== Pre-setup is complete"
+
+############### MAIN SETUP ##################
+
+"${setup_base_dir}/setup_scripts/pacstrap.sh"
+
+echo "== Generate fstab"
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+echo "== Chrooting into new filesystem for further setup"
+
+# copy /installer files so it can be accessed after chroot
+cp --archive -r /installer /mnt/installer
+arch-chroot /mnt "${setup_base_dir}/setup_scripts/after_chroot.sh"

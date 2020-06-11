@@ -1,0 +1,100 @@
+#!/bin/sh
+#
+# Run setup first!
+# You will be prompted to run this script later in the setup process after
+# rebooting later in the setup process.
+set -e
+
+setup_base_dir=$(dirname $0)
+. "${setup_base_dir}/setup_scripts/shared.sh"
+
+check_internet
+
+echo "== Continuing setup"
+
+echo "==== AUR tools"
+clone_and_install_aur_repo() {
+  (
+    cd $(mktemp --directory)
+    git clone "https://aur.archlinux.org/$1.git" .
+    makepkg --syncdeps --rmdeps --clean --install --noconfirm
+  )
+}
+gpg --recv-keys DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A # key for aurutils author
+clone_and_install_aur_repo "aurutils"
+clone_and_install_aur_repo "aurto"
+
+echo "==== Install AUR packages"
+echo "     You may see PGP failures: if you do, run gpg --recv-keys KEY_ID and re-run $0"
+gpg --recv-keys 2C6A674E85EE3FB896AFC9B965101FF31C5C154D # key for stack-static
+gpg --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45 # key for spotify
+# these steps fail inside the chroot during setup, so we needed to reboot
+aur_packages="firefox-beta-bin" # browsers
+aur_packages="${aur_packages} datagrip datagrip-jre" # jetbrains SQL IDE
+aur_packages="${aur_packages} gifcast" # my script for gif desktop recordings
+aur_packages="${aur_packages} nordvpn-bin" # vpn
+aur_packages="${aur_packages} rbenv ruby-build" # ruby language management
+aur_packages="${aur_packages} redshift-git" # rest my eyes
+aur_packages="${aur_packages} slack-desktop" # the productivity abyss into which we all stare
+aur_packages="${aur_packages} spideroak-one" # yet another sync service
+aur_packages="${aur_packages} spotify" # tunes
+aur_packages="${aur_packages} stack-static" # haskell, used to build xmonad
+aur_packages="${aur_packages} tfenv" # manage terraform
+aur_packages="${aur_packages} thunar-thumbnailers-openraster" # thumbnails in thunar are nice
+aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-mono" # fonts
+aur_packages="${aur_packages} urlview" # for mutt with html emails
+# aurto & aurutils get re-added here so they'll get upgraded naturally
+aurto add aurto aurutils ${aur_packages}
+sudo pacman -S --noconfirm ${aur_packages}
+
+# official zoom package has some benefits over the aur package, but I'll need to
+# regularly re-fetch to upgrade
+echo "==== Install zoom"
+curl --output /tmp/zoom.pkg.tar.xz --location https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz
+aurto addpkg /tmp/zoom.pkg.tar.xz
+sudo pacman -S --noconfirm zoom # the other abyss into which we all stare
+
+echo "==== Install custom pkgbuilds"
+(
+  cd ~/src
+  git clone "${extra_pkgbuilds_url}" pkgbuilds
+  cd ~/src/pkgbuilds/msmtp-oauth2
+  makepkg --syncdeps --rmdeps --clean --install --noconfirm
+)
+
+if grep System76 /sys/devices/virtual/dmi/id/sys_vendor; then
+  echo "==== Install System760-specific AUR packages"
+  pkgs="system76-driver system76-dkms system76-io-dkms system76-acpi-dkms system76-firmware-daemon system76-power"
+  aurto add ${pkgs}
+  pacman -S --noconfirm ${pkgs}
+fi
+
+echo "==== enabling systemd units"
+sudo systemctl enable \
+  acpid \
+  docker \
+  netctl-auto@wlan0 \
+  nordvpnd \
+  ntpd \
+  pac-gen-mirrorlist.timer
+systemctl --user enable \
+  dunst \
+  redshift \
+  spideroak \
+  ssh-agent \
+  imap-sync.timer
+
+echo "== cleanup"
+sudo rm -r /installer
+
+echo "== Setup complete!"
+echo "==== You can shutdown and reboot into your installed system when ready."
+echo "==== You still need to do the following manually:"
+printf "\t- configure spideroak (run 'SpiderOakONE --setup=-')\n"
+printf "\t- import gpg keychain (documented in spideroak)\n"
+printf "\t- configure dropbox (configure in GUI)\n"
+printf "\t- configure intellij/datagrip (vim plugin, font prefs)\n"
+printf "\t- setup pulse effects equalizer\n"
+printf "\t- test gpg-agent/ssh, test imap-sync systemd unit\n"
+printf "\t- re-clone work git repos, copy over env for those\n"
+printf "\t- rm ~/.gnupg since real gnupg home is now in .config\n"
