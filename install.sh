@@ -64,6 +64,10 @@ target_path() {
 
 ############# DO THE LINKING #############
 
+if [ "$dry_run" != 1 ]; then
+  # ensure gnupg has expected perms to avoid warning messages
+  chmod 0700 ./home/gnupg
+fi
 for f in home/*; do
   if [ "$f" != "home/config" ]; then
     link "$(realpath "$f")" "$(target_path "$f" "$HOME" ".")"
