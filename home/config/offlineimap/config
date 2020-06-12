@@ -1,7 +1,27 @@
 [general]
 metadata = ~/.config/offlineimap
-accounts = CodeClimate
+accounts = Personal, CodeClimate
 pythonfile = ~/.config/offlineimap/utils.py
+
+[Account Personal]
+localRepository = PersonalLocal
+remoteRepository = PersonalRemote
+
+[Repository PersonalLocal]
+type = Maildir
+localfolders = ~/mail/personal
+sep = /
+
+[Repository PersonalRemote]
+type = IMAP
+remotehost = imap.fastmail.com
+remoteuser = willfleming@fastmail.fm
+remotepasseval = pass_entry("fastmail.com/imap")
+ssl = yes
+starttls = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = PLAIN
+folderfilter = lambda foldername: foldername not in [ 'Notes' ]
 
 [Account CodeClimate]
 localRepository = CodeClimateLocal
