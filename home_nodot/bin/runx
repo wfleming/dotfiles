@@ -20,7 +20,7 @@ if [ $UID -eq 0 ]; then
   set -- su will -c "$cmd"
 fi
 
-if [ ! $xauthority ]; then
+if [ -z "$xauthority" ]; then
   echo "Can't identify xauthority - not running X?" >&2
   exit 1
 fi
