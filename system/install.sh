@@ -84,7 +84,7 @@ should_link() {
 
 # Unlike ../install.sh, do not link dirs - in /etc that's a recipe for trouble.
 # Symlink normal files here to the appropriate relative path under /etc/
-for f in $(find ./etc -type f -not -name install.sh); do
+for f in $(find . -type f -not -name install.sh); do
   if should_link "$f"; then
     rel_target=$(realpath --relative-to="$PWD" "$f")
     link "$(realpath "$f")" "/$rel_target"
