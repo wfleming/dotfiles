@@ -7,7 +7,7 @@ setup_base_dir=$(dirname $0)
 echo "== Creating user account"
 useradd "${username}" \
   --create-home \
-  --home-dir /home/will \
+  --home-dir "/home/${username}" \
   --shell /usr/bin/zsh \
   --user-group \
   --groups wheel,docker
