@@ -39,7 +39,7 @@ command="xrandr"
 intern="eDP1"
 current_monitors=$(xrandr --listmonitors | tail --lines=+2 | grep -v "$intern" | sed -e "s/[ 0-9:+*]*\([a-zA-Z0-9]\+\).*/\1/")
 connected_outputs=$(xrandr | grep -v "$intern" | grep " connected" | sed -e "s/\([a-zA-Z0-9]\+\) connected.*/\1/")
-if ! grep --quiet open /proc/acpi/button/lid/LID/state; then
+if ! grep --quiet open /proc/acpi/button/lid/*/state; then
   # if there are no external connected displays, just exit:
   # we could be putting the laptop to sleep
   if [ -z "$connected_outputs" ]; then
