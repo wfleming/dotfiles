@@ -1,0 +1,9 @@
+ #!/bin/sh
+ #
+ # Allows connected usb devices to wake up from sleep
+ # Could be updated to take a flag if needed to toggle to 'disabled' instead
+ set -e
+
+ for f in /sys/bus/usb/devices/*/power/wakeup; do
+   echo enabled > "$f"
+done

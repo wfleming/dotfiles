@@ -4,7 +4,7 @@ Requires=network.target network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/pac-gen-mirrorlist
+ExecStart=sh -c /usr/local/bin/pac-gen-mirrorlist
 TimeoutStartSec=1min
 
 [Install]
