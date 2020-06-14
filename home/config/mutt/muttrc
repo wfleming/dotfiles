@@ -66,13 +66,5 @@ alternative_order text/plain text/html
 set pgp_use_gpg_agent = yes
 set pgp_timeout = 3600
 
-## Khard (address book) config
-set query_command= "khard email --parsable %s"
-bind editor <Tab> complete-query
-bind editor ^T    complete
-macro index,pager A \
-    "<pipe-message>khard add-email<return>" \
-    "add the sender email address to khard"
-
 source ~/.config/mutt/bindings
 source ~/.config/mutt/colors
