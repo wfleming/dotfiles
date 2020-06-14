@@ -1,9 +1,0 @@
-[Unit]
-Description=Keep local calendars up to date
-
-[Timer]
-OnActiveSec=1m
-OnUnitInactiveSec=5m
-
-[Install]
-WantedBy=timers.target

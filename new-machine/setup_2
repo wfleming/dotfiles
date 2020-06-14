@@ -26,7 +26,6 @@ clone_and_install_aur_repo "aurto"
 
 echo "==== Install AUR packages"
 echo "     You may see PGP failures: if you do, run gpg --recv-keys KEY_ID and re-run $0"
-gpg --recv-keys 2C6A674E85EE3FB896AFC9B965101FF31C5C154D # key for stack-static
 gpg --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45 # key for spotify
 # these steps fail inside the chroot during setup, so we needed to reboot
 aur_packages="firefox-beta-bin" # browsers
@@ -38,11 +37,11 @@ aur_packages="${aur_packages} redshift-git" # rest my eyes
 aur_packages="${aur_packages} slack-desktop" # the productivity abyss into which we all stare
 aur_packages="${aur_packages} spideroak-one dropbox" # sync services
 aur_packages="${aur_packages} spotify" # tunes
-aur_packages="${aur_packages} stack-static" # haskell, used to build xmonad
 aur_packages="${aur_packages} tfenv" # manage terraform
 aur_packages="${aur_packages} thunar-thumbnailers-openraster" # thumbnails in thunar are nice
 aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-mono" # fonts
 aur_packages="${aur_packages} urlview" # for mutt with html emails
+aur_packages="${aur_packages} wf-recorder" # screen recorder for wayland
 # aurto & aurutils get re-added here so they'll get upgraded naturally
 aurto add aurto aurutils ${aur_packages}
 sudo pacman -S --noconfirm ${aur_packages}

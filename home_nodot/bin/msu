@@ -7,12 +7,7 @@ set -e
 # * https://wiki.archlinux.org/index.php/Udev#Writing_udev_rules
 # * https://wiki.archlinux.org/index.php/Acpid
 #
-# /etc/udev/rules.d/10-monitor.rules
-# ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/will/bin/runx /home/will/bin/msu -s 1 && /home/will/bin/runx /home/will/bin/wallpaper"
-#
-# /etc/acpi/handler.sh (add the following for open/close events
-# /home/will/bin/runx /home/will/bin/msu
-# /home/will/bin/runx /home/will/bin/wallpaper
+# See system/etc/udev/rules.d & system/etc/acpi/events for usage
 
 # set modes for specific screens to use instead of `auto`
 mode_eDP1="--mode 1920x1080"
@@ -22,8 +17,13 @@ screen_mode () {
   printf "%s\n" "${!vname:---auto}"
 }
 
-while getopts ":s:" opt; do
+# what to run after completion (set with -a)
+after_cmd=""
+
+while getopts ":a:s:" opt; do
   case $opt in
+    a)
+      after_cmd="$OPTARG";;
     s)
       sleep "$OPTARG";;
     "?")
@@ -65,3 +65,8 @@ done
 
 printf "msu command=%s\n" "$command"
 $command
+
+if [ -n "$after_cmd" ]; then
+  printf "xrandr done, now running=%s\n" "$after_cmd"
+  $after_cmd
+fi

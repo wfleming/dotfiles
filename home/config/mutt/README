@@ -3,22 +3,16 @@
 ## Packages
 
 - neomutt (aur)
-- isync (provides mbsync)
-- offlineimap (for gmail oauth imap sync)
+- offlineimap (for imap sync - switched from mbsync/isync since it supports
+  google oauth authentication)
 - msmtp (send email)
 - elinks (text browser for reading html email)
 - urlview (aur; open urls from emails externally)
 
 ## Setup
 
-- Need to manually create ~/mail/personal for mbsync
 - enable & activate the `systemctl --user` `imap-sync.timer` unit to get
   automatic periodic mail sync
-
-## TODO (Things I need to figure out still)
-
-- show when have unread mail in taffybar/systray somehow
-- specific macro for GH emails to open links in one step?
 
 # Notes
 

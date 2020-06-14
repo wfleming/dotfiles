@@ -24,6 +24,7 @@ pacstrap_pkgs="${pacstrap_pkgs} zsh zsh-completions tmux alacritty" # my preferr
 pacstrap_pkgs="${pacstrap_pkgs} thunar tumbler" # simple gui file manager for times when that's useful, tumbler is for thumbnails
 pacstrap_pkgs="${pacstrap_pkgs} ttf-hack ttf-droid noto-fonts-emoji" # fonts
 pacstrap_pkgs="${pacstrap_pkgs} xorg-server xorg-xbacklight xautolock slock xclip scrot dmenu" # for desktop env
+#pacstrap_pkgs="${pacstrap_pkgs} sway swaybg swaylock swayidle waybar mako grim otf-font-awesome slurp bemenu-wlroots bemenu wl-clipboard xorg-xserver-xwayland" # for wayland env
 pacstrap_pkgs="${pacstrap_pkgs} bluez bluez-utils" # bluetooth
 pacstrap_pkgs="${pacstrap_pkgs} dunst" # notifications
 pacstrap_pkgs="${pacstrap_pkgs} ntp" # accurate time, please

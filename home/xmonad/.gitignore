@@ -1,7 +1,0 @@
-/.stack-work/
-/vendor/
-/xmonad.state
-*.errors
-*.hi
-*.o
-*-linux

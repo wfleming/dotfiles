@@ -1,0 +1,127 @@
+[bar/top]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 25
+clickareas = 35
+
+background = #00000000
+foreground = #ccffffff
+linecolor = #00ffffff
+
+spacing = 4
+lineheight = 16
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = monospace:size=8;0
+font-1 = "Font Awesome 5 Free:style=Regular:size=10;2"
+font-2 = "Font Awesome 5 Free:style=Solid:size=10;2"
+font-3 = "Font Awesome 5 Brands:style=Regular:size=10;2"
+
+modules-left = i3
+modules-center = window
+modules-right = cpu memory volume battery wireless-network clock
+tray-position = right
+tray-padding = 2
+
+[module/i3]
+type = internal/i3
+
+[module/window]
+type = internal/xwindow
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+
+label = CPU %percentage%%
+format = <label>
+; format-background = #ff3260
+; format-foreground = #ffffff
+; format-underline = #da375b
+format-padding = 2
+
+[module/memory]
+type = internal/memory
+
+label = RAM %percentage_used%%
+format = <label>
+; format-background = #ff3260
+; format-foreground = #ffffff
+; format-underline = #da375b
+format-padding = 2
+
+[module/backlight]
+type = internal/backlight
+; card = intel_backlight
+
+[module/battery]
+type = internal/battery
+full-at = 98
+
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+format-full = <label-full>
+
+label-charging = BAT  %percentage%%
+label-discharging = BAT   %percentage%%
+label-full = BAT   %percentage%%
+
+[module/wireless-network]
+type = internal/network
+interface = wlan0
+interval = 3.0
+ping-interval = 10
+
+format-connected = <label-connected>
+label-connected =  %essid%
+label-disconnected =  not connected
+label-disconnected-foreground = #66
+
+[module/volume]
+type = internal/pulseaudio
+
+format-volume =  <label-volume>
+label-muted =  muted
+click-right = pavucontrol &
+
+[module/powermenu]
+; type = custom/menu
+;
+; format-padding = 5
+;
+; label-open = 
+; label-close = 
+;
+; menu-0-0 = Terminate WM
+; menu-0-0-foreground = #fba922
+; menu-0-0-exec = bspc quit -1
+; menu-0-1 = Reboot
+; menu-0-1-foreground = #fba922
+; menu-0-1-exec = menu_open-1
+; menu-0-2 = Power off
+; menu-0-2-foreground = #fba922
+; menu-0-2-exec = menu_open-2
+;
+; menu-1-0 = Cancel
+; menu-1-0-foreground = #fba922
+; menu-1-0-exec = menu_open-0
+; menu-1-1 = Reboot
+; menu-1-1-foreground = #fba922
+; menu-1-1-exec = sudo reboot
+;
+; menu-2-0 = Power off
+; menu-2-0-foreground = #fba922
+; menu-2-0-exec = sudo poweroff
+; menu-2-1 = Cancel
+; menu-2-1-foreground = #fba922
+; menu-2-1-exec = menu_open-0
+
+[module/clock]
+type = internal/date
+interval = 10
+date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+; vim:ft=dosini
+

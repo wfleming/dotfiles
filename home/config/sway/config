@@ -1,0 +1,18 @@
+# Sway config
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $menu bemenu-run --no-overlap --ignorecase --prompt="run:" | xargs swaymsg exec --
+set $locker swaylock -f -c 000000
+
+### Config modules
+include ./config.d/*
+include /etc/sway/config.d/*
