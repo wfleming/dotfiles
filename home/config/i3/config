@@ -13,7 +13,7 @@ set $menu dmenu_run
 set $locker i3lock -c 000000
 
 ### wallpaper
-exec feh --no-fehbg --bg-fill ~/.local/share/wallpapers/space/earthrise-ultrawide-crop.jpg fill
+exec feh --no-fehbg --bg-fill ~/.local/share/wallpapers/space/earthrise-ultrawide-crop.jpg
 
 ### Idle configuration
 # This will lock your screen after 300 seconds of inactivity
