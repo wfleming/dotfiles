@@ -41,6 +41,8 @@
   prune = true
 [merge]
   ff = only
+[pull]
+  rebase = true
 [push]
   default = current
 [github]
