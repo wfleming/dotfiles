@@ -25,6 +25,6 @@ echo "==== Set resolvconf nameservers"
 cat <<EOF >> /etc/resolvconf.conf
 
 # always prefer cloudflare & google dns
-name_servers 1.1.1.1 8.8.8.8
+name_servers="1.1.1.1 8.8.8.8"
 EOF
 
