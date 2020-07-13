@@ -6,7 +6,7 @@
 # carefully/after other system setup.
 #
 # USAGE:
-# Just run it from `dotfiles`, e.g. `./etc/install.sh`
+# Just run it from `dotfiles`, e.g. `sudo ./system/install.sh`
 #
 # Run with `-n` to see a dry run of what the script will do.
 set -e
@@ -84,9 +84,10 @@ should_link() {
 
 # Unlike ../install.sh, do not link dirs - in /etc that's a recipe for trouble.
 # Symlink normal files here to the appropriate relative path under /etc/
-for f in $(find . -type f -not -name install.sh); do
+root_path=$(dirname $(realpath $0))
+for f in $(find "$root_path" -type f -not -name install.sh); do
   if should_link "$f"; then
-    rel_target=$(realpath --relative-to="$PWD" "$f")
+    rel_target=$(realpath --relative-to="$root_path" "$f")
     link "$(realpath "$f")" "/$rel_target"
   fi
 done
