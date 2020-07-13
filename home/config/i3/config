@@ -17,7 +17,7 @@ exec feh --no-fehbg --bg-fill ~/.local/share/wallpapers/space/earthrise-ultrawid
 
 ### Idle configuration
 # This will lock your screen after 300 seconds of inactivity
-exec xautolock -time 5 -locker $locker
+exec xautolock -time 5 -locker "$locker"
 
 ### Key bindings
 #
