@@ -10,14 +10,6 @@ echo "== Inside chroot"
 echo "==== Symlink vim"
 ln -s $(which nvim) /usr/bin/vim
 
-echo "==== docker btrfs driver"
-sudo mkdir -p /etc/docker
-sudo cat <<EOF > /etc/docker/daemon.json
-{
-  "storage-driver": "btrfs"
-}
-EOF
-
 # https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/
 echo "==== Font setup"
 sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
