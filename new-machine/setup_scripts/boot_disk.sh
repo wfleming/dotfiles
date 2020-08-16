@@ -48,8 +48,7 @@ lvcreate -l 100%FREE RootLvmVols -n root
 echo "== Format partitions"
 
 mkfs.fat -F32 "${boot_partition}"
-# https://wiki.archlinux.org/index.php/Btrfs
-mkfs.btrfs --label system-root /dev/RootLvmVols/root
+mkfs.ext4 /dev/RootLvmVols/root
 mkswap /dev/RootLvmVols/swap
 
 echo "== Mount disk for installation"

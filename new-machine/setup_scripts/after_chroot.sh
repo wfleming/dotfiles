@@ -18,7 +18,6 @@ sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 sed 's/^#export FREETYPE_PROPERTIES/export FREETYPE_PROPERTIES/' /etc/profile.d/freetype2.sh > /etc/profile.d/freetype2.sh.new
 mv /etc/profile.d/freetype2.sh{.new,}
 
-"${setup_base_dir}/btrfs_subvols.sh"
 "${setup_base_dir}/locale_misc.sh"
 "${setup_base_dir}/mkinitcpio.sh"
 "${setup_base_dir}/root_passwd.sh"

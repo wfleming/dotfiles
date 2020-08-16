@@ -14,7 +14,6 @@ echo "==== running pacstrap to install base packages"
 
 pacstrap_pkgs="base base-devel linux linux-firmware" # the most basic basics
 pacstrap_pkgs="${pacstrap_pkgs} lvm2" # for encrypted root fs
-pacstrap_pkgs="${pacstrap_pkgs} btrfs-progs" # btrfs utils
 pacstrap_pkgs="${pacstrap_pkgs} intel-ucode xf86-video-intel" # I'm presuming an intel CPU & GPU
 pacstrap_pkgs="${pacstrap_pkgs} man-db man-pages" # knowing how things work is handy
 pacstrap_pkgs="${pacstrap_pkgs} netctl dialog wpa_supplicant dhcpcd iw" # networking
