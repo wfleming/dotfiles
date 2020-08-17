@@ -17,13 +17,8 @@ screen_mode () {
   printf "%s\n" "${!vname:---auto}"
 }
 
-# what to run after completion (set with -a)
-after_cmd=""
-
-while getopts ":a:s:" opt; do
+while getopts ":s:" opt; do
   case $opt in
-    a)
-      after_cmd="$OPTARG";;
     s)
       sleep "$OPTARG";;
     "?")
@@ -66,7 +61,6 @@ done
 printf "msu command=%s\n" "$command"
 $command
 
-if [ -n "$after_cmd" ]; then
-  printf "xrandr done, now running=%s\n" "$after_cmd"
-  $after_cmd
-fi
+printf "xrandr done. restarting polybar\n"
+/home/will/.config/polybar/launch.sh
+
