@@ -5,7 +5,7 @@ After=network.target network-online.target dbus.socket
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/env offlineimap
-TimeoutStartSec=10min
+TimeoutStartSec=30min
 
 [Install]
 WantedBy=default.target
