@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Backup script
+# Deps: sudo pacman -S duplicity python-pip; sudo pip install b2sdk
+
+set -e
+
+BUCKET=$(pass backblaze.com/duplicity/bucket)
+SUBDIR=$(cat /etc/hostname)
+KEY_ID=$(pass backblaze.com/duplicity/key-id)
+KEY_SECRET=$(pass backblaze.com/duplicity/app-key)
+
+# My .config/Slack dir is 676M - mostly split between cache and service workers.
+# WTF.
+
+exec duplicity \
+  --encrypt-key "<will@flemi.ng>" \
+  --exclude "$HOME/.dropbox-dist" \
+  --exclude "$HOME/.dropbox" \
+  --exclude "$HOME/.config/nvim/tmp" \
+  --exclude "$HOME/src/cc" \
+  --exclude "$HOME/mail" \
+  --exclude "$HOME/Dropbox" \
+  --exclude "$HOME/SpiderOak Hive" \
+  --exclude "$HOME/.config/Slack" \
+  "$HOME" \
+  "b2://${KEY_ID}:${KEY_SECRET}@${BUCKET}/${SUBDIR}"

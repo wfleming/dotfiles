@@ -1,0 +1,11 @@
+[Unit]
+Description=Run backup service
+After=network.target network-online.target dbus.socket
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env /home/will/bin/duplicity-b2
+TimeoutStartSec=infinity
+
+[Install]
+WantedBy=default.target
