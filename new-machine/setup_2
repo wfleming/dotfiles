@@ -83,7 +83,8 @@ systemctl --user enable \
   redshift \
   spideroak \
   ssh-agent \
-  imap-sync.timer
+  imap-sync.timer \
+  duplicity.timer
 
 echo "== cleanup"
 sudo rm -r /installer
