@@ -86,38 +86,6 @@ format-volume =  <label-volume>
 label-muted =  muted
 click-right = pavucontrol &
 
-[module/powermenu]
-; type = custom/menu
-;
-; format-padding = 5
-;
-; label-open = 
-; label-close = 
-;
-; menu-0-0 = Terminate WM
-; menu-0-0-foreground = #fba922
-; menu-0-0-exec = bspc quit -1
-; menu-0-1 = Reboot
-; menu-0-1-foreground = #fba922
-; menu-0-1-exec = menu_open-1
-; menu-0-2 = Power off
-; menu-0-2-foreground = #fba922
-; menu-0-2-exec = menu_open-2
-;
-; menu-1-0 = Cancel
-; menu-1-0-foreground = #fba922
-; menu-1-0-exec = menu_open-0
-; menu-1-1 = Reboot
-; menu-1-1-foreground = #fba922
-; menu-1-1-exec = sudo reboot
-;
-; menu-2-0 = Power off
-; menu-2-0-foreground = #fba922
-; menu-2-0-exec = sudo poweroff
-; menu-2-1 = Cancel
-; menu-2-1-foreground = #fba922
-; menu-2-1-exec = menu_open-0
-
 [module/clock]
 type = internal/date
 interval = 10
