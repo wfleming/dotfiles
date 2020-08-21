@@ -19,6 +19,7 @@ pacstrap_pkgs="${pacstrap_pkgs} man-db man-pages" # knowing how things work is h
 pacstrap_pkgs="${pacstrap_pkgs} netctl dialog wpa_supplicant dhcpcd iw" # networking
 pacstrap_pkgs="${pacstrap_pkgs} netcat" # needed after restart for setup script
 pacstrap_pkgs="${pacstrap_pkgs} acpid" # power management
+pacstrap_pkgs="${pacstrap_pkgs} udisks" # removal media in userland
 pacstrap_pkgs="${pacstrap_pkgs} zsh zsh-completions tmux alacritty" # my preferred shell & terminal
 pacstrap_pkgs="${pacstrap_pkgs} thunar tumbler" # simple gui file manager for times when that's useful, tumbler is for thumbnails
 pacstrap_pkgs="${pacstrap_pkgs} ttf-hack ttf-droid noto-fonts-emoji" # fonts
@@ -36,5 +37,6 @@ pacstrap_pkgs="${pacstrap_pkgs} docker docker-compose" # containers
 pacstrap_pkgs="${pacstrap_pkgs} chromium" # I use FF and will install it via AUR later, but need chrome for browser testing sometimes
 pacstrap_pkgs="${pacstrap_pkgs} neovim fzf ctags the_silver_searcher feh git hub jq bzip2 unzip" # etc
 pacstrap_pkgs="${pacstrap_pkgs} intellij-idea-community-edition aws-cli" # etc
+pacstrap_pkgs="${pacstrap_pkgs} calibre-python3 darktable" # media management
 
 pacstrap /mnt ${pacstrap_pkgs}
