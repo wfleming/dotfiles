@@ -52,8 +52,6 @@
   smudge = git-media-smudge %f
 [commit]
   gpgsign = true
-[gpg]
-  program = gpg2
 [init]
   templatedir = ~/.config/git_template/
 [url "git@github.com:"]
