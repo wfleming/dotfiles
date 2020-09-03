@@ -19,6 +19,7 @@ set header_cache = "~/.config/mutt/cache/headers"
 set message_cachedir = "~/.config/mutt/cache/bodies"
 set certificate_file = "~/.config/mutt/certificates"
 set tmpdir = "~/.config/mutt/tmp"
+set attach_save_dir = "~/Downloads"
 
 # Writing mail
 set editor = vim
