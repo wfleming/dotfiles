@@ -27,6 +27,7 @@ tray-padding = 2
 
 [module/i3]
 type = internal/i3
+label-focused-foreground = #FFBF00
 
 [module/window]
 type = internal/xwindow
