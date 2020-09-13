@@ -177,7 +177,7 @@ default_border pixel 2
 gaps inner 5
 
 # class          border   bg       text  indicator child_border
-client.focused   #FFBF00  #FFBF00 #ffffff
+client.focused   #333333  #333333  #FFBF00
 client.unfocused #333333  #333333  #ffffff
 
 ### Status Bar:
