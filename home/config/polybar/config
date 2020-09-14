@@ -8,11 +8,9 @@ background = #00000000
 foreground = #ccffffff
 linecolor = #00ffffff
 
-spacing = 4
 lineheight = 16
-padding-right = 2
-module-margin-left = 2
-module-margin-right = 2
+padding-right = 1
+module-margin = 1
 
 font-0 = monospace:size=8;0
 font-1 = "Font Awesome 5 Free:style=Regular:size=10;2"
