@@ -176,8 +176,8 @@ smart_borders on
 default_border pixel 2
 gaps inner 5
 
-# class          border   bg       text  indicator child_border
-client.focused   #333333  #333333  #FFBF00
+# class          border   bg       text     indicator  child_border
+client.focused   #333333  #333333  #ffbf00  #333333    #ffbf00
 client.unfocused #333333  #333333  #ffffff
 
 ### Status Bar:
