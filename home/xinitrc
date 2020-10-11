@@ -12,6 +12,7 @@ fi
 
 unset WAYLAND_DISPLAY
 systemctl --user unset-environment WAYLAND_DISPLAY
+systemctl --user restart redshift dropbox
 xset s off
 msu
 
