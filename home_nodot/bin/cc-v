@@ -41,7 +41,7 @@ case "$1" in
   rebuild-test-db)
     docker_compose --file docker-compose.test.development.yml \
       run --rm app rake \
-      db:drop db:create db:structure:load db:migrate benchmark:import
+      db:drop db:create db:structure:load db:migrate
   ;;
   *) docker_compose "$@";;
 esac
