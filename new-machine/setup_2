@@ -42,6 +42,7 @@ aur_packages="${aur_packages} thunar-thumbnailers-openraster" # thumbnails in th
 aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-mono" # fonts
 aur_packages="${aur_packages} urlview" # for mutt with html emails
 aur_packages="${aur_packages} polybar" # bar using with i3
+aur_packages="${aur_packages} pulseaudio-modules-bt" # pulseaudio bluetooth codecs
 aur_packages="${aur_packages} wf-recorder" # screen recorder for wayland
 # aurto & aurutils get re-added here so they'll get upgraded naturally
 aurto add aurto aurutils ${aur_packages}
