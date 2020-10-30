@@ -1,0 +1,10 @@
+{
+  "policies": {
+    "DisableAppUpdate": true,
+    "DisableTelemetry": true,
+    "DisablePocket": true,
+    "SearchEngines": {
+      "PreventInstalls": true
+    }
+  }
+}
