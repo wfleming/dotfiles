@@ -35,6 +35,7 @@
   # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
   algorithm = patience
   compactionHeuristic = true
+  colormoved = default
 [apply]
   whitespace = nowarn
 [fetch]
