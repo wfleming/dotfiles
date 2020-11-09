@@ -53,7 +53,7 @@ mkswap /dev/RootLvmVols/swap
 
 echo "== Mount disk for installation"
 
-mount --options "autodefrag,compress=zstd" /dev/RootLvmVols/root /mnt
+mount /dev/RootLvmVols/root /mnt
 mkdir /mnt/boot
 mount "${boot_partition}" /mnt/boot
 swapon /dev/RootLvmVols/swap
