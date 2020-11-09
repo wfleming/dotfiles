@@ -23,7 +23,7 @@ echo "==== setting up dotfiles"
   git clone "${dotfiles_url}" dotfiles
   cd dotfiles
   ./install.sh
-  sudo ./etc/install.sh
+  sudo ./system/install.sh
 )
 
 echo "==== Install vim plugins"
