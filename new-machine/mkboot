@@ -2,15 +2,13 @@
 #
 # Formats a boot disk for arch linux installer + my own setup scripts.
 #
-# See https://www.archlinux.org/download/ to aquire ISO
-# Scripting is based on https://wiki.archlinux.org/index.php/Remastering_the_Install_ISO
-# Dependencies: squashfs-tools archiso
+# See https://wiki.archlinux.org/index.php/Archiso
+# Dependencies: archiso
 #
-# Usage: sudo ./mkboot /path/to/iso /path/to/dev
+# Usage: sudo ./mkboot /path/to/dev
 set -e
 
-iso_path=$1
-dev=$2
+dev=$1
 mkboot_dir=$(dirname $(readlink -f $0))
 
 echo "This will re-format ${dev}, you could lose data! Enter y to continue:"
@@ -20,28 +18,22 @@ if [ $confirm != 'y' ]; then
   exit 0
 fi
 
-# 1. mount the iso
+# 1. Copy the stock profile
 
-iso_mount=/mnt/archiso
-iso_mount_rw=/mnt/archiso_rw
-mkdir -p "${iso_mount}"
-mkdir -p "${iso_mount_rw}"
-echo "== Extracting ${iso_path} iso"
-mount -t iso9660 -o loop "${iso_path}" "${iso_mount}"
-echo "=== iso mounted to ${iso_mount}"
-cp --archive "${iso_mount}"/* "${iso_mount_rw}"
-echo "=== iso copied to ${iso_mount_rw} so it can be modified"
+mkdir -p ./profile/
+cp -r /usr/share/archiso/configs/releng/* ./profile/
 
 # 2. add new files to the iso
 
-echo "== copying setup script and some parts of ~ to new iso"
+echo "== adding contents to iso filesystem"
 (
-  cd "${iso_mount_rw}/arch/x86_64"
-  echo "==== unpacking squashfs-root"
-  unsquashfs airootfs.sfs
+  cd ./profile/
+  echo "dialog" >> ./packages.x86_64
+  echo "netctl" >> ./packages.x86_64
 
-  cd squashfs-root
-  mkdir installer
+  cd ./airootfs/
+
+  mkdir -p installer
   cp --archive ${mkboot_dir}/setup* ./installer/
 
   echo "==== copying ~ files"
@@ -52,7 +44,6 @@ echo "== copying setup script and some parts of ~ to new iso"
     /home/will/.docker \
     /home/will/.password-store \
     ./installer/home/
-    # /home/will/mail \ # DEBUG - keep this later \
 
   mkdir -p ./installer/home/.config/
   cp --archive \
@@ -70,53 +61,18 @@ echo "== copying setup script and some parts of ~ to new iso"
 
   mkdir -p installer/etc
   cp --archive /etc/netctl ./installer/etc
-
-  echo "==== packing new squashfs-root"
-  cd ..
-  rm airootfs.sfs
-  mksquashfs squashfs-root airootfs.sfs
-  rm -r squashfs-root
-  sha512sum airootfs.sfs > airootfs.sha512
 )
 
-# 3. Build new iso
+# 3. build the iso
 
-new_iso_path="${PWD}/arch-custom.iso"
-rm -rf "${new_iso_path}"
-echo "== building new ISO at ${new_iso_path}"
-iso_label=$(
-  isoinfo -d -i "${iso_path}" 2>/dev/null \
-  | grep "Volume id" \
-  | sed 's/^.*\(ARCH_[0-9]\+\).*$/\1/'
-)
-(
-  cd "${iso_mount_rw}"
-  xorriso \
-    -as mkisofs \
-    -iso-level 3 \
-    -full-iso9660-filenames \
-    -volid "${iso_label}" \
-    -eltorito-boot isolinux/isolinux.bin \
-    -eltorito-catalog isolinux/boot.cat \
-    -no-emul-boot -boot-load-size 4 -boot-info-table \
-    -isohybrid-mbr ./isolinux/isohdpfx.bin \
-    -eltorito-alt-boot \
-    -e EFI/archiso/efiboot.img \
-    -no-emul-boot -isohybrid-gpt-basdat \
-    -output "${new_iso_path}" ./
-)
+echo "== Building the ISO"
+[ -d ./work ] && rm -r ./work
+[ -d ./out ] && rm -r ./out
+mkarchiso ./profile
 
+new_iso_path=$(ls ./out/*.iso | head -1)
 echo "== Writing ${new_iso_path} to ${dev}"
 dd if="${new_iso_path}" of="${dev}" bs=4M
-
-# 3. cleanup and finish
-
-echo "== Cleaning up"
-
-echo "==== unmounting original iso"
-umount "${iso_mount}"
-echo "==== unmounting deleting temporary directories"
-rm -r "${iso_mount}" "${iso_mount_rw}"
 
 echo "== Done!"
 echo "==== The new ISO is still at ${new_iso_path} - you can delete it now if you don't want it"
