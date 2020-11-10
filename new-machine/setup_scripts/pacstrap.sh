@@ -38,5 +38,6 @@ pacstrap_pkgs="${pacstrap_pkgs} chromium" # I use FF and will install it via AUR
 pacstrap_pkgs="${pacstrap_pkgs} neovim fzf ctags the_silver_searcher feh git hub jq bzip2 unzip" # etc
 pacstrap_pkgs="${pacstrap_pkgs} intellij-idea-community-edition aws-cli" # etc
 pacstrap_pkgs="${pacstrap_pkgs} calibre rawtherapee" # media management
+pacstrap_pkgs="${pacstrap_pkgs} wf-recorder" # screen recorder for wayland
 
 pacstrap /mnt ${pacstrap_pkgs}

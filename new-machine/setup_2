@@ -26,7 +26,8 @@ clone_and_install_aur_repo "aurto"
 
 echo "==== Install AUR packages"
 echo "     You may see PGP failures: if you do, run gpg --recv-keys KEY_ID and re-run $0"
-gpg --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45 # key for spotify
+gpg --search-keys tux@spotify.com
+gpg --search-keys linux@dropbox.com
 # these steps fail inside the chroot during setup, so we needed to reboot
 aur_packages="firefox-beta-bin" # browsers
 aur_packages="${aur_packages} datagrip datagrip-jre" # jetbrains SQL IDE
@@ -38,13 +39,12 @@ aur_packages="${aur_packages} slack-desktop" # the productivity abyss into which
 aur_packages="${aur_packages} spideroak-one dropbox" # sync services
 aur_packages="${aur_packages} spotify" # tunes
 aur_packages="${aur_packages} tfenv" # manage terraform
-aur_packages="${aur_packages} thunar-thumbnailers-openraster" # thumbnails in thunar are nice
 aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-mono" # fonts
 aur_packages="${aur_packages} urlview" # for mutt with html emails
 aur_packages="${aur_packages} polybar" # bar using with i3
 aur_packages="${aur_packages} pulseaudio-modules-bt" # pulseaudio bluetooth codecs
-aur_packages="${aur_packages} wf-recorder" # screen recorder for wayland
 # aurto & aurutils get re-added here so they'll get upgraded naturally
+aurto init
 aurto add aurto aurutils ${aur_packages}
 sudo pacman -S --noconfirm ${aur_packages}
 
