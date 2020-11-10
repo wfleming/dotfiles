@@ -85,7 +85,7 @@ systemctl --user enable \
   spideroak \
   ssh-agent \
   imap-sync.timer \
-  duplicity.timer
+  backup.timer
 
 echo "== cleanup"
 sudo rm -r /installer
