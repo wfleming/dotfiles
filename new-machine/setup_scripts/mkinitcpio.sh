@@ -42,6 +42,9 @@ echo "==== bootloader"
 #   that all just have a single wlan and maybe single ethernet and that's it, and
 #   switching between them and needing to address different interface names is a
 #   pain.
+# - Not adding it to the script yet, but for posterity - on Thinkpad,
+#   intel_idle.max_cstate=1 can be necessary to prevent the display sporadically
+#   freezing https://askubuntu.com/questions/760731/lenovo-thinkpad-11e-randomly-freezes-on-ubuntu-16-04
 root_part_uuid=$(blkid | grep 'TYPE="crypto_LUKS"' | sed -e 's/^.* UUID="\([a-z0-9-]\+\)".*$/\1/')
 mkdir -p /boot/loader/entries
 cat <<EOF > /boot/loader/entries/arch.conf
