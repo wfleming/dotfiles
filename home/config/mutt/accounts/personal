@@ -8,7 +8,7 @@ set postponed = "+personal/Drafts"
 set trash = "+personal/Trash"
 
 set sig_dashes = no
-set signature=~/.mutt/signatures/personal
+set signature = ""
 
 alternates "will@jwock.org" "wmf22@cornell.edu" "will.fleming@gmail.com"
 
