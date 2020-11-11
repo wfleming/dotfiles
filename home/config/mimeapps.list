@@ -1,0 +1,31 @@
+[Added Associations]
+x-scheme-handler/http=firefox-beta-bin.desktop;
+x-scheme-handler/https=firefox-beta-bin.desktop;
+x-scheme-handler/ftp=firefox-beta-bin.desktop;
+x-scheme-handler/chrome=firefox-beta-bin.desktop;
+text/html=firefox-beta-bin.desktop;
+application/x-extension-htm=firefox-beta-bin.desktop;
+application/x-extension-html=firefox-beta-bin.desktop;
+application/x-extension-shtml=firefox-beta-bin.desktop;
+application/xhtml+xml=firefox-beta-bin.desktop;
+application/x-extension-xhtml=firefox-beta-bin.desktop;
+application/x-extension-xht=firefox-beta-bin.desktop;
+image/jpeg=rawtherapee.desktop;
+
+[Default Applications]
+x-scheme-handler/http=firefox-beta-bin.desktop
+x-scheme-handler/https=firefox-beta-bin.desktop
+x-scheme-handler/ftp=firefox-beta-bin.desktop
+x-scheme-handler/chrome=firefox-beta-bin.desktop
+text/html=firefox-beta-bin.desktop
+application/x-extension-htm=firefox-beta-bin.desktop
+application/x-extension-html=firefox-beta-bin.desktop
+application/x-extension-shtml=firefox-beta-bin.desktop
+application/xhtml+xml=firefox-beta-bin.desktop
+application/x-extension-xhtml=firefox-beta-bin.desktop
+application/x-extension-xht=firefox-beta-bin.desktop
+application/pdf=firefox-beta-bin.desktop
+image/jpeg=feh.desktop
+image/png=feh.desktop
+image/gif=feh.desktop
+x-scheme-handler/msteams=teams.desktop
