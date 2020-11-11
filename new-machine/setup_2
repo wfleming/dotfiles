@@ -74,6 +74,7 @@ fi
 echo "==== enabling systemd units"
 sudo systemctl enable \
   acpid \
+  bluetooth \
   docker \
   netctl-auto@wlan0 \
   nordvpnd \
