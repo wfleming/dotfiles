@@ -37,14 +37,20 @@ echo "==== bootloader"
 # https://wiki.archlinux.org/index.php/Systemd-boot
 # kernel options :
 # - setup full disk encryption config and root device
+kernel_opts="cryptdevice=UUID=${root_part_uuid}:cryptroot root=/dev/RootLvmVols/root"
 # - net.ifnames=0 gets back network names like `wlan0`. I know there are good
 #   reasons for "predictable network names", but for me I use several machines
 #   that all just have a single wlan and maybe single ethernet and that's it, and
 #   switching between them and needing to address different interface names is a
 #   pain.
-# - Not adding it to the script yet, but for posterity - on Thinkpad,
-#   intel_idle.max_cstate=1 can be necessary to prevent the display sporadically
-#   freezing https://askubuntu.com/questions/760731/lenovo-thinkpad-11e-randomly-freezes-on-ubuntu-16-04
+kernel_opts="$kernel_opts net.ifnames=0"
+# - ThinkPads have some weird issue where the laptop screen will sporadically
+#   freeze - I believe it has something to do with panel self refresh (PSR)
+#   https://bbs.archlinux.org/viewtopic.php?id=246841&p=2
+if fgrep --quiet LENOVO /sys/devices/virtual/dmi/id/sys_vendor; then
+  kernel_opts="$kernel_opts i915.enable_psr=0"
+fi
+
 root_part_uuid=$(blkid | grep 'TYPE="crypto_LUKS"' | sed -e 's/^.* UUID="\([a-z0-9-]\+\)".*$/\1/')
 mkdir -p /boot/loader/entries
 cat <<EOF > /boot/loader/entries/arch.conf
@@ -52,6 +58,6 @@ title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux.img
-options cryptdevice=UUID=${root_part_uuid}:cryptroot root=/dev/RootLvmVols/root net.ifnames=0
+options $kernel_opts
 EOF
 bootctl --esp-path=/boot/ install
