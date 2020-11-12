@@ -1,4 +1,6 @@
 # Add Go to path
 export GOPATH="$HOME/src/golang"
-export PATH="$PATH:$GOPATH/bin"
+if [[ "$PATH" != *"$GOPATH"* ]]; then
+  export PATH="$PATH:$GOPATH/bin"
+fi
 export GO15VENDOREXPERIMENT=1

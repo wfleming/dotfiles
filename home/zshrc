@@ -1,5 +1,7 @@
 # include local paths in PATH before system paths
-export PATH="$HOME/bin:$HOME/local/bin:$PATH"
+if [[ $PATH != *"$HOME/local/bin"* ]]; then
+  export PATH="$HOME/bin:$HOME/local/bin:$PATH"
+fi
 
 # Load zsh module config files
 for config_file ($HOME/.config/zsh/**/*.zsh) source $config_file
