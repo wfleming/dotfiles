@@ -28,6 +28,7 @@ mkinitcpio_add_hook "base" "udev"
 mkinitcpio_rm_hook "keyboard"
 mkinitcpio_add_hook "autodetect" "keyboard keymap"
 mkinitcpio_add_hook "block" "encrypt lvm2"
+mkinitcpio_add_hook "filesystems" "resume"
 # set lz4 for compression
 sed -e 's/^#COMPRESSION="lz4"$/COMPRESSION="lz4"/' /etc/mkinitcpio.conf > /etc/mkinitcpio.conf.new
 mv /etc/mkinitcpio.conf{.new,}
