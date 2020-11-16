@@ -38,6 +38,8 @@ echo "==== bootloader"
 # kernel options :
 # - setup full disk encryption config and root device
 kernel_opts="cryptdevice=UUID=${root_part_uuid}:cryptroot root=/dev/RootLvmVols/root"
+# - set resume option for hibernate support
+kernel_opts="$kernel_opts resume=/dev/RootLvmVols/swap"
 # - net.ifnames=0 gets back network names like `wlan0`. I know there are good
 #   reasons for "predictable network names", but for me I use several machines
 #   that all just have a single wlan and maybe single ethernet and that's it, and
