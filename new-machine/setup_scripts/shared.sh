@@ -13,7 +13,7 @@ check_internet() {
   else
     echo "==== Internet not connected"
     echo "     This script will exit so you can connect to the Internet."
-    echo "     To connect to wifi, try wifi-menu, or dhcpd if ethernet is connected."
+    echo "     To connect to wifi, try iwctl, or dhcpd if ethernet is connected."
     echo "     When done, re-run ${0}"
     exit 2
   fi

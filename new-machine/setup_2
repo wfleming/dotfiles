@@ -76,7 +76,8 @@ sudo systemctl enable \
   acpid \
   bluetooth \
   docker \
-  netctl-auto@wlan0 \
+  systemd-network \
+  iwd \
   nordvpnd \
   ntpd \
   pac-gen-mirrorlist.timer

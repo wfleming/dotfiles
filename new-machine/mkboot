@@ -27,11 +27,7 @@ cp -r /usr/share/archiso/configs/releng/* ./profile/
 
 echo "== adding contents to iso filesystem"
 (
-  cd ./profile/
-  echo "dialog" >> ./packages.x86_64
-  echo "netctl" >> ./packages.x86_64
-
-  cd ./airootfs/
+  cd ./profile/airootfs
 
   mkdir -p installer
   cp --archive ${mkboot_dir}/setup* ./installer/
@@ -59,8 +55,8 @@ echo "== adding contents to iso filesystem"
   mkdir -p ./installer/home/.local/share/
   cp --archive /home/will/.local/share/wallpapers ./installer/home/.local/share/
 
-  mkdir -p installer/etc
-  cp --archive /etc/netctl ./installer/etc
+  mkdir -p installer/usr/lib/
+  cp --archive /usr/lib/iwd ./installer/lib/
 )
 
 # 3. build the iso

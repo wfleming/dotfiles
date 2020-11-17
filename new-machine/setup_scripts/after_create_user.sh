@@ -7,7 +7,7 @@ setup_base_dir=$(dirname $0)
 echo "==== copying private/local dotfiles from ${setup_base_dir}"
 cd ~
 sudo cp --archive $(find /installer/home -mindepth 1 -maxdepth 1) ~/
-sudo cp --archive $(find /installer/etc -mindepth 1 -maxdepth 1) /etc
+sudo cp --archive $(find /installer/usr -mindepth 1 -maxdepth 1) /usr
 
 echo "==== Ensure ~ file ownership is correct"
 sudo chown --recursive "${username}:${username}" ~
