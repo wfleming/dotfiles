@@ -110,6 +110,9 @@ link_type() {
     *systemd/logind.conf.d/*)
       echo "copy"
       ;;
+    *systemd/sleep.conf.d/*)
+      echo "copy"
+      ;;
     *)
       echo "soft-link"
       ;;
