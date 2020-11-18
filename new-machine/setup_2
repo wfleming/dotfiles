@@ -78,6 +78,7 @@ sudo systemctl enable \
   docker \
   systemd-network \
   iwd \
+  systemd-resolved \
   nordvpnd \
   ntpd \
   pac-gen-mirrorlist.timer

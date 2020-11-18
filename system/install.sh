@@ -107,10 +107,7 @@ should_link() {
 link_type() {
   source="$1"
   case "$source" in
-    *systemd/logind.conf.d/*)
-      echo "copy"
-      ;;
-    *systemd/sleep.conf.d/*)
+    *systemd/logind.conf.d/*|*systemd/sleep.conf.d/*|*systemd/network*|*systemd/resolved.conf.d*)
       echo "copy"
       ;;
     *)
