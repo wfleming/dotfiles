@@ -24,7 +24,7 @@ printf "127.0.1.1\t${hostname}.localdomain ${hostname}" >> /etc/hosts
 echo "==== Set resolvconf nameservers"
 cat <<EOF >> /etc/resolvconf.conf
 
-# always prefer cloudflare & google dns
-name_servers="1.1.1.1 8.8.8.8"
+# always prefer google dns
+name_servers="8.8.8.8 8.8.4.4"
 EOF
 

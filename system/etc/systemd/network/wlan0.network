@@ -3,5 +3,5 @@ Name=wlan0
 
 [Network]
 DHCP=ipv4
-DNS=1.1.1.1
 DNS=8.8.8.8
+DNS=8.8.4.4
