@@ -64,4 +64,5 @@ $command
 printf "xrandr done. restarting polybar\n"
 sleep 1
 /home/will/.config/polybar/launch.sh
+feh --no-fehbg --bg-fill ~/.local/share/wallpapers/space/earthrise-ultrawide-crop.jpg
 
