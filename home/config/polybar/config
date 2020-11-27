@@ -29,6 +29,7 @@ label-focused-foreground = #FFBF00
 
 [module/window]
 type = internal/xwindow
+label-maxlen=75
 
 [module/cpu]
 type = internal/cpu
