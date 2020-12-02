@@ -23,6 +23,7 @@ repos=(
   https://github.com/elixir-lang/vim-elixir.git
   https://github.com/fatih/vim-go.git
   https://github.com/kien/ctrlp.vim.git
+  https://github.com/morhetz/gruvbox.git
   https://github.com/rking/ag.vim.git
   https://github.com/scrooloose/nerdtree.git
   https://github.com/slim-template/vim-slim.git

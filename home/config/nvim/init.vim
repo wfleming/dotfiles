@@ -32,6 +32,7 @@ let g:ctrlp_buffer_func = { 'enter': 'CtrlPBufferEnter', 'exit': 'CtrlPBufferExi
 
 """"""""" Stock VIM config """"""""""""""""""
 
+set termguicolors
 syntax enable                " enable syntax highlighting
 syntax sync minlines=100
 filetype plugin indent on    " load file type plugins + indentation
@@ -44,7 +45,8 @@ set autoread                 " refresh file if changed outside of vim
 set clipboard+=unnamedplus   " for system pastboard integration
 
 "" color scheme
-colorscheme meh
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 "" show line #/cursor column
 set nocursorline
