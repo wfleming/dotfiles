@@ -39,5 +39,6 @@ pacstrap_pkgs="${pacstrap_pkgs} neovim fzf ctags the_silver_searcher feh sxiv gi
 pacstrap_pkgs="${pacstrap_pkgs} intellij-idea-community-edition aws-cli" # etc
 pacstrap_pkgs="${pacstrap_pkgs} calibre rawtherapee" # media management
 pacstrap_pkgs="${pacstrap_pkgs} wf-recorder" # screen recorder for wayland
+pacstrap_pkgs="${pacstrap_pkgs} vdirsyncer" # sync caldav contacts
 
 pacstrap /mnt ${pacstrap_pkgs}

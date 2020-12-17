@@ -45,6 +45,7 @@ aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-
 aur_packages="${aur_packages} urlview" # for mutt with html emails
 aur_packages="${aur_packages} polybar" # bar using with i3
 aur_packages="${aur_packages} pulseaudio-modules-bt" # pulseaudio bluetooth codecs
+aur_packages="${aur_packages} mates-git" # contact cli management
 # aurto & aurutils get re-added here so they'll get upgraded naturally
 aurto init
 aurto add aurto aurutils ${aur_packages}
@@ -90,6 +91,7 @@ systemctl --user enable \
   spideroak \
   ssh-agent \
   imap-sync.timer \
+  contacts-sync.timer \
   backup.timer
 
 echo "== cleanup"
@@ -103,5 +105,6 @@ printf "\t- import gpg keychain (documented in spideroak)\n"
 printf "\t- configure dropbox (configure in GUI)\n"
 printf "\t- configure intellij/datagrip (vim plugin, font prefs)\n"
 printf "\t- setup pulse effects equalizer\n"
+printf "\t- run 'vdirsyncer discover fastmail_contacts' to prep contact syncing\n"
 printf "\t- test gpg-agent/ssh, test imap-sync systemd unit\n"
 printf "\t- re-clone work git repos, copy over env for those\n"

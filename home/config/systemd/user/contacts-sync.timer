@@ -1,0 +1,9 @@
+[Unit]
+Description=Keep local contacts up to date
+
+[Timer]
+OnActiveSec=1m
+OnUnitInactiveSec=1h
+
+[Install]
+WantedBy=timers.target

@@ -44,6 +44,9 @@ set status_format = "%f %r [Msgs: %m%?u? (%u)?]   (%s/%S%?V?|%V?)%> (%P)   "
 # https://unix.stackexchange.com/questions/18651/how-do-i-configure-mutt-to-display-the-date-header-in-my-local-time-zone-in-the
 set display_filter="exec sed -r \"s/^Date:\\s*(([F-Wa-u]{3},\\s*)?[[:digit:]]{1,2}\\s+[A-Sa-y]{3}\\s+[[:digit:]]{4}\\s+[[:digit:]]{1,2}:[[:digit:]]{1,2}(:[[:digit:]]{1,2})?\\s+[+-][[:digit:]]{4})/date +'Date: %a, %d %b %Y %H:%M:%S %z' -d '\\1'/e\""
 
+# auto-complete contacts when composing
+set query_command = "mates mutt-query '%s'"
+
 # manage headers I want to see
 ignore *                               # first, ignore all headers
 unignore from: to: cc: date: subject:  # then, show only these

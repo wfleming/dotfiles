@@ -28,3 +28,9 @@ bind index \CJ sidebar-next
 bind index \CK sidebar-prev
 bind index \CO sidebar-open
 
+# tab to auto-complete, not ^T
+bind editor <Tab> complete-query
+bind editor ^T    complete
+
+# bind to fetch new mail now
+macro index S "<shell-escape>systemctl --user --no-block start imap-sync<enter>" "sync mail"
