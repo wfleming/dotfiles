@@ -1,7 +1,8 @@
 // vim:ft=json
 {
     "layer": "top",
-    "height": 25,
+    "height": 20,
+    "margin": 0,
 
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-center": ["sway/window"],

@@ -1,6 +1,8 @@
 * {
-  font-size: 13px;
+  font-size: 10px;
   font-family: monospace;
+  padding: 0;
+  min-height: 0;
 }
 
 window#waybar {
