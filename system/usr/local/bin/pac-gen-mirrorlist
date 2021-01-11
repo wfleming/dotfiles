@@ -13,7 +13,7 @@ tmp_mirrorlist=$(mktemp)
 
 printf "Writing mirrorlist to %s\n" "${tmp_mirrorlist}"
 
-curl "https://www.archlinux.org/mirrorlist/?country=CA&country=US&protocol=https&ip_version=4&use_mirror_status=on" \
+curl --location "https://archlinux.org/mirrorlist/?country=CA&country=US&protocol=https&ip_version=4&use_mirror_status=on" \
   | sed 's/#Server/Server/' > "${tmp_mirrorlist}"
 
 if [ $(grep -c https "${tmp_mirrorlist}") = 0 ]; then
