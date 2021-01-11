@@ -80,7 +80,7 @@ case "$1" in
 		    init: Initialize remote repository. Must be run before first backup.
 		    backup: Run a backup.
 		    trim: Trim older snapshots & prune data.
-        backup-and-trim: Run a backup, then trim older snapshots.
+		    backup-and-trim: Run a backup, then trim older snapshots.
 		EOF
     ;;
   dest)
