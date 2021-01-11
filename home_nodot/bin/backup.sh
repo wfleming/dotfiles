@@ -1,18 +1,30 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Backup script
-# Deps: sudo pacman -S duplicity python-pip; sudo pip install b2sdk
+# Deps: sudo pacman -S restic
 
 set -e
 
 # construct the b2 URL from secrets & the hostname
 destination_url() {
-  BUCKET=$(pass backblaze.com/duplicity/bucket)
-  SUBDIR=$(cat /etc/hostname)
+  BUCKET="$(pass backblaze.com/duplicity/bucket)"
+  SUBDIR="/restic/$(cat /etc/hostname)"
+
+  printf "b2:${BUCKET}:${SUBDIR}\n"
+}
+
+run_restic() {
   KEY_ID=$(pass backblaze.com/duplicity/key-id)
   KEY_SECRET=$(pass backblaze.com/duplicity/app-key)
 
-  printf "b2://${KEY_ID}:${KEY_SECRET}@${BUCKET}/${SUBDIR}\n"
+  B2_ACCOUNT_ID="$KEY_ID" B2_ACCOUNT_KEY="$KEY_SECRET" restic \
+    --repo $(destination_url) \
+    --password-command "pass restic-passphrase" \
+    "$@"
+}
+
+init_repository() {
+  run_restic init
 }
 
 # The approach of "backup the whole home directory but here are some weird
@@ -24,9 +36,8 @@ destination_url() {
 # ~/.cache overall is an obvious "not needed" case, I'm genuinely curious what
 # Spotify's cache eviction strategy is, because its cache is currently 11G.
 run_backup() {
-  duplicity \
-    --encrypt-key "<will@flemi.ng>" \
-    --exclude-other-filesystems \
+  run_restic backup \
+    --one-file-system \
     --exclude "$HOME/.cache" \
     --exclude "$HOME/.cargo" \
     --exclude "$HOME/.config/Microsoft" \
@@ -44,25 +55,14 @@ run_backup() {
     --exclude "$HOME/SpiderOak Hive" \
     --exclude "$HOME/mail" \
     --exclude "$HOME/src/cc" \
-    --full-if-older-than 1M \
-    --progress \
-    --progress-rate 300 \
-    "$HOME" \
-    $(destination_url)
+    "$HOME"
 }
 
-# Delete older backup sets.
-# I schedule this to run daily, so the idea is that I'll do daily incremental
-# backups, automatically starting a new full backup every month, and this
-# command will remove the older sets so I'll always have my most recent full
-# backup (plus daily incrementals), plus the backup from before that (in case
-# something goes haywire with the most recent one), and delete anything older
-# than that.
-clean_old() {
-  duplicity \
-    remove-all-but-n-full 2 \
-    --force \
-    $(destination_url)
+trim_old_snapshots() {
+  run_restic forget \
+    --keep-last=10 \
+    --keep-within=1m \
+    --prune
 }
 
 case "$1" in
@@ -75,24 +75,33 @@ case "$1" in
 		Sub-commands:
 
 		    help: Print this help message.
-		    dest: Print the B2 destination URL (with authentication) for backups.
-		    run: Run a backup.
-		    clean: Delete older, stale backups.
-		    run-and-clean: Execute run & clean sub-commands in sequence.
+		    dest: Print the B2 destination URL for backups.
+		    restic: Stub for restic with repo url & auth passed.
+		    init: Initialize remote repository. Must be run before first backup.
+		    backup: Run a backup.
+		    trim: Trim older snapshots & prune data.
+        backup-and-trim: Run a backup, then trim older snapshots.
 		EOF
     ;;
   dest)
     destination_url
     ;;
-  run)
+  restic)
+    shift
+    run_restic "$@"
+    ;;
+  init)
+    init_repository
+    ;;
+  backup)
     run_backup
     ;;
-  clean)
-    clean_old
+  trim)
+    trim_old_snapshots
     ;;
-  run-and-clean)
+  backup-and-trim)
     run_backup
-    clean_old
+    trim_old_snapshots
     ;;
   '')
     printf "Sub-command required.\n"
