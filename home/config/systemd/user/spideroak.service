@@ -1,7 +1,8 @@
-# based on https://raw.githubusercontent.com/hv15/spideroak-systemd/
+# based on https://github.com/hv15/spideroak-systemd/
 [Unit]
 Description=SpiderOak backup service
 Documentation=https://spideroak.com/faq/questions/67/how_can_i_use_spideroak_from_the_commandline/
+After=network.target local-fs.target
 
 [Install]
 WantedBy=multi-user.target
