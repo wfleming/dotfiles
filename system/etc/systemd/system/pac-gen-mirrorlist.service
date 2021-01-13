@@ -1,6 +1,6 @@
 [Unit]
 Description=Update the pacman mirrorlist
-Requires=network.target network-online.target
+After=network.target network-online.target
 
 [Service]
 Type=oneshot
@@ -9,4 +9,3 @@ TimeoutStartSec=1min
 
 [Install]
 WantedBy=default.target
-

@@ -1,6 +1,5 @@
 [Unit]
 Description=Run backup service
-Requires=network-online.target
 After=network.target network-online.target dbus.socket
 
 [Service]
