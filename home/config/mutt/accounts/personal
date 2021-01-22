@@ -12,7 +12,7 @@ set signature = ""
 
 alternates "will@jwock.org" "wmf22@cornell.edu" "will.fleming@gmail.com"
 
-macro index ,c "<change-folder>+codeclimate/INBOX<enter>" "change accounts"
+macro index ,c "<change-folder>+custommade/INBOX<enter>" "change accounts"
 
 macro index,pager ,a \
   "<tag-prefix><save-message>+personal/Archive<enter>" \

@@ -1,6 +1,6 @@
 [general]
 metadata = ~/.config/offlineimap
-accounts = Personal, CodeClimate
+accounts = Personal, CustomMade
 pythonfile = ~/.config/offlineimap/utils.py
 
 [Account Personal]
@@ -23,23 +23,21 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 auth_mechanisms = PLAIN
 folderfilter = lambda foldername: foldername not in [ 'Notes' ]
 
-[Account CodeClimate]
-localRepository = CodeClimateLocal
-remoteRepository = CodeClimateRemote
+[Account CustomMade]
+localRepository = CustomMadeLocal
+remoteRepository = CustomMadeRemote
 
-[Repository CodeClimateLocal]
+[Repository CustomMadeLocal]
 type = Maildir
-localfolders = ~/mail/codeclimate
+localfolders = ~/mail/custommade
 
-[Repository CodeClimateRemote]
+[Repository CustomMadeRemote]
 type = IMAP
 remotehost = imap.gmail.com
-remoteuser = will@codeclimate.com
+remoteuser = wfleming@custommade.com
+remotepasseval = pass_entry("custommade/google.com/imap")
+maxconnections = 3
 ssl = yes
 starttls = no
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-auth_mechanisms = XOAUTH2
-oauth2_request_url = https://accounts.google.com/o/oauth2/token
-oauth2_client_id_eval = pass_entry("cc/gmail-api/oauth-client-id")
-oauth2_client_secret_eval = pass_entry("cc/gmail-api/oauth-client-secret")
-oauth2_refresh_token_eval = pass_entry("cc/gmail-api/refresh-token")
+auth_mechanisms = PLAIN

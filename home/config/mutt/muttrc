@@ -7,12 +7,12 @@ mailboxes \
   "+personal/INBOX" \
   "+personal/Archive" \
   "+personal/Archive/transactional" \
-  "+codeclimate/INBOX" \
-  "+codeclimate/[Gmail].All Mail"
+  "+custommade/INBOX" \
+  "+custommade/[Gmail].All Mail"
 
 set spoolfile = "+personal/INBOX"
 folder-hook personal/* source ~/.config/mutt/accounts/personal
-folder-hook codeclimate/* source ~/.config/mutt/accounts/codeclimate
+folder-hook custommade/* source ~/.config/mutt/accounts/custommade
 
 # Cache, tmp, etc storage
 set header_cache = "~/.config/mutt/cache/headers"
