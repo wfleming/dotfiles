@@ -27,7 +27,8 @@ nnoremap <leader>d :NERDTreeToggle \| :silent NERDTreeMirror<CR>
 "" ctrlp
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
 let g:ctrlp_buffer_func = { 'enter': 'CtrlPBufferEnter', 'exit': 'CtrlPBufferExit' }
 
 """"""""" Stock VIM config """"""""""""""""""
