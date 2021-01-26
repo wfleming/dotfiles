@@ -1,0 +1,4 @@
+#!/bin/sh
+# A dmenu shim for rofi, since passmenu hardcodes dmenu
+
+exec rofi -dmenu "$@"

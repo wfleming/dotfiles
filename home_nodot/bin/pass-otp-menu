@@ -9,7 +9,7 @@ entry_files=( "$prefix"/**/*.gpg )
 entry_files=( "${entry_files[@]#"$prefix"/}" )
 entry_files=( "${entry_files[@]%.gpg}" )
 
-entry=$(printf '%s\n' "${entry_files[@]}" | dmenu -i "$@")
+entry=$(printf '%s\n' "${entry_files[@]}" | rofi -dmenu -i "$@")
 
 [[ -n "$entry" ]] || exit
 

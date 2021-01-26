@@ -9,7 +9,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu dmenu_run
+set $menu rofi -show run
 set $locker i3lock -c 000000
 
 ### wallpaper
