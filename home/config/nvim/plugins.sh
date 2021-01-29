@@ -23,9 +23,8 @@ repos=(
   https://github.com/bling/vim-airline.git
   https://github.com/elixir-lang/vim-elixir.git
   https://github.com/fatih/vim-go.git
-  https://github.com/kien/ctrlp.vim.git
   https://github.com/morhetz/gruvbox.git
-  https://github.com/rking/ag.vim.git
+  https://github.com/junegunn/fzf.vim.git
   https://github.com/scrooloose/nerdtree.git
   https://github.com/slim-template/vim-slim.git
   https://github.com/tpope/vim-commentary.git

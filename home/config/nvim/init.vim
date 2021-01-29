@@ -11,7 +11,7 @@ endif
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.linenr = ''
 let g:airline_extensions = []
-let g:airline_extensions = ['branch', 'ctrlp']
+let g:airline_extensions = ['branch']
 
 "" vim-go
 let g:go_highlight_functions = 1
@@ -24,12 +24,13 @@ let g:go_highlight_build_constraints = 1
 let NERDTreeCaseSensitiveSort = 1
 nnoremap <leader>d :NERDTreeToggle \| :silent NERDTreeMirror<CR>
 
-"" ctrlp
+"" vim.fzf
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_buffer_func = { 'enter': 'CtrlPBufferEnter', 'exit': 'CtrlPBufferExit' }
+let g:fzf_buffers_jump = 1
+let g:fzf_preview_window = ['down:40%:hidden', 'ctrl-/']
+nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>b :Buffers<cr>
 
 """"""""" Stock VIM config """"""""""""""""""
 
@@ -82,17 +83,6 @@ set inccommand=split
 tnoremap <Leader>e <C-\><C-c>
 
 """"""""""" Commands, etc. """""""""""""""""
-
-"" ctrlp buffer funcs
-function! CtrlPBufferEnter()
-  highlight CursorLine gui=NONE guibg=#424242 cterm=NONE ctermbg=8
-endfunction
-function! CtrlPBufferExit()
-  highlight CursorLine gui=NONE guibg=NONE cterm=NONE ctermbg=NONE
-endfunction
-
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
 
 " Code Climate CLI
 nmap <Leader>aa :CodeClimateAnalyzeCurrentFile<CR>
