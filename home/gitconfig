@@ -17,7 +17,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   o = checkout
   p = push
-  opr = "!hub pull-request"
+  opr = "!gh pr create"
   pr-rebase = !git fetch && git rebase origin/master && git push --force
   st = status
   unassume = update-index --no-assume-unchanged
