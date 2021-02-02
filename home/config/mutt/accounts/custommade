@@ -2,7 +2,7 @@
 
 set from="wfleming@custommade.com"
 
-set sendmail = "msmtp-oauth -C /home/will/.config/msmtprc -a custommade"
+set sendmail = "msmtp -C /home/will/.config/msmtprc -a custommade"
 set mbox = "+custommade/[Gmail].All Mail"
 set postponed = "+custommade/[Gmail].Drafts"
 set trash = "+custommade/[Gmail].Trash"
