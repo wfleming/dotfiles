@@ -46,6 +46,7 @@ aur_packages="${aur_packages} urlview" # for mutt with html emails
 aur_packages="${aur_packages} polybar" # bar using with i3
 aur_packages="${aur_packages} pulseaudio-modules-bt" # pulseaudio bluetooth codecs
 aur_packages="${aur_packages} mates-git" # contact cli management
+aur_packages="${aur_packages} zsh-pure-prompt" # contact cli management
 # aurto & aurutils get re-added here so they'll get upgraded naturally
 aurto init
 aurto add aurto aurutils ${aur_packages}
