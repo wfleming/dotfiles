@@ -41,5 +41,6 @@ pacstrap_pkgs="${pacstrap_pkgs} intellij-idea-community-edition" # etc
 pacstrap_pkgs="${pacstrap_pkgs} calibre rawtherapee" # media management
 pacstrap_pkgs="${pacstrap_pkgs} wf-recorder" # screen recorder for wayland
 pacstrap_pkgs="${pacstrap_pkgs} vdirsyncer" # sync caldav contacts
+pacstrap_pkgs="${pacstrap_pkgs} nfs-utils" # I use a NAS at home
 
 pacstrap /mnt ${pacstrap_pkgs}
