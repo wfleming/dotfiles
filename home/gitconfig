@@ -9,7 +9,6 @@
   br = branch
   c  = commit
   caa = commit -a --amend -C HEAD
-  ci = commit
   ctags = "!.git/hooks/ctags"
   d = diff
   fix = commit -a --fixup
@@ -54,5 +53,3 @@
   templatedir = ~/.config/git_template/
 [url "git@github.com:"]
   insteadOf = gh:
-[url "git@github.com:codeclimate/"]
-  insteadOf = cc:
