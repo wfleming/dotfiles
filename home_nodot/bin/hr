@@ -1,7 +1,0 @@
-#!/bin/sh
-# abbreviated cc-harness run with automatic service name
-set -e
-
-service=$(basename "$PWD")
-
-cc-harness run "$service" "$@"
