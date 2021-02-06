@@ -7,7 +7,7 @@ setup_base_dir=$(dirname $0)
 echo "== Running pacstrap"
 
 echo "==== configuring mirrorlist"
-curl "https:/www.archlinux.org/mirrorlist/?country=CA&country=US&protocol=https&ip_version=4&use_mirror_status=on" \
+curl --location "https://archlinux.org/mirrorlist/?country=CA&country=US&protocol=https&ip_version=4&use_mirror_status=on" \
   | sed 's/#Server/Server/' > /etc/pacman.d/mirrorlist
 
 echo "==== running pacstrap to install base packages"
@@ -17,6 +17,7 @@ pacstrap_pkgs="${pacstrap_pkgs} lvm2" # for encrypted root fs
 pacstrap_pkgs="${pacstrap_pkgs} intel-ucode xf86-video-intel" # I'm presuming an intel CPU & GPU
 pacstrap_pkgs="${pacstrap_pkgs} man-db man-pages" # knowing how things work is handy
 pacstrap_pkgs="${pacstrap_pkgs} iwd dhcpcd iw" # networking - iwd preferred, iw useful for some debugging
+pacstrap_pkgs="${pacstrap_pkgs} openssh sudo" # ssh & sudo
 pacstrap_pkgs="${pacstrap_pkgs} netcat" # needed after restart for setup script
 pacstrap_pkgs="${pacstrap_pkgs} acpid" # power management
 pacstrap_pkgs="${pacstrap_pkgs} udisks2" # removal media in userland
