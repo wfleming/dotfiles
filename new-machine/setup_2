@@ -52,6 +52,9 @@ aurto init
 aurto add aurto aurutils ${aur_packages}
 sudo pacman -S --noconfirm ${aur_packages}
 
+# nordvpn authorizes via a group
+sudo usermod --append --groups nordvpn "$(whoami)"
+
 # official zoom package has some benefits over the aur package, but I'll need to
 # regularly re-fetch to upgrade
 echo "==== Install zoom"
