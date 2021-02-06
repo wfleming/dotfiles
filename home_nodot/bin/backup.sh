@@ -54,7 +54,7 @@ run_backup() {
     --exclude "$HOME/Dropbox" \
     --exclude "$HOME/SpiderOak Hive" \
     --exclude "$HOME/mail" \
-    --exclude "$HOME/src/cc" \
+    --exclude "$HOME/src/custommade" \
     "$HOME"
 }
 
