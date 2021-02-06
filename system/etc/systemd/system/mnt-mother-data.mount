@@ -1,0 +1,12 @@
+[Unit]
+Description=The mother NAS at home
+After=network-online.target
+
+[Mount]
+What=mother.local:/volume1/data
+Where=/mnt/mother/data
+Type=nfs
+Options=nofail,noatime,nolock,tcp,auto
+
+[Install]
+WantedBy=multi-user.target
