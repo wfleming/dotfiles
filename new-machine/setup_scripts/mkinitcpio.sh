@@ -38,6 +38,7 @@ echo "==== bootloader"
 # https://wiki.archlinux.org/index.php/Systemd-boot
 # kernel options :
 # - setup full disk encryption config and root device
+root_part_uuid=$(blkid | grep 'TYPE="crypto_LUKS"' | sed -e 's/^.* UUID="\([a-z0-9-]\+\)".*$/\1/')
 kernel_opts="cryptdevice=UUID=${root_part_uuid}:cryptroot root=/dev/RootLvmVols/root"
 # - set resume option for hibernate support
 kernel_opts="$kernel_opts resume=/dev/RootLvmVols/swap"
@@ -54,7 +55,6 @@ if fgrep --quiet LENOVO /sys/devices/virtual/dmi/id/sys_vendor; then
   kernel_opts="$kernel_opts i915.enable_psr=0"
 fi
 
-root_part_uuid=$(blkid | grep 'TYPE="crypto_LUKS"' | sed -e 's/^.* UUID="\([a-z0-9-]\+\)".*$/\1/')
 mkdir -p /boot/loader/entries
 cat <<EOF > /boot/loader/entries/arch.conf
 title   Arch Linux
