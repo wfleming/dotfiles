@@ -1,0 +1,8 @@
+[Unit]
+Description=Automount the mother NAS at home
+
+[Automount]
+Where=/mnt/mother/data
+
+[Install]
+WantedBy=multi-user.target
