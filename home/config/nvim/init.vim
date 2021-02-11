@@ -77,6 +77,9 @@ set foldlevelstart=99
 "" Preview :substitute changes (nvim only)
 set inccommand=split
 
+"" look for tags file from ctags in the git dir
+set tags+=.git/tags
+
 """"""""""" NeoVim term settings """""""""""""""""""
 
 "" space-e to exit insert mode of term
