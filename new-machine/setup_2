@@ -92,6 +92,7 @@ sudo systemctl enable \
   mnt-mother-data.automount
 systemctl --user enable \
   dunst \
+  geoclue-agent \
   redshift \
   spideroak \
   ssh-agent \
