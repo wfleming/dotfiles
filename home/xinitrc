@@ -12,7 +12,8 @@ fi
 
 unset WAYLAND_DISPLAY
 systemctl --user unset-environment WAYLAND_DISPLAY
-systemctl --user restart redshift dropbox
+systemctl --user start dunst geoclue-agent redshift
+systemctl --user restart dropbox
 xset s off
 msu
 

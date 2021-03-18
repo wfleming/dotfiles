@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+#
+# Simple wrapper of sway to export some needed ENV, etc. when it starts
+set -e
+
+# so ff will use wayland renderer (see "Window protocol" in about:support to confirm)
+export MOZ_ENABLE_WAYLAND=1
+
+# helps screen sharing work, apparently
+export XDG_CURRENT_DESKTOP=sway
+
+exec /usr/bin/sway "$@"
