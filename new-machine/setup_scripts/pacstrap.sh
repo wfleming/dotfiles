@@ -14,7 +14,7 @@ echo "==== running pacstrap to install base packages"
 
 pacstrap_pkgs="base base-devel linux linux-firmware" # the most basic basics
 pacstrap_pkgs="${pacstrap_pkgs} lvm2" # for encrypted root fs
-pacstrap_pkgs="${pacstrap_pkgs} intel-ucode xf86-video-intel" # I'm presuming an intel CPU & GPU
+pacstrap_pkgs="${pacstrap_pkgs} intel-ucode xf86-video-intel intel-media-driver" # I'm presuming an intel CPU & GPU
 pacstrap_pkgs="${pacstrap_pkgs} man-db man-pages" # knowing how things work is handy
 pacstrap_pkgs="${pacstrap_pkgs} iwd dhcpcd iw" # networking - iwd preferred, iw useful for some debugging
 pacstrap_pkgs="${pacstrap_pkgs} openssh sudo" # ssh & sudo
