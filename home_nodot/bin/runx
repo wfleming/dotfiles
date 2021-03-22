@@ -10,6 +10,11 @@ xauthority() {
   ps -C xinit -f --no-header | sed 's/.*-auth //; s/ -[^ ].*//'
 }
 
+xdg_runtime_dir() {
+  xinit_pid=$(ps -C xinit -o pid --no-header | grep --only-match --extended-regexp '[0-9]+')
+  sed --quiet --expression='s|.*XDG_RUNTIME_DIR=\([a-z0-9/]\+\)\0.*|\1|p' "/proc/$xinit_pid/environ"
+}
+
 if [ -z "$1" ]; then
   printf "usage: runx <command> [argument, ...]\n" >&2
   exit 64
@@ -25,4 +30,4 @@ if [ -z "$(xauthority)" ]; then
   exit 1
 fi
 
-DISPLAY=:0 XAUTHORITY="$(xauthority)" "$@"
+DISPLAY=:0 XAUTHORITY="$(xauthority)" XDG_RUNTIME_DIR="$(xdg_runtime_dir)" "$@"
