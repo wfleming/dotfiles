@@ -6,7 +6,7 @@ After=network-online.target
 What=mother.local:/volume1/data
 Where=/mnt/mother/data
 Type=nfs
-Options=nofail,noatime,nolock,tcp,auto
+Options=nofail,noatime,nolock,tcp
 
 [Install]
 WantedBy=multi-user.target
