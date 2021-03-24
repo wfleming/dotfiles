@@ -29,6 +29,7 @@ repos=(
   https://github.com/slim-template/vim-slim.git
   https://github.com/tpope/vim-commentary.git
   https://github.com/tpope/vim-fugitive.git
+  https://github.com/tpope/vim-rhubarb.git
   https://github.com/tpope/vim-surround.git
 )
 
