@@ -32,6 +32,10 @@ let g:fzf_preview_window = ['down:40%:hidden', 'ctrl-/']
 nnoremap <leader>f :GFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 
+"" netrw
+" don't load netrw - I don't use it and it has odd interactions with NFS mounts
+let g:loaded_netrwPlugin = 42
+
 """"""""" Stock VIM config """"""""""""""""""
 
 set termguicolors
