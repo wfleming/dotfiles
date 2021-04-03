@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+# based on example in https://seb.jambor.dev/posts/improving-shell-workflows-with-fzf/
+#
+# depends on: fzf, jq, curl
+#
+# Usage:
+set -e -o pipefail
+
+JIRA_DOMAIN="https://custommade.atlassian.net"
+JIRA_USER=$(pass custommade/atlassian.com | head -2 | tail -1 | sed 's/.*Username: \([a-z.@]\+\).*/\1/')
+JIRA_PASS=$(pass custommade/atlassian-api-token)
+
+# return 0 if branch already exists, 1 otherwise
+branch_exists() {
+  git rev-parse --verify "$1" &> /dev/null
+}
+
+# use fzf to query for tickets
+select_ticket() {
+  jq_template='"'\
+'\(.key) \(.fields.summary)'\
+'\t'\
+'\(.key) \(.fields.summary)\n'\
+'Reporter: \(.fields.reporter.displayName)\n'\
+'Created: \(.fields.created)\n'\
+'Updated: \(.fields.updated)\n\n'\
+'\(.fields.description)'\
+'"'
+
+  # only pay attention to tickets that are assigned to me and not done already
+  query='(status="In Progress" OR status="Open" OR status="Ready for Engineering") AND assignee=currentUser()'
+
+  curl \
+    --get \
+    --data-urlencode "jql=$query" \
+    --user "$JIRA_USER:$JIRA_PASS" \
+    --silent \
+    --compressed \
+    "$JIRA_DOMAIN/rest/api/2/search" |
+    jq ".issues[] | $jq_template" |
+    sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
+    fzf \
+      --with-nth=1 \
+      --delimiter='\t' \
+      --preview='echo -e {2}' \
+      --preview-window=top:wrap |
+    cut -f1 |
+    sed -e 's/\ /\t/' -e 's/[^a-zA-Z0-9\t]/-/g' |
+    awk '{printf "%s", tolower($1)}'
+}
+
+branch_name=$(select_ticket)
+
+if branch_exists "$branch_name"; then
+  git checkout "$branch_name"
+else
+  git checkout -b "$branch_name"
+fi
