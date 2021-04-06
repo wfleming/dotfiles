@@ -7,7 +7,6 @@ background = #00000000
 foreground = #ccffffff
 linecolor = #00ffffff
 
-line-size = 12
 padding-right = 1
 module-margin = 1
 
@@ -39,17 +38,13 @@ interval = 10
 [module/cpu]
 type = internal/cpu
 interval = 0.5
-
 label = CPU %percentage%%
 format = <label>
-format-padding = 2
 
 [module/memory]
 type = internal/memory
-
 label = RAM %percentage_used%%
 format = <label>
-format-padding = 2
 
 [module/battery]
 type = internal/battery
