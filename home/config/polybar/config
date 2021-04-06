@@ -19,7 +19,7 @@ font-3 = "Font Awesome 5 Brands:style=Regular:size=10;2"
 
 modules-left = i3
 modules-center = window
-modules-right = cpu memory volume battery wireless-network clock
+modules-right = nordvpn cpu memory volume battery wireless-network clock
 tray-position = right
 tray-padding = 2
 
@@ -31,6 +31,13 @@ label-visible-foreground = #808FFA
 [module/window]
 type = internal/xwindow
 label-maxlen=75
+
+[module/nordvpn]
+type = custom/script
+label = VPN %output%
+exec = ~/.config/polybar/nordvpn.sh status
+click-left = ~/.config/polybar/nordvpn.sh toggle
+interval = 10
 
 [module/cpu]
 type = internal/cpu
