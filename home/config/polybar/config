@@ -37,7 +37,7 @@ interval = 10
 
 [module/cpu]
 type = internal/cpu
-interval = 0.5
+interval = 1
 label = CPU %percentage%%
 format = <label>
 
