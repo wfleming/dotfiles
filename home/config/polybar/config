@@ -15,7 +15,7 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=8;2"
 
 modules-left = i3
 modules-center = window
-modules-right = nordvpn cpu memory volume battery wireless-network clock
+modules-right = backup imap nordvpn cpu memory volume battery wireless-network clock
 tray-position = right
 tray-padding = 2
 
@@ -27,6 +27,18 @@ label-visible-foreground = #808FFA
 [module/window]
 type = internal/xwindow
 label-maxlen=75
+
+[module/backup]
+type = custom/script
+exec = ~/.config/polybar/systemd-unit.sh --user --unit backup --icon ''
+click-left = systemctl --user --no-block start backup
+interval = 60
+
+[module/imap]
+type = custom/script
+exec = ~/.config/polybar/systemd-unit.sh --user --unit imap-sync --icon ''
+click-left = systemctl --user --no-block start imap-sync
+interval = 60
 
 [module/nordvpn]
 type = custom/script
