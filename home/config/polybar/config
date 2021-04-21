@@ -15,7 +15,7 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=8;2"
 
 modules-left = i3
 modules-center = window
-modules-right = backup imap nordvpn cpu memory volume battery wireless-network clock
+modules-right = aurto backup imap nordvpn cpu memory volume battery wireless-network clock
 tray-position = right
 tray-padding = 2
 
@@ -27,6 +27,12 @@ label-visible-foreground = #808FFA
 [module/window]
 type = internal/xwindow
 label-maxlen=75
+
+[module/aurto]
+type = custom/script
+exec = ~/.config/polybar/systemd-unit.sh --unit update-aurto --icon ''
+click-left = sudo systemctl --no-block start update-aurto
+interval = 120
 
 [module/backup]
 type = custom/script

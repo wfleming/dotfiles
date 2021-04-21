@@ -5,16 +5,24 @@ active_color="#1a4"
 inactive_color="#999"
 failed_color="#a00"
 
-systemctl_flags=""
+sudo_systemctl=1
 unit=""
 icon=""
+
+run_systemctl() {
+  if [ $sudo_systemctl = 1 ]; then
+    sudo systemctl $@
+  else
+    systemctl --user $@
+  fi
+}
 
 parsed_args=$(getopt --options '' --longoptions 'user,unit:,icon:' -- "$@")
 eval set -- "$parsed_args"
 while :; do
   case "$1" in
     --user)
-      systemctl_flags="$systemctl_flags --user"
+      sudo_systemctl=0
       shift
       ;;
     --unit)
@@ -41,11 +49,11 @@ if [ -z "$unit" -o -z "$icon" ]; then
 fi
 
 color="$inactive_color"
-if systemctl $systemctl_flags is-active "$unit" | grep --quiet inactive; then
+if run_systemctl is-active "$unit" | grep --quiet inactive; then
   color="$inactive_color"
-elif systemctl $systemctl_flags is-active "$unit" | grep --quiet activ; then
+elif run_systemctl is-active "$unit" | grep --quiet activ; then
   color="$active_color"
-elif systemctl $systemctl_flags is-failed "$unit" | grep --quiet failed; then
+elif run_systemctl is-failed "$unit" | grep --quiet failed; then
   color="$failed_color"
 fi
 
