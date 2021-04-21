@@ -30,19 +30,19 @@ label-maxlen=75
 
 [module/aurto]
 type = custom/script
-exec = ~/.config/polybar/systemd-unit.sh --unit update-aurto --icon ''
+exec = ~/.config/polybar/systemd-unit.sh --unit update-aurto --failed-icon ''
 click-left = sudo systemctl --no-block start update-aurto
-interval = 120
+interval = 600
 
 [module/backup]
 type = custom/script
-exec = ~/.config/polybar/systemd-unit.sh --user --unit backup --icon ''
+exec = ~/.config/polybar/systemd-unit.sh --user --unit backup --failed-icon '' --active-icon ''
 click-left = systemctl --user --no-block start backup
-interval = 60
+interval = 600
 
 [module/imap]
 type = custom/script
-exec = ~/.config/polybar/systemd-unit.sh --user --unit imap-sync --icon ''
+exec = ~/.config/polybar/systemd-unit.sh --user --unit imap-sync --failed-icon '' --active-icon ''
 click-left = systemctl --user --no-block start imap-sync
 interval = 60
 
