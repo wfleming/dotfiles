@@ -15,7 +15,7 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=8;2"
 
 modules-left = i3
 modules-center = window
-modules-right = aurto backup imap nordvpn cpu memory volume battery wireless-network clock
+modules-right = aurto backup imap nordvpn cpu memory volume battery wireless-network clock wake
 tray-position = right
 tray-padding = 2
 
@@ -98,5 +98,11 @@ click-right = pavucontrol &
 type = internal/date
 interval = 10
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+[module/wake]
+type = custom/script
+exec = ~/.config/polybar/wake.sh tail_status
+click-left = ~/.config/polybar/wake.sh toggle
+tail = true
 
 ; vim:ft=dosini
