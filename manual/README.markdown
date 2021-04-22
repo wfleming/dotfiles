@@ -11,11 +11,9 @@ how to conveniently keep synced or just haven't put in the work yet.
 
 https://github.com/tridactyl/tridactyl
 
-```
-# C-f pages, but I still prefer to have it open Find
-unbind C-f
-# TODO - unbind urlincrement commands and some weird buildkite stuff?
-```
+The native messenger's AUR package (firefox-tridactyl-native) should have gotten
+installed. With that & the firefox extension installed, the checked-in
+`tridactylrc` config should be used.
 
 ## IntelliJ IDEA/DataGrip
 

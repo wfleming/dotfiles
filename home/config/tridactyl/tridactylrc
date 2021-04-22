@@ -1,0 +1,20 @@
+# https://github.com/tridactyl/tridactyl
+
+# default bind of C-f to "scroll 1 page" is not something I ever use, and many
+# sites do their own stuff that makes the default binding of / for "find" not
+# work, so I'd really prefer to still be able to use C-f for find.
+unbind <C-f>
+
+# these increment/decrement numbers in the URL - I have accidentally triggered
+# this on occassion, but never once intentionally
+unbind <C-x>
+unbind <C-a>
+
+# simulate real clicks with xdotool in hint mode. I don't use this.
+unbind ;x
+unbind ;X
+
+# this is a goofy easter egg that rot13s the page
+unbind g?
+# another easter egg with the konami code
+unbind <AS-ArrowUp><AS-ArrowUp><AS-ArrowDown><AS-ArrowDown><AS-ArrowLeft><AS-ArrowRight><AS-ArrowLeft><AS-ArrowRight>ba
