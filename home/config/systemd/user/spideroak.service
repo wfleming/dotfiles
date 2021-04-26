@@ -5,7 +5,7 @@ Documentation=https://spideroak.com/faq/questions/67/how_can_i_use_spideroak_fro
 After=network.target local-fs.target
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 
 [Service]
 Type=simple
