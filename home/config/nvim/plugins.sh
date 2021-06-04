@@ -25,8 +25,6 @@ repos=(
   https://github.com/fatih/vim-go.git
   https://github.com/morhetz/gruvbox.git
   https://github.com/junegunn/fzf.vim.git
-  https://github.com/scrooloose/nerdtree.git
-  https://github.com/slim-template/vim-slim.git
   https://github.com/tpope/vim-commentary.git
   https://github.com/tpope/vim-fugitive.git
   https://github.com/tpope/vim-rhubarb.git

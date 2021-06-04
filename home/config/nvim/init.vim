@@ -20,10 +20,6 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-"" nerdtree
-let NERDTreeCaseSensitiveSort = 1
-nnoremap <leader>d :NERDTreeToggle \| :silent NERDTreeMirror<CR>
-
 "" vim.fzf
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
