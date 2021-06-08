@@ -38,7 +38,7 @@ aur_packages="${aur_packages} nordvpn-bin" # vpn
 aur_packages="${aur_packages} rbenv ruby-build" # ruby language management
 aur_packages="${aur_packages} redshift-git" # rest my eyes
 aur_packages="${aur_packages} slack-desktop" # the productivity abyss into which we all stare
-aur_packages="${aur_packages} spideroak-one dropbox" # sync services
+aur_packages="${aur_packages} dropbox" # sync services
 aur_packages="${aur_packages} spotify" # tunes
 aur_packages="${aur_packages} tfenv" # manage terraform
 aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-mono" # fonts
@@ -91,7 +91,6 @@ sudo systemctl enable \
   pac-gen-mirrorlist.timer \
   mnt-mother-data.automount
 systemctl --user enable \
-  spideroak \
   ssh-agent \
   imap-sync.timer \
   contacts-sync.timer \
@@ -103,8 +102,7 @@ sudo rm -r /installer
 echo "== Setup complete!"
 echo "==== You can shutdown and reboot into your installed system when ready."
 echo "==== You still need to do the following manually:"
-printf "\t- configure spideroak (run 'SpiderOakONE --setup=-')\n"
-printf "\t- import gpg keychain (documented in spideroak)\n"
+printf "\t- import gpg keychain (documented in keys dir)\n"
 printf "\t- configure dropbox (configure in GUI)\n"
 printf "\t- configure intellij/datagrip (vim plugin, font prefs)\n"
 printf "\t- setup pulse effects equalizer\n"

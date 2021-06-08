@@ -52,7 +52,6 @@ run_backup() {
     --exclude "$HOME/.rustup" \
     --exclude "$HOME/.zoom" \
     --exclude "$HOME/Dropbox" \
-    --exclude "$HOME/SpiderOak Hive" \
     --exclude "$HOME/mail" \
     --exclude "$HOME/src/custommade" \
     "$HOME"
