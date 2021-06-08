@@ -50,6 +50,9 @@ run_backup() {
     --exclude "$HOME/.mozilla" \
     --exclude "$HOME/.rbenv" \
     --exclude "$HOME/.rustup" \
+    --exclude "$HOME/.stack" \
+    --exclude "$HOME/.sbt" \
+    --exclude "$HOME/.scalac" \
     --exclude "$HOME/.zoom" \
     --exclude "$HOME/Dropbox" \
     --exclude "$HOME/mail" \
