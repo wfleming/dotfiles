@@ -30,7 +30,6 @@ pacstrap_pkgs="${pacstrap_pkgs} sway swaybg swaylock swayidle waybar mako grim o
 pacstrap_pkgs="${pacstrap_pkgs} pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr" # for screensharing in wayland
 pacstrap_pkgs="${pacstrap_pkgs} bluez bluez-utils" # bluetooth
 pacstrap_pkgs="${pacstrap_pkgs} dunst" # notifications
-pacstrap_pkgs="${pacstrap_pkgs} ntp" # accurate time, please
 pacstrap_pkgs="${pacstrap_pkgs} alsa-utils pulseaudio pavucontrol" # audio
 pacstrap_pkgs="${pacstrap_pkgs} pass pass-otp browserpass browserpass-firefox" # password management
 pacstrap_pkgs="${pacstrap_pkgs} neomutt elinks offlineimap msmtp" # mail

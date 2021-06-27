@@ -83,11 +83,11 @@ sudo systemctl enable \
   acpid \
   bluetooth \
   docker \
-  systemd-network \
   iwd \
+  systemd-network \
   systemd-resolved \
+  systemd-timesyncd \
   nordvpnd \
-  ntpd \
   pac-gen-mirrorlist.timer \
   mnt-mother-data.automount
 systemctl --user enable \
