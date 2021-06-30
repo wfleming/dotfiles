@@ -81,6 +81,7 @@ exec xautolock -time 5 -locker "$locker"
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
 #
 # Workspaces:
 #
@@ -132,7 +133,10 @@ exec xautolock -time 5 -locker "$locker"
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+p focus parent
+
+    # Move focus to the child container
+    bindsym $mod+c focus child
 #
 # Scratchpad:
 #
@@ -174,12 +178,13 @@ bindsym $mod+r mode "resize"
 # Moving workspaces between displays:
 #
 mode "move_workspace" {
- bindsym Up move workspace to output up
- bindsym Down move workspace to output down
- bindsym Left move workspace to output left
- bindsym Right move workspace to output right
+    bindsym Up move workspace to output up
+    bindsym Down move workspace to output down
+    bindsym Left move workspace to output left
+    bindsym Right move workspace to output right
 
- bindsym Escape mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
 }
 
 bindsym $mod+o mode "move_workspace"
