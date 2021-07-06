@@ -178,9 +178,13 @@ bindsym $mod+r mode "resize"
 # Moving workspaces between displays:
 #
 mode "move_workspace" {
+    bindsym $up move workspace to output up
     bindsym Up move workspace to output up
+    bindsym $down move workspace to output down
     bindsym Down move workspace to output down
+    bindsym $left move workspace to output left
     bindsym Left move workspace to output left
+    bindsym $right move workspace to output right
     bindsym Right move workspace to output right
 
     bindsym Escape mode "default"
