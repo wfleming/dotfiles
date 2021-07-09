@@ -20,6 +20,3 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "==== Set hostname"
 printf "%s\n" "${hostname}" > /etc/hostname
 printf "127.0.1.1\t${hostname}.localdomain ${hostname}" >> /etc/hosts
-
-echo "==== Set resolvconf nameservers"
-ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
