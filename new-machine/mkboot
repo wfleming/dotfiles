@@ -64,7 +64,7 @@ echo "== adding contents to iso filesystem"
 echo "== Building the ISO"
 [ -d ./work ] && rm -r ./work
 [ -d ./out ] && rm -r ./out
-mkarchiso ./profile
+mkarchiso -v ./profile
 
 new_iso_path=$(ls ./out/*.iso | head -1)
 echo "== Writing ${new_iso_path} to ${dev}"
