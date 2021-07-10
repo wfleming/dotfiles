@@ -12,6 +12,9 @@ sudo cp --archive $(find /installer/usr -mindepth 1 -maxdepth 1) /usr
 echo "==== Ensure ~ file ownership is correct"
 sudo chown --recursive "${username}:${username}" ~
 
+# All files embedded in the airootfs get the same permissions
+chmod 0600 ~/.ssh/*
+
 # aurto is rust, needs the toolchain configured for later
 echo "==== rustup - default toolchain"
 rustup default stable
