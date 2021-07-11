@@ -79,18 +79,18 @@ if grep System76 /sys/devices/virtual/dmi/id/sys_vendor; then
 fi
 
 echo "==== enabling systemd units"
-sudo systemctl enable \
+sudo systemctl enable --now \
   acpid \
   bluetooth \
   docker \
   iwd \
-  systemd-network \
+  systemd-networkd \
   systemd-resolved \
   systemd-timesyncd \
   nordvpnd \
   pac-gen-mirrorlist.timer \
   mnt-mother-data.automount
-systemctl --user enable \
+systemctl --user enable --now \
   ssh-agent \
   imap-sync.timer \
   contacts-sync.timer \
