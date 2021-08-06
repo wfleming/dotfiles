@@ -1,8 +1,5 @@
-""""""""" pathogen load & setup """""""""""""
-
 autocmd!
 let mapleader = "\<Space>"
-execute pathogen#infect()
 
 "" airline
 if !exists('g:airline_symbols')

@@ -8,10 +8,8 @@
 #   ./update.sh
 set -e
 
-cd ~/.config/
-
-vimdir="$PWD/nvim"
-bundledir="$vimdir/bundle"
+vimdir="$(dirname $0)"
+packstartdir="$vimdir/pack/packages/start"
 
 # URLS --------------------------------------------------------------------
 
@@ -35,7 +33,7 @@ repos=(
 
 # args: url
 repo_dest() {
-  dest="$bundledir/$(basename "$1" | sed -e 's/\.git$//')"
+  dest="$packstartdir/$(basename "$1" | sed -e 's/\.git$//')"
   printf "%s\n" "$dest"
 }
 
@@ -49,7 +47,7 @@ fi
 case "$mode" in
   # GIT -----------------------------------------------------------------
   repos|repo)
-    mkdir -p "$bundledir"
+    mkdir -p "$packstartdir"
     for url in "${repos[@]}"; do
       if [ -n "$2" ]; then
         if ! (printf "%s\n" "$url" | grep "$2" &>/dev/null) ; then
@@ -66,10 +64,10 @@ case "$mode" in
 
   # ORPHANS -------------------------------------------------------------
   orphans)
-    for d in $bundledir/*; do
+    for d in $packstartdir/*; do
       is_orphaned=1
       for url in "${repos[@]}"; do
-        if [ "$bundledir/$(basename "$d")" = "$(repo_dest "$url")" ]; then
+        if [ "$packstartdir/$(basename "$d")" = "$(repo_dest "$url")" ]; then
           is_orphaned=0
           break
         fi
