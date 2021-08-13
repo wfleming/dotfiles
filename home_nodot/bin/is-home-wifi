@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# Exit 0 if I'm on my home network, 1 otherwise
+set -e
+
+network="Pequod"
+iwctl station wlan0 show | grep --quiet "Connected network.*$network"
