@@ -1,2 +1,2 @@
 # on wifi changes, disable or enable NFS mounts
-ACTION=="add|change", SUBSYSTEM=="net", ENV{DEVTYPE}=="wlan", RUN+="/usr/local/bin/wifi-nfs.sh"
+ACTION=="add|change", SUBSYSTEM=="net", ENV{DEVTYPE}=="wlan", RUN+="/home/will/bin/runx /usr/local/bin/wifi-nfs.sh"

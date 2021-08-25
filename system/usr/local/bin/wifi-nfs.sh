@@ -11,10 +11,10 @@ home_network_is_connected() {
 check_network_after_delay() {
   sleep 5
   if home_network_is_connected; then
-    systemctl --no-block start mnt-mother-data.automount
+    sudo systemctl --no-block start mnt-mother-data.automount
   else
-    systemctl --no-block stop mnt-mother-data.automount
-    systemctl --no-block stop mnt-mother-data.mount
+    sudo systemctl --no-block stop mnt-mother-data.automount
+    sudo systemctl --no-block stop mnt-mother-data.mount
   fi
 }
 
@@ -28,11 +28,11 @@ check_network_after_delay() {
 # series, i.e. they block.
 #
 # So the solution is that when the script runs without any arguments, all it
-# does is nohup itself with a flag to tell it to "really" run the script logic.
+# does is background itself with a flag to tell it to "really" run the script logic.
 # When it "really" runs in a forked shell, it sleeps for a few seconds. This way
 # we can wait for a while without blocking other udev triggers.
 if [ "$1" = "-r" ]; then
   check_network_after_delay
 else
-  nohup "$0" -r
+  "$0" -r &
 fi
