@@ -51,5 +51,6 @@
   gpgsign = true
 [init]
   templatedir = ~/.config/git_template/
+  defaultBranch = main
 [url "git@github.com:"]
   insteadOf = gh:
