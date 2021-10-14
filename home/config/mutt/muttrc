@@ -7,6 +7,7 @@ mailboxes \
   "+personal/INBOX" \
   "+personal/Archive" \
   "+personal/Archive/transactional" \
+  "+personal/pome" \
   "+custommade/INBOX" \
   "+custommade/[Gmail].All Mail"
 
