@@ -55,13 +55,6 @@ sudo pacman -S --noconfirm ${aur_packages}
 # nordvpn authorizes via a group
 sudo usermod --append --groups nordvpn "$(whoami)"
 
-# official zoom package has some benefits over the aur package, but I'll need to
-# regularly re-fetch to upgrade
-echo "==== Install zoom"
-curl --output /tmp/zoom.pkg.tar.xz --location https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz
-aurto addpkg /tmp/zoom.pkg.tar.xz
-sudo pacman -S --noconfirm zoom # the other abyss into which we all stare
-
 echo "==== Install custom pkgbuilds"
 (
   cd ~/src

@@ -1,9 +1,0 @@
-#!/bin/sh
-set -e
-
-pkg_path=$(mktemp --suffix=".pkg.tar.xz")
-curl --output "$pkg_path" --location https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz
-echo y | aurto addpkg "$pkg_path"
-rm "$pkg_path"
-
-
