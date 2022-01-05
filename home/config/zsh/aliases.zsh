@@ -47,3 +47,19 @@ tophist() {
 genpass() {
   < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;
 }
+
+pass-store-backup() {
+  dir=${1:-passwords-backup}
+
+  printf "Backing up passwords to %s\n" "$dir"
+
+  IFS=$'\n' # passwords can have spaces in names (though I should probably avoid that)
+  for e in $(pass git ls-files | grep '\.gpg$'); do
+    ebase=${e%.*}
+    dest="$dir/${ebase}.txt"
+    mkdir -p "$(dirname "$dest")"
+    pass show "$ebase" > "$dest"
+  done
+
+  echo "Done."
+}
