@@ -11,13 +11,14 @@
   caa = commit -a --amend -C HEAD
   ctags = "!.git/hooks/ctags"
   d = diff
+  default-branch = !git remote show origin | grep 'HEAD branch' | cut -d' ' -f5
   fix = commit -a --fixup
-  fix-rebase = rebase -i --autosquash origin/master
+  fix-rebase = !git rebase -i --autosquash $(git default-branch)
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   o = checkout
   p = push
   opr = "!gh pr create"
-  pr-rebase = !git fetch && git rebase origin/master && git push --force
+  pr-rebase = !git fetch && git rebase origin/$(git default-branch) && git push --force
   st = status
   unassume = update-index --no-assume-unchanged
   unmerged-commits = log --not HEAD
