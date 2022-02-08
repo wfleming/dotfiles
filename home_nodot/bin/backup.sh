@@ -44,6 +44,7 @@ run_backup() {
     --exclude "$HOME/.config/Slack" \
     --exclude "$HOME/.config/chromium" \
     --exclude "$HOME/.config/nvim/tmp" \
+    --exclude "$HOME/.config/yarn" \
     --exclude "$HOME/.dropbox" \
     --exclude "$HOME/.dropbox-dist" \
     --exclude "$HOME/.m2" \
