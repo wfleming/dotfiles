@@ -13,7 +13,7 @@
   d = diff
   default-branch = !git remote show origin | grep 'HEAD branch' | cut -d' ' -f5
   fix = commit -a --fixup
-  fix-rebase = !git rebase -i --autosquash $(git default-branch)
+  fix-rebase = !git rebase -i --autosquash origin/$(git default-branch)
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   o = checkout
   p = push
