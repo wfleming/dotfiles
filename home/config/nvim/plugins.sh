@@ -49,7 +49,7 @@ case "$mode" in
   repos|repo)
     mkdir -p "$packstartdir"
     for url in "${repos[@]}"; do
-      if [ -n "$2" ]; then
+      if [ -n "$2" ]; then # support repo <name>: skip unless match
         if ! (printf "%s\n" "$url" | grep "$2" &>/dev/null) ; then
           continue
         fi
@@ -60,6 +60,11 @@ case "$mode" in
       git clone -q "$url" "$dest"
       rm -rf "$dest/.git"
     done
+    ;;
+
+  # GIT -----------------------------------------------------------------
+  docs)
+    find "$packstartdir" -name doc | xargs -I '{}' -n1 vim -c "helptags {}" -c quit
     ;;
 
   # ORPHANS -------------------------------------------------------------
@@ -87,7 +92,7 @@ case "$mode" in
   Usage:
 
     $0                  Clone all plugins
-    $0 repo <names>...  Clone specified plugins
+    $0 repo <name>...   Clone specified plugin
     $0 orphans          List orphaned plugins (installed but not listed)
 EOF
     ;;
