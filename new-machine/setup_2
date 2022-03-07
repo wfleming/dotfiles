@@ -32,7 +32,6 @@ gpg --search-keys aws-cli@amazon.com
 # these steps fail inside the chroot during setup, so we needed to reboot
 aur_packages="firefox-beta-bin firefox-tridactyl-native" # browsers
 aur_packages="${aur_packages} aws-cli-v2-bin" # aws cli v2 (main repos are still v1)
-aur_packages="${aur_packages} datagrip datagrip-jre" # jetbrains SQL IDE
 aur_packages="${aur_packages} gifcast" # my script for gif desktop recordings
 aur_packages="${aur_packages} nordvpn-bin" # vpn
 aur_packages="${aur_packages} rbenv ruby-build" # ruby language management
