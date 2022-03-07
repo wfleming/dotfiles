@@ -27,8 +27,8 @@
         "format": "{icon}",
         "tooltip": true,
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
     "tray": {
