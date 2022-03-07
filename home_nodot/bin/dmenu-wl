@@ -1,0 +1,4 @@
+#!/bin/sh
+# A dmenu shim for bemenu under Wayland, since passmenu hardcodes dmenu-wl there
+
+exec bemenu --no-overlap --ignorecase "$@"

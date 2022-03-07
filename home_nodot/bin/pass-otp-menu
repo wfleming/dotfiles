@@ -4,12 +4,18 @@
 set -e
 shopt -s nullglob globstar
 
+if [[ -n $WAYLAND_DISPLAY ]]; then
+  dmenu='bemenu --no-overlap --ignorecase -p otp'
+else
+  dmenu='rofi -dmenu -i -p otp'
+fi
+
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
 entry_files=( "$prefix"/**/*.gpg )
 entry_files=( "${entry_files[@]#"$prefix"/}" )
 entry_files=( "${entry_files[@]%.gpg}" )
 
-entry=$(printf '%s\n' "${entry_files[@]}" | rofi -dmenu -i "$@")
+entry=$(printf '%s\n' "${entry_files[@]}" | $dmenu "$@")
 
 [[ -n "$entry" ]] || exit
 
