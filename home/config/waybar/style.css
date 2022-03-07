@@ -64,15 +64,15 @@ window#waybar {
   padding: 0 10px;
 }
 
-#custom-aurto.unit-inactive #custom-backup.unit-inactive #custom-imap.unit-inactive {
+#custom-aurto.unit-inactive, #custom-backup.unit-inactive, #custom-imap.unit-inactive {
   color: #999;
 }
 
-#custom-aurto.unit-active #custom-backup.unit-active #custom-imap.unit-active {
+#custom-aurto.unit-active, #custom-backup.unit-active, #custom-imap.unit-active {
   color: #1a4;
 }
 
-#custom-aurto.unit-failed #custom-backup.unit-failed #custom-imap.unit-failed {
+#custom-aurto.unit-failed, #custom-backup.unit-failed, #custom-imap.unit-failed {
   color: #a00;
 }
 
