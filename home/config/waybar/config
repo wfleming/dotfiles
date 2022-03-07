@@ -7,6 +7,10 @@
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-center": ["sway/window"],
     "modules-right": [
+      "custom/aurto",
+      "custom/backup",
+      "custom/imap",
+      "custom/nordvpn",
       "cpu",
       "memory",
       "battery",
@@ -39,6 +43,31 @@
         "format": "{:%Y-%m-%d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
+    },
+    "custom/aurto": {
+      "exec": "~/.config/waybar/systemd-unit.sh --unit update-aurto --failed-icon '\uf187'",
+      "on-click": "sudo systemctl --no-block start update-aurto",
+      "return-type": "json",
+      "interval": 600
+    },
+    "custom/backup": {
+      "exec": "~/.config/waybar/systemd-unit.sh --user --unit backup --failed-icon '' --active-icon ''",
+      "on-click": "systemctl --user --no-block start backup",
+      "return-type": "json",
+      "interval": 600
+    },
+    "custom/imap": {
+      "exec": "~/.config/waybar/systemd-unit.sh --user --unit imap-sync --failed-icon '' --active-icon ''",
+      "on-click": "systemctl --user --no-block start imap-sync",
+      "return-type": "json",
+      "interval": 60
+    },
+    "custom/nordvpn": {
+      "exec": "~/.config/waybar/nordvpn.sh status",
+      "format": "VPN: {}",
+      "on-click": "~/.config/waybar/nordvpn.sh toggle",
+      "return-type": "json",
+      "interval": 10
     },
     "cpu": {
         "format": "{usage}% ",

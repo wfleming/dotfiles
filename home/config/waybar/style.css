@@ -1,6 +1,6 @@
 * {
   font-size: 10px;
-  font-family: monospace;
+  font-family: monospace FontAwesome6Free;
   padding: 0;
   min-height: 0;
 }
@@ -20,16 +20,8 @@ window#waybar {
   background: #1a1a1a;
 }
 
-#backlight,
-#battery,
-#clock,
-#cpu,
-#idle_inhibitor,
-#memory,
-#network,
-#pulseaudio,
-#tray,
-#workspaces {
+.modules-left,
+.modules-right {
   background: #1a1a1a;
 }
 
@@ -66,6 +58,10 @@ window#waybar {
   color: #b58900;
 }
 
+#custom-aurto,
+#custom-backup,
+#custom-imap,
+#custom-nordvpn,
 #backlight,
 #battery,
 #clock,
@@ -76,4 +72,24 @@ window#waybar {
 #pulseaudio,
 #tray {
   padding: 0 10px;
+}
+
+#custom-aurto.unit-inactive #custom-backup.unit-inactive #custom-imap.unit-inactive {
+  color: #999;
+}
+
+#custom-aurto.unit-active #custom-backup.unit-active #custom-imap.unit-active {
+  color: #1a4;
+}
+
+#custom-aurto.unit-failed #custom-backup.unit-failed #custom-imap.unit-failed {
+  color: #a00;
+}
+
+#custom-nordvpn.disconnected {
+  color: #999;
+}
+
+#custom-nordvpn.connected {
+  color: #1a4;
 }
