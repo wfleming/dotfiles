@@ -4,7 +4,7 @@
     "height": 20,
     "margin": 0,
 
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": [
       "custom/aurto",
@@ -31,8 +31,8 @@
         "format": "{icon}",
         "tooltip": true,
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "\u2615",
+            "deactivated": "\uf0f4"
         }
     },
     "tray": {

@@ -10,16 +10,6 @@ window#waybar {
   color: #fdf6e3;
 }
 
-#custom-right-arrow-dark,
-#custom-left-arrow-dark {
-  color: #1a1a1a;
-}
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-  color: #292b2e;
-  background: #1a1a1a;
-}
-
 .modules-left,
 .modules-right {
   background: #1a1a1a;
@@ -92,4 +82,12 @@ window#waybar {
 
 #custom-nordvpn.connected {
   color: #1a4;
+}
+
+.idle-inhibitor-activated {
+  color: #1a4;
+}
+
+.idle-inhibitor-deactivated {
+  color: #999;
 }
