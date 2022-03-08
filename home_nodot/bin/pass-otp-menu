@@ -5,7 +5,7 @@ set -e
 shopt -s nullglob globstar
 
 if [[ -n $WAYLAND_DISPLAY ]]; then
-  dmenu='bemenu --no-overlap --ignorecase -p otp'
+  dmenu='bemenu --ignorecase -p otp'
 else
   dmenu='rofi -dmenu -i -p otp'
 fi

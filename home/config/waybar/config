@@ -1,6 +1,6 @@
 // vim:ft=json
 {
-    "layer": "top",
+    "layer": "bottom",
     "height": 20,
     "margin": 0,
 
