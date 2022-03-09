@@ -43,10 +43,11 @@ aur_packages="${aur_packages} tfenv" # manage terraform
 aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-mono" # fonts
 aur_packages="${aur_packages} urlview" # for mutt with html emails
 aur_packages="${aur_packages} polybar" # bar using with i3
-aur_packages="${aur_packages} pulseaudio-modules-bt" # pulseaudio bluetooth codecs
 aur_packages="${aur_packages} mates-git" # contact cli management
 aur_packages="${aur_packages} ydotool-bin" # a nice prompt
 aur_packages="${aur_packages} zsh-pure-prompt" # a nice prompt
+aur_packages="${aur_packages} qpwgraph" # pipwire utility
+
 # aurto & aurutils get re-added here so they'll get upgraded naturally
 aurto init
 aurto add aurto aurutils ${aur_packages}
