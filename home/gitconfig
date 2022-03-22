@@ -29,7 +29,6 @@
   branch = auto
   ui = auto
 [core]
-  excludesfile = /Users/will/.gitignore
   editor = nvim
 [diff]
   # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
