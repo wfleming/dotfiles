@@ -11,6 +11,10 @@ application/xhtml+xml=firefox-beta-bin.desktop;
 application/x-extension-xhtml=firefox-beta-bin.desktop;
 application/x-extension-xht=firefox-beta-bin.desktop;
 image/jpeg=rawtherapee.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+application/pdf=gimp.desktop;libreoffice-draw.desktop;
+image/svg+xml=firefox-beta-bin.desktop;
+application/epub+zip=calibre-gui.desktop;
 
 [Default Applications]
 x-scheme-handler/http=firefox-beta-bin.desktop
@@ -29,3 +33,4 @@ image/jpeg=sxiv.desktop
 image/png=sxiv.desktop
 image/gif=sxiv-animate.desktop
 x-scheme-handler/msteams=teams.desktop
+inode/directory=thunar.desktop;
