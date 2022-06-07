@@ -63,3 +63,16 @@ pass-store-backup() {
 
   echo "Done."
 }
+
+pass-dump() {
+  echo "Will's passwords\n\n"
+  echo "-------------------\n"
+
+  IFS=$'\n' # passwords can have spaces in names (though I should probably avoid that)
+  for e in $(pass git ls-files | grep '\.gpg$'); do
+    ebase=${e%.*}
+    printf "Entry: %s\n\n" "$ebase"
+    pass show "$ebase"
+    echo "\n-------------------\n"
+  done
+}
