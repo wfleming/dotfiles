@@ -1,2 +1,0 @@
-# on monitor connect/disconnect, configure xrandr & polybar
-ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/will/bin/runx /home/will/bin/msu -s 1"
