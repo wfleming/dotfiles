@@ -1,3 +1,0 @@
-# Auto adjust screens when laptop lid opened or closed
-event=button/lid
-action=/home/will/bin/runx /home/will/bin/msu
