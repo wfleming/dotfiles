@@ -32,21 +32,18 @@ gpg --search-keys aws-cli@amazon.com
 # these steps fail inside the chroot during setup, so we needed to reboot
 aur_packages="firefox-beta-bin firefox-tridactyl-native" # browsers
 aur_packages="${aur_packages} aws-cli-v2-bin" # aws cli v2 (main repos are still v1)
-aur_packages="${aur_packages} gifcast" # my script for gif desktop recordings
 aur_packages="${aur_packages} nordvpn-bin" # vpn
 aur_packages="${aur_packages} rbenv ruby-build" # ruby language management
-aur_packages="${aur_packages} redshift-git" # rest my eyes
 aur_packages="${aur_packages} slack-desktop" # the productivity abyss into which we all stare
 aur_packages="${aur_packages} dropbox" # sync services
 aur_packages="${aur_packages} spotify" # tunes
 aur_packages="${aur_packages} tfenv" # manage terraform
 aur_packages="${aur_packages} ttf-mac-fonts otf-san-francisco otf-san-francisco-mono" # fonts
 aur_packages="${aur_packages} urlview" # for mutt with html emails
-aur_packages="${aur_packages} polybar" # bar using with i3
 aur_packages="${aur_packages} mates-git" # contact cli management
 aur_packages="${aur_packages} ydotool-bin" # a nice prompt
 aur_packages="${aur_packages} zsh-pure-prompt" # a nice prompt
-aur_packages="${aur_packages} qpwgraph" # pipwire utility
+aur_packages="${aur_packages} qpwgraph" # pipewire utility
 
 # aurto & aurutils get re-added here so they'll get upgraded naturally
 aurto init
