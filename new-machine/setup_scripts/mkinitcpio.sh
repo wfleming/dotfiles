@@ -48,18 +48,24 @@ kernel_opts="$kernel_opts resume=/dev/RootLvmVols/swap"
 #   switching between them and needing to address different interface names is a
 #   pain.
 kernel_opts="$kernel_opts net.ifnames=0"
-# - ThinkPads have some weird issue where the laptop screen will sporadically
+# - ThinkPads with Intel have some weird issue where the laptop screen will sporadically
 #   freeze - I believe it has something to do with panel self refresh (PSR)
 #   https://bbs.archlinux.org/viewtopic.php?id=246841&p=2
-if fgrep --quiet LENOVO /sys/devices/virtual/dmi/id/sys_vendor; then
+if fgrep --quiet LENOVO /sys/devices/virtual/dmi/id/sys_vendor && lscpu | grep Model | Grep Intel; then
   kernel_opts="$kernel_opts i915.enable_psr=0"
+fi
+
+if lscpu | grep Model | Grep Intel; then
+  ucode_pkg="intel-ucode"
+elif lscpu | grep Model | Grep AMD; then
+  ucode_pkg="amd-ucode"
 fi
 
 mkdir -p /boot/loader/entries
 cat <<EOF > /boot/loader/entries/arch.conf
 title   Arch Linux
 linux   /vmlinuz-linux
-initrd  /intel-ucode.img
+initrd  /${ucode_pkg}.img
 initrd  /initramfs-linux.img
 options $kernel_opts
 EOF
