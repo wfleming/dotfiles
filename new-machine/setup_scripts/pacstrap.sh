@@ -14,18 +14,17 @@ echo "==== running pacstrap to install base packages"
 
 pacstrap_pkgs="base base-devel linux linux-firmware" # the most basic basics
 pacstrap_pkgs="${pacstrap_pkgs} lvm2" # for encrypted root fs
-pacstrap_pkgs="${pacstrap_pkgs} intel-ucode xf86-video-intel intel-media-driver" # I'm presuming an intel CPU & GPU
 pacstrap_pkgs="${pacstrap_pkgs} man-db man-pages" # knowing how things work is handy
 pacstrap_pkgs="${pacstrap_pkgs} iwd dhcpcd iw" # networking - iwd preferred, iw useful for some debugging
 pacstrap_pkgs="${pacstrap_pkgs} openssh sudo" # ssh & sudo
 pacstrap_pkgs="${pacstrap_pkgs} netcat" # needed after restart for setup script
-pacstrap_pkgs="${pacstrap_pkgs} udisks2" # removal media in userland
+pacstrap_pkgs="${pacstrap_pkgs} udisks2" # removable media in userland
 pacstrap_pkgs="${pacstrap_pkgs} zsh zsh-completions tmux alacritty" # my preferred shell & terminal
-pacstrap_pkgs="${pacstrap_pkgs} thunar tumbler" # simple gui file manager for times when that's useful, tumbler is for thumbnails
 pacstrap_pkgs="${pacstrap_pkgs} ttf-hack ttf-droid noto-fonts-emoji otf-font-awesome" # fonts
 pacstrap_pkgs="${pacstrap_pkgs} pipewire pipewire-alsa pipewire-pulse wireplumber pavucontrol pamixer" # audio
 pacstrap_pkgs="${pacstrap_pkgs} bluez bluez-utils" # bluetooth
 pacstrap_pkgs="${pacstrap_pkgs} sway swaybg swaylock swayidle waybar mako grim otf-font-awesome slurp bemenu-wlroots bemenu brightnessctl wl-clipboard xorg-xserver-xwayland" # for wayland env
+pacstrap_pkgs="${pacstrap_pkgs} nemo" # simple gui file manager
 pacstrap_pkgs="${pacstrap_pkgs} xdg-desktop-portal xdg-desktop-portal-wlr" # for screensharing in wayland
 pacstrap_pkgs="${pacstrap_pkgs} pass pass-otp browserpass browserpass-firefox" # password management
 pacstrap_pkgs="${pacstrap_pkgs} neomutt elinks offlineimap msmtp" # mail
@@ -38,5 +37,11 @@ pacstrap_pkgs="${pacstrap_pkgs} calibre rawtherapee" # media management
 pacstrap_pkgs="${pacstrap_pkgs} wf-recorder" # screen recorder for wayland
 pacstrap_pkgs="${pacstrap_pkgs} vdirsyncer" # sync caldav contacts
 pacstrap_pkgs="${pacstrap_pkgs} nfs-utils" # I use a NAS at home
+
+if lscpu | grep Model | grep Intel; then
+  pacstrap_pkgs="${pacstrap_pkgs} intel-ucode intel-media-driver"
+elif lscpu | grep Model | grep AMD; then
+  pacstrap_pkgs="${pacstrap_pkgs} amd-ucode vulkan-radeon libva-mesa-driver"
+fi
 
 pacstrap /mnt ${pacstrap_pkgs}
