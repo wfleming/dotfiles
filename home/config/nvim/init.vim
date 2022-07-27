@@ -25,6 +25,9 @@ let g:fzf_preview_window = ['down:40%:hidden', 'ctrl-/']
 nnoremap <leader>f :GFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 
+"" vimiwiki/vim-zettel
+let g:vimwiki_list = [{'path': '~/Dropbox/notes', 'syntax': 'markdown', 'ext': '.md'}]
+
 """"""""" Stock VIM config """"""""""""""""""
 
 set termguicolors

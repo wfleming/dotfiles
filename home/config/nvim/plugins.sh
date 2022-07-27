@@ -27,13 +27,16 @@ repos=(
   https://github.com/tpope/vim-fugitive.git
   https://github.com/tpope/vim-rhubarb.git
   https://github.com/tpope/vim-surround.git
+  https://github.com/vimwiki/vimwiki.git
+  https://github.com/michal-h21/vim-zettel.git
+  https://github.com/neoclide/coc.nvim.git@release
 )
 
 # FUNCTIONS --------------------------------------------------------------
 
 # args: url
 repo_dest() {
-  dest="$packstartdir/$(basename "$1" | sed -e 's/\.git$//')"
+  dest="$packstartdir/$(basename "$1" | sed -e 's/\.git.*$//')"
   printf "%s\n" "$dest"
 }
 
@@ -54,10 +57,18 @@ case "$mode" in
           continue
         fi
       fi
+      other_args=""
+      # support url@branch to specify branch
+      if [[ "$url" == *"@"* ]]; then
+        real_url=$(printf "$url" | sed -e 's/\(.*\)@.*/\1/')
+        branch=$(printf "$url" | sed -e 's/.*@\(.*\)/\1/')
+        other_args="-b $branch"
+        url=$real_url
+      fi
       dest=$(repo_dest "$url")
       rm -rf "$dest"
       printf "Cloning %s into %s\n" "$url" "$dest"
-      git clone -q "$url" "$dest"
+      git clone --template=/usr/share/git-core/templates -q $other_args "$url" "$dest"
       rm -rf "$dest/.git"
     done
     ;;
