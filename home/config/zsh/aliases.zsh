@@ -76,3 +76,9 @@ pass-dump() {
     echo "\n-------------------\n"
   done
 }
+
+gifcast() {
+  coords=$(slurp)
+  out="$HOME/gifcast_$(date +%y%m%d%H%M%S).gif"
+  wf-recorder --geometry "$coords" --codec gif -f "$out"
+}
