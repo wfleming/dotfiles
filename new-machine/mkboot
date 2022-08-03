@@ -55,8 +55,8 @@ echo "== adding contents to iso filesystem"
   mkdir -p ./installer/home/.local/share/
   cp --archive /home/will/.local/share/wallpapers ./installer/home/.local/share/
 
-  mkdir -p installer/usr/lib/
-  cp --archive /usr/lib/iwd ./installer/lib/
+  mkdir -p installer/var/lib/
+  cp --archive /var/lib/iwd ./installer/var/lib/
 )
 
 # 3. build the iso

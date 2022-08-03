@@ -8,6 +8,12 @@ a current box that aren't easy/appropriate to keep in dotfiles
 Because a new machine is an opportunity to clean up and document/script
 configuration, and I like to futz around.
 
+## Building the install image
+
+```
+> sudo ./mkboot /dev/usb_to_write
+```
+
 ## Testing the disk image in a VM
 
 ```
@@ -38,5 +44,5 @@ https://xapax.github.io/blog/2017/05/09/sharing-files-kvm.html
 
 ```
 mkdir /nmshare
-mount  -t 9p -o trans=virtio /nmshare /nmshare
+mount -t 9p -o trans=virtio /nmshare /nmshare
 ```
