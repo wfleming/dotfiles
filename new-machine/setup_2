@@ -53,14 +53,6 @@ sudo pacman -S --noconfirm ${aur_packages}
 # nordvpn authorizes via a group
 sudo usermod --append --groups nordvpn "$(whoami)"
 
-echo "==== Install custom pkgbuilds"
-(
-  cd ~/src
-  git clone "${extra_pkgbuilds_url}" pkgbuilds
-  cd ~/src/pkgbuilds/msmtp-oauth2
-  makepkg --syncdeps --rmdeps --clean --install --noconfirm
-)
-
 echo "==== enabling systemd units"
 sudo systemctl enable --now nordvpnd.socket
 systemctl --user enable --now \
