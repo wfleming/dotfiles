@@ -35,10 +35,11 @@ echo "== adding contents to iso filesystem"
   echo "==== copying ~ files"
   mkdir -p installer/home
   cp --archive \
-    /home/will/.ssh \
     /home/will/.aws \
     /home/will/.docker \
+    /home/will/.mozilla \
     /home/will/.password-store \
+    /home/will/.ssh \
     ./installer/home/
 
   mkdir -p ./installer/home/.config/
