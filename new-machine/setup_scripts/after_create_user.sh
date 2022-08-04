@@ -36,17 +36,6 @@ echo "==== Install vim plugins"
   cd ~/.config/nvim
   ./plugins.sh
 )
-# I tend to keep these two symlinked to local checkouts since I wrote them
-(
-  cd ~/src/
-  git clone git@github.com:wfleming/vim-colors-meh.git
-  ln -s ~/src/vim-colors-meh ~/.config/nvim/bundle/vim-colors-meh
-)
-(
-  cd ~/src/
-  git clone git@github.com:wfleming/vim-codeclimate.git
-  ln -s ~/src/vim-codeclimate ~/.config/nvim/bundle/vim-codeclimate
-)
 
 # https://wiki.archlinux.org/index.php/Dropbox#Prevent_automatic_updates
 echo "==== Making ~/.dropbox-dist readonly"
