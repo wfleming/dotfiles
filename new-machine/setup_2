@@ -20,7 +20,7 @@ clone_and_install_aur_repo() {
     makepkg --syncdeps --rmdeps --clean --install --noconfirm
   )
 }
-gpg --recv-keys DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A # key for aurutils author
+gpg --keyserver keys.openpgp.org --recv-keys DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A # key for aurutils author
 clone_and_install_aur_repo "aurutils"
 clone_and_install_aur_repo "aurto"
 
