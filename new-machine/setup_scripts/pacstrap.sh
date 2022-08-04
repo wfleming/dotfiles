@@ -25,6 +25,7 @@ pacstrap_pkgs="${pacstrap_pkgs} pipewire pipewire-alsa pipewire-pulse wireplumbe
 pacstrap_pkgs="${pacstrap_pkgs} bluez bluez-utils" # bluetooth
 pacstrap_pkgs="${pacstrap_pkgs} sway swaybg swaylock swayidle waybar mako grim otf-font-awesome slurp bemenu-wlroots bemenu brightnessctl wl-clipboard xorg-xwayland" # for wayland env
 pacstrap_pkgs="${pacstrap_pkgs} nemo" # simple gui file manager
+pacstrap_pkgs="${pacstrap_pkgs} gammastep" # flux/redshift-esque night color temp for wayland
 pacstrap_pkgs="${pacstrap_pkgs} xdg-desktop-portal xdg-desktop-portal-wlr" # for screensharing in wayland
 pacstrap_pkgs="${pacstrap_pkgs} pass pass-otp browserpass browserpass-firefox" # password management
 pacstrap_pkgs="${pacstrap_pkgs} neomutt elinks offlineimap msmtp" # mail
