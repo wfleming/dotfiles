@@ -37,5 +37,10 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "== Chrooting into new filesystem for further setup"
 
 # copy /installer files so it can be accessed after chroot
-cp --archive -r /installer /mnt/installer
+cp --archive /installer /mnt/installer
 arch-chroot /mnt "${setup_base_dir}/setup_scripts/after_chroot.sh"
+
+echo "== Symlink systemd-resolve resolv.conf"
+# https://wiki.archlinux.org/title/Systemd-resolved#DNS
+rm /mnt/etc/resolv.conf
+ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
