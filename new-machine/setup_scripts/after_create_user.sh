@@ -4,6 +4,8 @@ set -e
 setup_base_dir=$(dirname $0)
 . "${setup_base_dir}/shared.sh"
 
+export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519"
+
 echo "==== copying private/local dotfiles from ${setup_base_dir}"
 cd ~
 sudo cp --archive $(find /installer/home -mindepth 1 -maxdepth 1) ~/
