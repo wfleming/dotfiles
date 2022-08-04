@@ -56,11 +56,13 @@ sudo usermod --append --groups nordvpn "$(whoami)"
 echo "==== enabling systemd units"
 sudo systemctl enable --now nordvpnd.socket
 systemctl --user enable --now \
-  dropbox \
   ssh-agent \
   imap-sync.timer \
   contacts-sync.timer \
   backup.timer
+mkdir -p ~/.config/systemd/user/sway-session.target.wants
+ln -s /usr/lib/systemd/user/dropbox.service ~/.config/systemd/user/sway-session.target.wants/dropbox.service
+ln -s /usr/lib/systemd/user/gammastep.service ~/.config/systemd/user/sway-session.target.wants/gammastep.service
 
 echo "== cleanup"
 sudo rm -r /installer
