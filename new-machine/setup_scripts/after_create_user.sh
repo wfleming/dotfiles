@@ -52,6 +52,17 @@ echo "==== Install vim plugins"
 echo "==== Making ~/.dropbox-dist readonly"
 install -dm0 ~/.dropbox-dist
 
+echo "==== enabling systemd units"
+sudo systemctl enable --now \
+  bluetooth \
+  docker.socket \
+  iwd \
+  mnt-mother-data.automount \
+  pac-gen-mirrorlist.timer \
+  systemd-networkd \
+  systemd-resolved \
+  systemd-timesyncd
+
 echo "==== User account created"
 echo "     You need to reboot to continue:"
 echo "     After rebooting, log in as ${username} and then run /installer/setup_2"

@@ -62,17 +62,9 @@ echo "==== Install custom pkgbuilds"
 )
 
 echo "==== enabling systemd units"
-sudo systemctl enable --now \
-  bluetooth \
-  docker.socket \
-  iwd \
-  mnt-mother-data.automount \
-  nordvpnd.socket \
-  pac-gen-mirrorlist.timer \
-  systemd-networkd \
-  systemd-resolved \
-  systemd-timesyncd
+sudo systemctl enable --now nordvpnd.socket
 systemctl --user enable --now \
+  dropbox \
   ssh-agent \
   imap-sync.timer \
   contacts-sync.timer \
