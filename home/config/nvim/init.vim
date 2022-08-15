@@ -22,7 +22,7 @@ let g:go_highlight_build_constraints = 1
 " Fuzzy select one of those. Open the selected file with :e.
 let g:fzf_buffers_jump = 1
 let g:fzf_preview_window = ['down:40%:hidden', 'ctrl-/']
-nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>f :GFiles --cached --modified --others --exclude-standard<cr>
 nnoremap <leader>b :Buffers<cr>
 
 "" vimiwiki/vim-zettel
