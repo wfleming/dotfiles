@@ -25,7 +25,7 @@ let g:fzf_preview_window = ['down:40%:hidden', 'ctrl-/']
 nnoremap <leader>f :GFiles --cached --modified --others --exclude-standard<cr>
 nnoremap <leader>b :Buffers<cr>
 
-"" vimiwiki/vim-zettel
+"" vimiwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/notes', 'syntax': 'markdown', 'ext': '.md'}]
 
 """"""""" Stock VIM config """"""""""""""""""
@@ -106,6 +106,25 @@ function! StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 autocmd BufWritePre * :call StripTrailingWhitespaces()
+
+" Use FZF to open a wiki page by name or create a new one
+function! OpenOrCreateNoteCallback(lines)
+  " if the query found a match, there are 2 lines (query, then match)
+  " if there was no match, there's only 1 line (query)
+
+  let root = g:vimwiki_list[0]["path"]
+  if len(a:lines) > 1
+    let target = root . "/" . a:lines[1]
+  else
+    let target = root . "/" . a:lines[0]
+    if target !~ "\.md$" "Add an extension if I didn't type one
+      let target = target . ".md"
+    endif
+  end
+  execute "edit" fnameescape(target)
+endfunction
+command -bang OpenOrCreateNote call fzf#vim#files(g:vimwiki_list[0]["path"], {"sinklist": funcref("OpenOrCreateNoteCallback"), "options": ["--print-query"]})
+nnoremap <Leader>wo :OpenOrCreateNote<CR>
 
 """"""""""" File-type settings """"""""""""""""
 
