@@ -20,7 +20,6 @@ repos=(
   https://github.com/JuliaEditorSupport/julia-vim.git
   https://github.com/bling/vim-airline.git
   https://github.com/elixir-lang/vim-elixir.git
-  https://github.com/fatih/vim-go.git
   https://github.com/morhetz/gruvbox.git
   https://github.com/junegunn/fzf.vim.git
   https://github.com/tpope/vim-commentary.git
