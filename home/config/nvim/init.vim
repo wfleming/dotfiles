@@ -110,7 +110,6 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 """"""""""" File-type settings """"""""""""""""
 
 augroup vimrc
-  autocmd FileType go setlocal noexpandtab tabstop=8 shiftwidth=8
   autocmd FileType javascript let b:codeclimateflags='--engine eslint'
   autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8
   autocmd FileType ruby let b:codeclimateflags='--engine rubocop'
