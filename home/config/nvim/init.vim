@@ -83,9 +83,6 @@ tnoremap <Leader>e <C-\><C-n>
 
 """"""""""" Commands, etc. """""""""""""""""
 
-" Code Climate CLI
-nmap <Leader>aa :CodeClimateAnalyzeCurrentFile<CR>
-
 "" Tab behavior: indent at beginning of line, otherwise autocomplete
 function! InsertTabWrapper()
     let col = col('.') - 1
@@ -129,10 +126,7 @@ nnoremap <Leader>wo :OpenOrCreateNote<CR>
 """"""""""" File-type settings """"""""""""""""
 
 augroup vimrc
-  autocmd FileType javascript let b:codeclimateflags='--engine eslint'
   autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8
-  autocmd FileType ruby let b:codeclimateflags='--engine rubocop'
-  autocmd FileType scss let b:codeclimateflags='--engine scss-lint'
 augroup END
 
 augroup mutt
