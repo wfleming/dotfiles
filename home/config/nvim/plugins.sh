@@ -27,7 +27,6 @@ repos=(
   https://github.com/tpope/vim-rhubarb.git
   https://github.com/tpope/vim-surround.git
   https://github.com/vimwiki/vimwiki.git
-  https://github.com/michal-h21/vim-zettel.git
   https://github.com/neoclide/coc.nvim.git@release
 )
 
