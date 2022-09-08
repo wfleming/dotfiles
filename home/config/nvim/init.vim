@@ -79,7 +79,7 @@ set tags+=.git/tags
 """"""""""" NeoVim term settings """""""""""""""""""
 
 "" space-e to exit insert mode of term
-tnoremap <Leader>e <C-\><C-c>
+tnoremap <Leader>e <C-\><C-n>
 
 """"""""""" Commands, etc. """""""""""""""""
 
