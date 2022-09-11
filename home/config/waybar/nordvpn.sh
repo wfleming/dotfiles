@@ -5,7 +5,7 @@ set -e
 network_icon="\uf0ec"
 
 is_connected() {
-  nordvpn status | fgrep --quiet "Status: Connected"
+  nordvpn status | grep --fixed-strings --quiet "Status: Connected"
 }
 
 echo_status() {

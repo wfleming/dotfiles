@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 def all_image_names
-  `docker images | fgrep codeclimate`.split("\n").map { |l| l.split[0] }
+  `docker images | grep --fixed-strings codeclimate`.split("\n").map { |l| l.split[0] }
 end
 
 def build_tags(image)

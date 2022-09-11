@@ -9,7 +9,7 @@ echo "==== mkinitcpio"
 mkinitcpio_rm_hook() {
   hook="$1"
 
-  if ! fgrep --quiet "${hook}" /etc/mkinitcpio.conf; then
+  if ! grep --fixed-strings --quiet "${hook}" /etc/mkinitcpio.conf; then
     sed -e "s/^HOOKS=\(.*\) ${hook} \(.*\)/HOOKS=\1 \2/" /etc/mkinitcpio.conf > /etc/mkinitcpio.conf.new
     mv /etc/mkinitcpio.conf{.new,}
   fi
@@ -18,7 +18,7 @@ mkinitcpio_add_hook() {
   after_hook="$1"
   add_hook="$2"
 
-  if ! fgrep --quiet "${add_hook}" /etc/mkinitcpio.conf; then
+  if ! grep --fixed-strings --quiet "${add_hook}" /etc/mkinitcpio.conf; then
     sed -e "s/^HOOKS=\(.*\) ${after_hook} \(.*\)/HOOKS=\1 ${after_hook} ${add_hook} \2/" /etc/mkinitcpio.conf > /etc/mkinitcpio.conf.new
     mv /etc/mkinitcpio.conf{.new,}
   fi
@@ -51,7 +51,7 @@ kernel_opts="$kernel_opts net.ifnames=0"
 # - ThinkPads with Intel have some weird issue where the laptop screen will sporadically
 #   freeze - I believe it has something to do with panel self refresh (PSR)
 #   https://bbs.archlinux.org/viewtopic.php?id=246841&p=2
-if fgrep --quiet LENOVO /sys/devices/virtual/dmi/id/sys_vendor && lscpu | grep Model | grep Intel; then
+if grep --fixed-strings --quiet LENOVO /sys/devices/virtual/dmi/id/sys_vendor && lscpu | grep Model | grep Intel; then
   kernel_opts="$kernel_opts i915.enable_psr=0"
 fi
 
