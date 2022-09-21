@@ -10,13 +10,6 @@ let g:airline_symbols.linenr = ''
 let g:airline_extensions = []
 let g:airline_extensions = ['branch']
 
-"" vim-go
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
 "" vim.fzf
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
