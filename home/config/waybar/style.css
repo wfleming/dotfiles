@@ -43,8 +43,24 @@ button.text-button:hover {
 #battery {
   color: #859900;
 }
-#disk {
-  color: #b58900;
+#battery.warning:not(.charging) {
+  color: #000000;
+  background-color: #ffff19;
+}
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+#battery.critical:not(.charging) {
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #custom-aurto,
