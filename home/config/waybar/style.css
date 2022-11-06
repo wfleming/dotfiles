@@ -15,11 +15,6 @@ window#waybar {
   background: #1a1a1a;
 }
 
-#workspaces button {
-  padding: 0 2px;
-  color: #fdf6e3;
-}
-
 button.text-button {
   color: #fdf6e3;
 }
@@ -29,6 +24,16 @@ button.text-button:hover {
   text-shadow: inherit;
   background: #292b2e;
   border: #292b2e;
+}
+
+
+#workspaces button {
+  padding: 0 2px;
+  color: #fdf6e3;
+}
+
+#workspaces button.focused {
+  color: #268bd2;
 }
 
 #pulseaudio {
