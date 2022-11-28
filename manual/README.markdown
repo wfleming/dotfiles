@@ -14,10 +14,3 @@ https://github.com/tridactyl/tridactyl
 The native messenger's AUR package (firefox-tridactyl-native) should have gotten
 installed. With that & the firefox extension installed, the checked-in
 `tridactylrc` config should be used.
-
-## NordVPN
-
-```
-# use wireguard instead of openvpn
-nordvpn set technology nordlynx
-```

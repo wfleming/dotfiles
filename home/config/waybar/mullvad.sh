@@ -5,7 +5,7 @@ set -e
 network_icon="\uf0ec"
 
 is_connected() {
-  nordvpn status | grep --fixed-strings --quiet "Status: Connected"
+  mullvad status | grep --fixed-strings --quiet "Connected"
 }
 
 echo_status() {
@@ -22,9 +22,9 @@ echo_status() {
 
 toggle_vpn() {
   if is_connected; then
-    nordvpn disconnect
+    mullvad disconnect
   else
-    nordvpn connect
+    mullvad connect
   fi
 }
 

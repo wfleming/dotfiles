@@ -10,7 +10,7 @@
       "custom/aurto",
       "custom/backup",
       "custom/imap",
-      "custom/nordvpn",
+      "custom/vpn",
       "cpu",
       "memory",
       "battery",
@@ -62,10 +62,10 @@
       "return-type": "json",
       "interval": 60
     },
-    "custom/nordvpn": {
-      "exec": "~/.config/waybar/nordvpn.sh status",
+    "custom/vpn": {
+      "exec": "~/.config/waybar/mullvad.sh status",
       "format": "VPN: {}",
-      "on-click": "~/.config/waybar/nordvpn.sh toggle",
+      "on-click": "~/.config/waybar/mullvad.sh toggle",
       "return-type": "json",
       "interval": 10
     },

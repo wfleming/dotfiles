@@ -71,7 +71,7 @@ button.text-button:hover {
 #custom-aurto,
 #custom-backup,
 #custom-imap,
-#custom-nordvpn,
+#custom-vpn,
 #backlight,
 #battery,
 #clock,
@@ -96,11 +96,11 @@ button.text-button:hover {
   color: #a00;
 }
 
-#custom-nordvpn.disconnected {
+#custom-vpn.disconnected {
   color: #999;
 }
 
-#custom-nordvpn.connected {
+#custom-vpn.connected {
   color: #1a4;
 }
 

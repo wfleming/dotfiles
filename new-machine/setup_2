@@ -29,10 +29,11 @@ echo "     You may see PGP failures: if you do, run gpg --recv-keys KEY_ID and r
 gpg --search-keys tux@spotify.com
 gpg --search-keys linux@dropbox.com
 gpg --search-keys aws-cli@amazon.com
+gpg --recv-keys A26581F219C8314C # mullvad code signing <admin@mullvad.net>
 # these steps fail inside the chroot during setup, so we needed to reboot
 aur_packages="firefox-beta-bin firefox-tridactyl-native" # browsers
 aur_packages="${aur_packages} aws-cli-v2-bin" # aws cli v2 (main repos are still v1)
-aur_packages="${aur_packages} nordvpn-bin" # vpn
+aur_packages="${aur_packages} mullvad-vpn-bin" # vpn
 aur_packages="${aur_packages} rbenv ruby-build" # ruby language management
 aur_packages="${aur_packages} slack-desktop" # the productivity abyss into which we all stare
 aur_packages="${aur_packages} dropbox" # sync services
@@ -50,11 +51,11 @@ aurto init
 aurto add aurto aurutils ${aur_packages}
 sudo pacman -S --noconfirm ${aur_packages}
 
-# nordvpn authorizes via a group
-sudo usermod --append --groups nordvpn "$(whoami)"
+# mullvad config
+mullvad relay set tunnel-protocol wireguard
 
 echo "==== enabling systemd units"
-sudo systemctl enable --now nordvpnd.socket
+sudo systemctl enable mullvad-daemon
 systemctl --user enable --now \
   ssh-agent \
   imap-sync.timer \
@@ -75,4 +76,5 @@ printf "\t- import gpg keychain (documented in keys dir)\n"
 printf "\t- configure dropbox (configure in GUI)\n"
 printf "\t- run 'vdirsyncer discover fastmail_contacts' to prep contact syncing\n"
 printf "\t- test gpg-agent/ssh, test imap-sync systemd unit\n"
+printf "\t- mullvad account login\n"
 printf "\t- re-clone work git repos, copy over env for those\n"
