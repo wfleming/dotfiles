@@ -17,7 +17,6 @@ packstartdir="$vimdir/pack/packages/start"
 # don't work.
 repos=(
   https://github.com/ap/vim-css-color.git
-  https://github.com/JuliaEditorSupport/julia-vim.git
   https://github.com/bling/vim-airline.git
   https://github.com/elixir-lang/vim-elixir.git
   https://github.com/morhetz/gruvbox.git
