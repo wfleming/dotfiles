@@ -43,7 +43,7 @@ pacstrap_pkgs="${pacstrap_pkgs} restic" # backups
 if lscpu | grep Model | grep Intel; then
   pacstrap_pkgs="${pacstrap_pkgs} intel-ucode intel-media-driver"
 elif lscpu | grep Model | grep AMD; then
-  pacstrap_pkgs="${pacstrap_pkgs} amd-ucode vulkan-radeon libva-mesa-driver"
+  pacstrap_pkgs="${pacstrap_pkgs} amd-ucode vulkan-radeon mesa-vdpau vdpauinfo"
 fi
 
 pacstrap /mnt ${pacstrap_pkgs}
