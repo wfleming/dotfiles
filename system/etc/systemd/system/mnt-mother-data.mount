@@ -3,7 +3,7 @@ Description=The mother NAS at home
 After=network-online.target
 
 [Mount]
-What=mother.local:/volume1/data
+What=mother.local:/volume2/data2
 Where=/mnt/mother/data
 Type=nfs
 Options=nofail,noatime,nolock,tcp,soft
