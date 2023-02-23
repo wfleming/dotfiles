@@ -37,8 +37,8 @@ pacstrap_pkgs="${pacstrap_pkgs} calibre rawtherapee" # media management
 pacstrap_pkgs="${pacstrap_pkgs} wf-recorder" # screen recorder for wayland
 pacstrap_pkgs="${pacstrap_pkgs} vdirsyncer" # sync caldav contacts
 pacstrap_pkgs="${pacstrap_pkgs} nfs-utils" # I use a NAS at home
-pacstrap_pkgs="gtk2" # gnupg pinentry use gtk if avail, then falls back to curses. qt version exists, but is not used by default.
-pacstrap_pkgs="restic" # backups
+pacstrap_pkgs="${pacstrap_pkgs} gtk2" # gnupg pinentry use gtk if avail, then falls back to curses. qt version exists, but is not used by default.
+pacstrap_pkgs="${pacstrap_pkgs} restic" # backups
 
 if lscpu | grep Model | grep Intel; then
   pacstrap_pkgs="${pacstrap_pkgs} intel-ucode intel-media-driver"
