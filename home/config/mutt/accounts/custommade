@@ -7,9 +7,6 @@ set mbox = "+custommade/[Gmail].All Mail"
 set postponed = "+custommade/[Gmail].Drafts"
 set trash = "+custommade/[Gmail].Trash"
 
-#set sig_dashes = yes
-#set signature = ~/.config/mutt/signatures/codeclimate
-
 macro index ,c "<change-folder>+personal/INBOX<enter>" "change accounts"
 
 macro index,pager ,a \

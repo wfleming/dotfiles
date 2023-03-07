@@ -4,7 +4,6 @@ alias v=vim
 alias ls='ls -F --color=auto'
 alias ll='ls -AFhl'
 
-alias cca='codeclimate analyze'
 alias pacman-rm-orphans='sudo pacman -Rsn $(pacman -Qqdt)'
 
 ####### FUNCTIONS ##########
