@@ -59,6 +59,12 @@ if lscpu | grep Model | grep Intel; then
   ucode_pkg="intel-ucode"
 elif lscpu | grep Model | grep AMD; then
   ucode_pkg="amd-ucode"
+  # https://wiki.archlinux.org/title/Lenovo_ThinkPad_T14_(AMD)_Gen_2#AMD_P-State
+  kernel_opts="$kernel_opts amd_pstate=passive"
+  cat <<EOF > /etc/modprobe.d/blacklist-acpi_cpufreq.conf
+# https://wiki.archlinux.org/title/Lenovo_ThinkPad_T14_(AMD)_Gen_2
+blacklist acpi_cpufreq
+EOF
 fi
 
 mkdir -p /boot/loader/entries
