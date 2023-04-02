@@ -10,14 +10,14 @@ destination_url() {
   BUCKET="$(pass backblaze.com/duplicity/bucket)"
   SUBDIR="/restic/$(cat /etc/hostname)"
 
-  printf "b2:${BUCKET}:${SUBDIR}\n"
+  printf "s3:${BUCKET}${SUBDIR}\n"
 }
 
 run_restic() {
   KEY_ID=$(pass backblaze.com/duplicity/key-id)
   KEY_SECRET=$(pass backblaze.com/duplicity/app-key)
 
-  B2_ACCOUNT_ID="$KEY_ID" B2_ACCOUNT_KEY="$KEY_SECRET" restic \
+  AWS_ACCESS_KEY_ID="$KEY_ID" AWS_SECRET_ACCESS_KEY="$KEY_SECRET" restic \
     --repo $(destination_url) \
     --password-command "pass restic-passphrase" \
     "$@"
