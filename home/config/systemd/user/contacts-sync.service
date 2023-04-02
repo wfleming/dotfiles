@@ -3,9 +3,9 @@ Description=Keep local contacts up to date
 After=network.target network-online.target dbus.socket
 
 [Service]
-Type=oneshot
+Type=exec
 ExecStart=/usr/bin/env %h/bin/sync-contacts
-TimeoutStartSec=30min
+RuntimeMaxSec=30min
 
 [Install]
 WantedBy=default.target
