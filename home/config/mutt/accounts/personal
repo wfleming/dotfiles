@@ -14,12 +14,25 @@ alternates "will@jwock.org" "wmf22@cornell.edu" "will.fleming@gmail.com"
 
 macro index ,c "<change-folder>+custommade/INBOX<enter>" "change accounts"
 
+# A note of explanation on these macros: the general idea is to have easy
+# shortcuts for sending either tagged or currently-selected message(s) to
+# frequent archive destinations. When doing that I want to strip any "new
+# message" flags (effectively mark them as read). Normally doing a command would
+# advance the selection to the next message, that's what resolve controls.
+# So what these are each doing is effectively:
+# 1. turn off resolve
+# 2. remove message flags (effectively mark as read)
+# 3. turn resolve back on so selection will advance after final command
+# 4. save the message to its destination
+
 macro index,pager ,a \
-  "<tag-prefix><save-message>+personal/Archive<enter>" \
+  ": unset resolve\n;Wn;Wo;: set resolve\n;s=personal/Archive\n" \
   "archive message"
+
 macro index,pager ,t \
-  "<tag-prefix><save-message>+personal/Archive/transactional<enter>" \
+  ": unset resolve\n;Wn;Wo;: set resolve\n;s=personal/Archive/transactional\n" \
   "archive transactional"
+
 macro index,pager ,s \
-  "<tag-prefix><save-message>+personal/Learn<quote-char> Spam<enter>" \
+  ": unset resolve\n;Wn;Wo;: set resolve\n;s=personal/Learn<quote-char> Spam\n" \
   "mark as spam"
