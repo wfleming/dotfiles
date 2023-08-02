@@ -45,6 +45,7 @@ aur_packages="${aur_packages} mates-git" # contact cli management
 aur_packages="${aur_packages} ydotool-bin" # xdotool but for wayland
 aur_packages="${aur_packages} zsh-pure-prompt" # a nice prompt
 aur_packages="${aur_packages} qpwgraph" # pipewire utility
+aur_packages="${aur_packages} otf-intel-one-mono ttf-intel-one-mono" # intel mono font
 
 # aurto & aurutils get re-added here so they'll get upgraded naturally
 aurto init
