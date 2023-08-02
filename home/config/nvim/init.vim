@@ -48,7 +48,7 @@ set ruler
 
 "" Whitespace
 set list listchars=trail:.,tab:>-,extends:>,precedes:<
-set textwidth=80 colorcolumn=+1 formatoptions-=t
+set textwidth=100 colorcolumn=+1 formatoptions-=t
 set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces
 set expandtab                   " use spaces, not tabs
