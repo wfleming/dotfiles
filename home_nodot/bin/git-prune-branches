@@ -29,7 +29,6 @@ done
 
 # harder cases - rebases or cherry-picks or what have you
 git branch | grep --invert-match "^\* $default_branch\$" | while read branch; do
-  # echo "WFDEBUG iteration $branch"
   # https://stackoverflow.com/questions/61398539/list-branches-which-have-been-merged-by-rebase/74852078#74852078
   if ! git range-diff --right-only "origin/$default_branch...$branch" | grep --quiet -- "---- > "; then
     echo "$branch is fully contained in $default_branch, deleting (pointed at $(git rev-parse --short $branch))"
