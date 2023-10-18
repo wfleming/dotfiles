@@ -13,7 +13,7 @@ feasible. A brief overview of the key tools I use:
 
 - [sway][] for my window manager. Tiling window managers are the only true window
   managers.
-- I spend most of my time in [tmux][] sessions in [Alacritty][].
+- I spend most of my time in [tmux][] sessions in [foot][].
 - My text editor is [Neovim][].
 - I read & write mail with [NeoMutt][], use [OfflineIMAP][] to sync mail, and
   send mail with [msmtp][]. (I did say I preferred terminal-based tools.)
@@ -22,7 +22,7 @@ feasible. A brief overview of the key tools I use:
 [sway]: https://github.com/swaywm/sway
 [Neovim]: https://neovim.io/
 [tmux]: https://github.com/tmux/tmux/wiki
-[Alacritty]: https://github.com/alacritty/alacritty
+[foot]: https://codeberg.org/dnkl/foot
 [NeoMutt]: https://neomutt.org/
 [OfflineIMAP]: https://www.offlineimap.org/
 [msmtp]: https://marlam.de/msmtp/

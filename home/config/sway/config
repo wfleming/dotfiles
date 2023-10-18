@@ -9,7 +9,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term foot
 set $menu bemenu-run --ignorecase --prompt="run:" | xargs swaymsg exec --
 set $locker swaylock -f -c 000000
 
