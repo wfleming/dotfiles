@@ -49,7 +49,6 @@ run_backup() {
     --exclude "$HOME/.mozilla" \
     --exclude "$HOME/.rbenv" \
     --exclude "$HOME/.rustup" \
-    --exclude "$HOME/.stack" \
     --exclude "$HOME/.zoom" \
     --exclude "$HOME/Dropbox" \
     --exclude "$HOME/mail" \
