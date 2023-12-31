@@ -1,5 +1,0 @@
-#!/bin/sh
-# 2023-08-07 - getting a blank screen
-# https://github.com/electron/electron/issues/32760
-# https://github.com/flathub/com.slack.Slack/issues/11
-exec /usr/bin/slack --disable-gpu %U
