@@ -1,11 +1,17 @@
 [Unit]
 Description=Run backup service
 After=network.target network-online.target dbus.socket
+StartLimitIntervalSec=10m
+StartLimitBurst=5
+ConditionACPower=true
 
 [Service]
 Type=oneshot
+ExecStartPre=/usr/bin/env netcat --wait=10 --zero 1.1.1.1 53
 ExecStart=/usr/bin/env /home/will/bin/backup.sh backup-and-trim
-TimeoutStartSec=infinity
+TimeoutStartSec=3h
+Restart=on-failure
+RestartSec=1m
 
 [Install]
 WantedBy=default.target
