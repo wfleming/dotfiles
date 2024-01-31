@@ -13,6 +13,6 @@ source ~/.config/environment.d/*.conf
 
 # Opt in to the vulkan renderer (nvm for now, crashing, not ready for prime time)
 # https://wiki.archlinux.org/title/Sway#Use_another_wlroots_renderer
-export WLR_RENDERER=vulkan
+#export WLR_RENDERER=vulkan
 
 exec /usr/bin/sway "$@"
