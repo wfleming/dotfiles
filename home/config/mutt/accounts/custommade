@@ -16,3 +16,6 @@ macro index,pager ,a \
 macro index,pager ,s \
   ": unset resolve\n;Wn;Wo;: set resolve\n;s=custommade/[Gmail].Spam\n" \
   "mark as spam"
+
+# remove personal account macro that doesn't apply to work
+unmacro index,pager ,t
