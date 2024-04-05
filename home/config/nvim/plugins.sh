@@ -25,6 +25,7 @@ repos=(
   https://github.com/tpope/vim-fugitive.git
   https://github.com/tpope/vim-rhubarb.git
   https://github.com/tpope/vim-surround.git
+  https://github.com/tpope/vim-obsession.git
   https://github.com/vimwiki/vimwiki.git
   https://github.com/neoclide/coc.nvim.git@release
 )
