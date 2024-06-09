@@ -19,9 +19,6 @@ nnoremap <leader>f :GFiles --cached --modified --others --exclude-standard<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :Tags<cr>
 
-"" vimiwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/notes', 'syntax': 'markdown', 'ext': '.md'}]
-
 """"""""" Stock VIM config """"""""""""""""""
 
 set termguicolors
@@ -98,23 +95,33 @@ function! StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call StripTrailingWhitespaces()
 
+let g:notes_root = "~/Dropbox/notes/"
+
+" open today's diary
+function! OpenTodayDiary()
+  echom "OpenTodayDiary"
+  let l:path = g:notes_root . "diary/" . strftime("%Y-%m-%d.md")
+
+  execute "edit " . l:path
+endfunction
+nnoremap <Leader>w<Leader>w :call OpenTodayDiary()<CR>
+
 " Use FZF to open a wiki page by name or create a new one
 function! OpenOrCreateNoteCallback(lines)
   " if the query found a match, there are 2 lines (query, then match)
   " if there was no match, there's only 1 line (query)
 
-  let root = g:vimwiki_list[0]["path"]
   if len(a:lines) > 1
-    let target = root . "/" . a:lines[1]
+    let target = g:notes_root . "/" . a:lines[1]
   else
-    let target = root . "/" . a:lines[0]
+    let target = g:notes_root . "/" . a:lines[0]
     if target !~ "\.md$" "Add an extension if I didn't type one
       let target = target . ".md"
     endif
   end
   execute "edit" fnameescape(target)
 endfunction
-command -bang OpenOrCreateNote call fzf#vim#files(g:vimwiki_list[0]["path"], {"sinklist": funcref("OpenOrCreateNoteCallback"), "options": ["--print-query"]})
+command -bang OpenOrCreateNote call fzf#vim#files(g:notes_root, {"sinklist": funcref("OpenOrCreateNoteCallback"), "options": ["--print-query"]})
 nnoremap <Leader>wo :OpenOrCreateNote<CR>
 
 """"""""""" File-type settings """"""""""""""""
