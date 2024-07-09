@@ -46,19 +46,16 @@
     },
     "custom/aurto": {
       "exec": "~/.config/waybar/systemd-unit.sh --unit update-aurto --failed-icon '\uf187'",
-      "on-click": "sudo systemctl --no-block start update-aurto",
       "return-type": "json",
       "interval": 600
     },
     "custom/backup": {
       "exec": "~/.config/waybar/systemd-unit.sh --user --unit backup --failed-icon '' --active-icon ''",
-      "on-click": "systemctl --user --no-block start backup",
       "return-type": "json",
       "interval": 600
     },
     "custom/imap": {
-      "exec": "~/.config/waybar/systemd-unit.sh --user --unit imap-sync --failed-icon '' --active-icon ''",
-      "on-click": "systemctl --user --no-block start imap-sync",
+      "exec": "~/.config/waybar/systemd-unit.sh --user --unit imap-sync-full --failed-icon '' --active-icon ''",
       "return-type": "json",
       "interval": 60
     },

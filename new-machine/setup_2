@@ -60,7 +60,8 @@ echo "==== enabling systemd units"
 sudo systemctl enable mullvad-daemon
 systemctl --user enable --now \
   ssh-agent \
-  imap-sync.timer \
+  imap-sync-full.timer \
+  imap-sync-quick.timer \
   contacts-sync.timer \
   backup.timer \
   geoclue-agent
