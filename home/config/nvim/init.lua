@@ -1,6 +1,8 @@
 require('base')
 require('fzf')
 require('treesitter')
+require('lsp')
+require('autocomplete')
 require('commands')
 require('notes')
 require('auto_cmds')

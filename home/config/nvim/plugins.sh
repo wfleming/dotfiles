@@ -25,6 +25,12 @@ repos=(
   https://github.com/tpope/vim-rhubarb.git
   https://github.com/tpope/vim-surround.git
   https://github.com/nvim-treesitter/nvim-treesitter.git
+  https://github.com/neovim/nvim-lspconfig.git
+  https://github.com/lspcontainers/lspcontainers.nvim.git
+  https://github.com/hrsh7th/nvim-cmp.git
+  https://github.com/hrsh7th/cmp-nvim-lsp.git
+  https://github.com/hrsh7th/cmp-buffer.git
+  https://github.com/hrsh7th/cmp-path.git
 )
 
 # FUNCTIONS --------------------------------------------------------------

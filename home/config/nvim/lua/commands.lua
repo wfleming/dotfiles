@@ -1,6 +1,3 @@
--- Tab behavior: indent at beginning of line, otherwise autocomplete
--- TODO
-
 -- strip trailing whitespace on save
 -- https://stackoverflow.com/questions/77747363/remove-white-spaces-added-in-nvim-on-save
 vim.api.nvim_create_autocmd('FileType', {

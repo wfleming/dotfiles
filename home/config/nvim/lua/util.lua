@@ -17,6 +17,13 @@ function mod.list_remove_val(haystack, needle)
   return haystack
 end
 
+function mod.list_concat(l1, l2)
+  for i=1,#l2 do
+    l1[#l1+1] = l2[i]
+  end
+  return l1
+end
+
 -- for debugging: https://stackoverflow.com/questions/9168058/how-to-dump-a-table-to-console#9173416
 function mod.dump(o)
    if type(o) == 'table' then
