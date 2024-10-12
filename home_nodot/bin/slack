@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /usr/bin/slack --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto
