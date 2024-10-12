@@ -1,6 +1,7 @@
 ###### ALIASES #####
 
-alias v=vim
+alias vim=nvim
+alias v=nvim
 alias ls='ls -F --color=auto'
 alias ll='ls -AFhl'
 

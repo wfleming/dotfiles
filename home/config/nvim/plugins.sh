@@ -17,16 +17,14 @@ packstartdir="$vimdir/pack/packages/start"
 # don't work.
 repos=(
   https://github.com/ap/vim-css-color.git
-  https://github.com/bling/vim-airline.git
-  https://github.com/elixir-lang/vim-elixir.git
-  https://github.com/morhetz/gruvbox.git
-  https://github.com/junegunn/fzf.vim.git
+  https://github.com/nvim-lualine/lualine.nvim.git
+  https://github.com/ellisonleao/gruvbox.nvim.git
+  https://github.com/ibhagwan/fzf-lua.git
   https://github.com/tpope/vim-commentary.git
   https://github.com/tpope/vim-fugitive.git
   https://github.com/tpope/vim-rhubarb.git
   https://github.com/tpope/vim-surround.git
-  https://github.com/tpope/vim-obsession.git
-  https://github.com/neoclide/coc.nvim.git@release
+  https://github.com/nvim-treesitter/nvim-treesitter.git
 )
 
 # FUNCTIONS --------------------------------------------------------------

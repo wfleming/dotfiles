@@ -1,0 +1,6 @@
+require('base')
+require('fzf')
+require('treesitter')
+require('commands')
+require('notes')
+require('auto_cmds')
