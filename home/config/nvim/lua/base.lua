@@ -9,7 +9,7 @@ vim.opt.directory = "~/.config/nvim/tmp/"  -- damn .swp files
 vim.opt.history = 1000                     -- keep 1000 lines of command line history
 vim.opt.visualbell = true                  -- turn off auditory bell
 vim.opt.autoread = true                    -- refresh file if changed outside of vim
-table.insert(vim.opt.clipboard, "unnamedplus")  -- for system pastboard integration
+vim.opt.clipboard:append { "unnamedplus" } -- for system pastboard integration
 
 vim.opt.cursorline = false
 vim.opt.cursorcolumn = false
@@ -41,7 +41,7 @@ vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "split"
 
 -- look for tags file from ctags in the git dir
-table.insert(vim.opt.tags, ".git/tags")
+vim.opt.tags:append { ".git/tags" }
 
 -- color scheme
 vim.o.background = "dark"
