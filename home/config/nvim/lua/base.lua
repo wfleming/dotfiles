@@ -5,7 +5,6 @@ vim.opt.termguicolors = true
 vim.cmd("filetype plugin indent on")  -- load file type plugins + indentation
 
 vim.opt.showcmd = true                     -- display incomplete commands
-vim.opt.directory = "~/.config/nvim/tmp/"  -- damn .swp files
 vim.opt.history = 1000                     -- keep 1000 lines of command line history
 vim.opt.visualbell = true                  -- turn off auditory bell
 vim.opt.autoread = true                    -- refresh file if changed outside of vim
