@@ -92,22 +92,10 @@ copy() {
   fi
 }
 
-should_link() {
-  source="$1"
-  case "$source" in
-    *70-synaptics.conf)
-      grep --quiet Synaptics /proc/bus/input/devices
-      ;;
-    *)
-      true
-      ;;
-  esac
-}
-
 link_type() {
   source="$1"
   case "$source" in
-    *systemd/logind.conf.d/*|*systemd/sleep.conf.d/*|*systemd/network*|*systemd/resolved.conf.d*)
+    */systemd/*)
       echo "copy"
       ;;
     *)
@@ -122,16 +110,14 @@ link_type() {
 # Symlink normal files here to the appropriate relative path under /etc/
 root_path=$(dirname $(realpath $0))
 for f in $(find "$root_path" -type f -not -name install.sh); do
-  if should_link "$f"; then
-    rel_target=$(realpath --relative-to="$root_path" "$f")
-    case "$(link_type "$f")" in
-      copy)
-        copy "$(realpath "$f")" "/$rel_target"
-        ;;
-      *)
-        link "$(realpath "$f")" "/$rel_target"
-        ;;
-    esac
-  fi
+  rel_target=$(realpath --relative-to="$root_path" "$f")
+  case "$(link_type "$f")" in
+    copy)
+      copy "$(realpath "$f")" "/$rel_target"
+      ;;
+    *)
+      link "$(realpath "$f")" "/$rel_target"
+      ;;
+  esac
 done
 

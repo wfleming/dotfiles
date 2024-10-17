@@ -1,46 +1,27 @@
 #!/bin/sh
-#
-# Start with https://wiki.archlinux.org/index.php/Installation_guide
-#
-# After booting the Arch install media, run /installer/setup
 set -e
 
 setup_base_dir=$(dirname $0)
 . "${setup_base_dir}/setup_scripts/shared.sh"
 
-type pacstrap &> /dev/null || (
-  echo "pacstrap not installed - this doesn't look like an Arch installer environment!" &&
-  exit 2
-)
-
-console_font="sun12x22"
-
 ############### PRE-SETUP ##################
 
+if [ "$EUID" -eq 0 ]; then
+  echo "Run this as your normal user, not root"
+  exit 1
+fi
+
 # modern laptop screen and boot media kernel mode == teeeeeensy fonts
-setfont "${console_font}"
-
-check_internet
-
-"${setup_base_dir}/setup_scripts/boot_disk.sh"
-
-echo "== Pre-setup is complete"
+console_font="latarcyrheb-sun32"
+setfont "${console_font}.psfu.gz"
+cat /etc/vconsole.conf | grep -v '^FONT= ' | printf 'FONT="%s"\n' "$console_font" | sudo dd of=/etc/vconsole.conf.new
+sudo mv /etc/vconsole.conf.new /etc/vconsole.conf
+sudo systemctl restart systemd-vconsole-setup
 
 ############### MAIN SETUP ##################
 
-"${setup_base_dir}/setup_scripts/pacstrap.sh"
-
-echo "== Generate fstab"
-
-genfstab -U /mnt >> /mnt/etc/fstab
-
-echo "== Chrooting into new filesystem for further setup"
-
-# copy /installer files so it can be accessed after chroot
-cp --archive /installer /mnt/installer
-arch-chroot /mnt "${setup_base_dir}/setup_scripts/after_chroot.sh"
-
-echo "== Symlink systemd-resolve resolv.conf"
-# https://wiki.archlinux.org/title/Systemd-resolved#DNS
-rm /mnt/etc/resolv.conf
-ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+"${setup_base_dir}/setup_scripts/sudoers.sh"
+"${setup_base_dir}/setup_scripts/packages.sh"
+"${setup_base_dir}/setup_scripts/home.sh"
+"${setup_base_dir}/setup_scripts/mullvad.sh"
+"${setup_base_dir}/setup_scripts/systemd.sh"

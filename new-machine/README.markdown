@@ -1,48 +1,38 @@
 # Machine setup scripting
 
-Put together to automate setting up a new box, and copying over some things from
-a current box that aren't easy/appropriate to keep in dotfiles
+## 1. Base Install
 
-## Why not just image the current box and copy it?
+Asahi Linux installation doesn't seem easily scriptable from scratch given the constraints around
+setup on a Mac, so for setup I manually run through Asahi's official installer (using the "minimal"
+preset since I won't be using GNOME or KDE), and setup my user account that way.
 
-Because a new machine is an opportunity to clean up and document/script
-configuration, and I like to futz around.
+## 2. Encrypting root volume
 
-## Building the install image
+Asahi's installer does not currently support encrypting the root volume. So I go through some steps
+to encrypt it after initial setup.
 
-```
-> sudo ./mkboot /dev/usb_to_write
-```
 
-## Testing the disk image in a VM
+https://github.com/leifliddy/asahi-fedora-usb/
+https://github.com/NoisyCoil/encryptroot-asahi/
 
-```
-# you should already have run mkboot, so the custom boot image exists at
-# arch-custom.iso
-# deps
-sudo pacman -S qemu libvirt
-# create a 30G disk image
-qemu-img create -f qcow2 disk.cow 30G
-# must be run as root or I kaslr errors?
-sudo qemu-system-x86_64 \
-  -m 2G \
-  -enable-kvm \
-  -cdrom arch-custom.iso \
-  -boot order=d \
-  -vga std \
-  -drive file=disk.cow
-# aquire internet
-dhcpcd
-# run installer
-/installer/setup
-```
+I cobbled these instruction together from docs at
+https://developer.apple.com/documentation/virtualization/creating_and_running_a_linux_virtual_machine
+and https://github.com/NoisyCoil/encryptroot-asahi/blob/main/docs/encryptroot.asahi.8.md.
 
-Followed this to get a shared vol between host & guest - faster to iterate on
-installer script
+1. Boot back into MacOS
+2. Install [UTM](https://mac.getutm.app) (the downloadable version is free, App Store version costs
+   money.)
+3. In UTM, navigate to "Create a new virtual machine", "Downbload prebuilt from UTM Gallery", pick
+   whatever distro your most comfortable with and launch that.
 
-https://xapax.github.io/blog/2017/05/09/sharing-files-kvm.html
+https://github.com/leifliddy/asahi-fedora-usb
 
-```
-mkdir /nmshare
-mount -t 9p -o trans=virtio /nmshare /nmshare
-```
+## 3. Remaining setup
+
+1. Boot back into Asahi, log in
+2. `sudo dmesg -n 1` to suppress kernel messages appearing on TTY
+3. On my install I'd lost the wifi connection used during setup, not sure if that's expected, so
+   `nmcli device wifi connect <my-network> password <wifi-password>`
+4. `sudo dnf install git`
+4. `git clone https://github.com/wfleming/dotfiles.git`
+5. run `./new-machine/setup` in this repository

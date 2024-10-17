@@ -1,2 +1,0 @@
-# https://wiki.archlinux.org/index.php/Power_management#Network_interfaces
-ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlp*", RUN+="/usr/bin/iw dev $name set power_save on"
