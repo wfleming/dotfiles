@@ -8,39 +8,26 @@ set -e
 setup_base_dir=$(dirname $0)
 . "${setup_base_dir}/setup_scripts/shared.sh"
 
-type pacstrap &> /dev/null || (
-  echo "pacstrap not installed - this doesn't look like an Arch installer environment!" &&
-  exit 2
-)
-
-console_font="sun12x22"
+console_font="LatArCyrHeb-19"
 
 ############### PRE-SETUP ##################
 
 # modern laptop screen and boot media kernel mode == teeeeeensy fonts
 setfont "${console_font}"
 
-check_internet
-
-"${setup_base_dir}/setup_scripts/boot_disk.sh"
-
-echo "== Pre-setup is complete"
-
 ############### MAIN SETUP ##################
 
-"${setup_base_dir}/setup_scripts/pacstrap.sh"
+"${setup_base_dir}/setup_scripts/packages.sh"
+"${setup_base_dir}/setup_scripts/home.sh"
+"${setup_base_dir}/setup_scripts/mullvad.sh"
+"${setup_base_dir}/setup_scripts/systemd.sh"
 
-echo "== Generate fstab"
-
-genfstab -U /mnt >> /mnt/etc/fstab
-
-echo "== Chrooting into new filesystem for further setup"
-
-# copy /installer files so it can be accessed after chroot
-cp --archive /installer /mnt/installer
-arch-chroot /mnt "${setup_base_dir}/setup_scripts/after_chroot.sh"
-
-echo "== Symlink systemd-resolve resolv.conf"
+echo "== [TODO CHECK FEDORA DEFAULTS] Symlink systemd-resolve resolv.conf"
 # https://wiki.archlinux.org/title/Systemd-resolved#DNS
-rm /mnt/etc/resolv.conf
-ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+#rm /mnt/etc/resolv.conf
+#ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+
+# mullvad config
+mullvad relay set tunnel-protocol wireguard
+
+echo "==== enabling systemd units"

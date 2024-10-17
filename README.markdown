@@ -1,8 +1,7 @@
 # dotfiles
 
-These are configurations files & scripts I use for my laptop. I run [Arch
-Linux][], and some bits are Arch-specific but a lot of it is applicable to any
-\*nix distro.
+These are configurations files & scripts I use for my laptop. This branch is for an installation of
+[Asahi Linux], but a lot of it is applicable to any \*nix distro.
 
 ## My workflow
 
@@ -18,7 +17,7 @@ feasible. A brief overview of the key tools I use:
 - I read & write mail with [NeoMutt][], use [OfflineIMAP][] to sync mail, and
   send mail with [msmtp][]. (I did say I preferred terminal-based tools.)
 
-[Arch Linux]: https://archlinux.org
+[Asahi Linux]: https://asahilinux.org/
 [sway]: https://github.com/swaywm/sway
 [Neovim]: https://neovim.io/
 [tmux]: https://github.com/tmux/tmux/wiki
@@ -36,7 +35,7 @@ are organized under `home` and `home_nodot`, and are installed with
 System-wide configurations are under `system`, and are installed with
 `system/install.sh` (which must be run as root).
 
-`new-machine` contains scripts for setting up a new Arch Linux machine.
+`new-machine` contains scripts for setting up a new machine.
 
 `manual` contains some notes on preferred configuration I haven't figured out
 how to (or bothered to) automate yet.
