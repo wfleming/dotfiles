@@ -47,4 +47,16 @@ vim.o.background = "dark"
 vim.cmd("colorscheme gruvbox")
 
 -- status line
-require('lualine').setup({ options = { theme = 'gruvbox' } })
+require('lualine').setup({
+  options = {
+    theme = 'gruvbox',
+    component_separators = '',
+    section_separators = { left = '', right = '' },
+  },
+  sections = {
+    lualine_c = { { 'filename'; path = 1 } },
+  },
+})
+
+-- colorizing color vars
+require('colorizer').setup({'css', 'sass', 'javascript'}, { css = true })

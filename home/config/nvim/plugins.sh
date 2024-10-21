@@ -16,7 +16,6 @@ packstartdir="$vimdir/pack/packages/start"
 # This is a list of all plugins which are available via Git repos. git:// URLs
 # don't work.
 repos=(
-  https://github.com/ap/vim-css-color.git
   https://github.com/nvim-lualine/lualine.nvim.git
   https://github.com/ellisonleao/gruvbox.nvim.git
   https://github.com/ibhagwan/fzf-lua.git
@@ -25,6 +24,7 @@ repos=(
   https://github.com/tpope/vim-rhubarb.git
   https://github.com/tpope/vim-surround.git
   https://github.com/nvim-treesitter/nvim-treesitter.git
+  https://github.com/norcalli/nvim-colorizer.lua.git
   https://github.com/neovim/nvim-lspconfig.git
   https://github.com/lspcontainers/lspcontainers.nvim.git
   https://github.com/hrsh7th/nvim-cmp.git
