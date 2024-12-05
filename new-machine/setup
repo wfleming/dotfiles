@@ -13,12 +13,14 @@ type pacstrap &> /dev/null || (
   exit 2
 )
 
-console_font="sun12x22"
-
 ############### PRE-SETUP ##################
 
 # modern laptop screen and boot media kernel mode == teeeeeensy fonts
+console_font="latarcyrheb-sun32"
 setfont "${console_font}"
+cat /etc/vconsole.conf | grep -v '^FONT= ' | printf 'FONT="%s"\n' "$console_font" | sudo dd of=/etc/vconsole.conf.new
+sudo mv /etc/vconsole.conf.new /etc/vconsole.conf
+sudo systemctl restart systemd-vconsole-setup
 
 check_internet
 
