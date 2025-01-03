@@ -15,7 +15,8 @@ systemctl --user enable --now \
   imap-sync-quick.timer \
   contacts-sync.timer \
   backup.timer \
-  geoclue-agent
+  geoclue-agent \
+  maestral
 mkdir -p ~/.config/systemd/user/sway-session.target.wants
 # havne't decided how to install/manage dropbox yet
 # ln -s /usr/lib/systemd/user/dropbox.service ~/.config/systemd/user/sway-session.target.wants/dropbox.service

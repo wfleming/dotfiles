@@ -1,0 +1,14 @@
+[Unit]
+Description=Maestral daemon
+After=docker.socket
+
+[Service]
+ExecStartPre-=/usr/bin/docker pull maestraldbx/maestral
+# for shell for setup/config run:
+# docker run --rm -it --mount type=bind,src=$HOME,dst=/dropbox maestraldbx/maestral ash
+# https://maestral.app/docs/installation
+ExecStart=/usr/bin/docker run --rm --name %n --mount type=bind,src=%h,dst=/dropbox maestraldbx/maestral
+ExecStop=/usr/bin/docker stop %n
+
+[Install]
+WantedBy=default.target
