@@ -23,6 +23,7 @@ sudo systemctl restart systemd-vconsole-setup
 ############### MAIN SETUP ##################
 
 "${setup_base_dir}/setup_scripts/sudoers.sh"
+"${setup_base_dir}/setup_scripts/selinux.sh"
 "${setup_base_dir}/setup_scripts/kde_cleanup.sh"
 "${setup_base_dir}/setup_scripts/packages.sh"
 "${setup_base_dir}/setup_scripts/home.sh"
