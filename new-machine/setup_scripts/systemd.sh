@@ -2,14 +2,15 @@
 set -e
 
 # enable system/user units
+sudo systemctl enable mullvad-daemon # not immediately, it messes up ip tables, next boot is fine
 sudo systemctl enable --now \
-  mullvad-daemon \
   docker.socket \
   mnt-mother-data.automount \
   systemd-timesyncd
 
 systemctl --user enable --now \
   ssh-agent \
+  gpg-agent.socket \
   imap-sync-full.timer \
   imap-sync-quick.timer \
   contacts-sync.timer \
