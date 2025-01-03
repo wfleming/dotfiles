@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# add user to docker group
+sudo usermod --groups docker --append will
+
 # default shells. use sudo to set mine just to avoid needing to enter the password
 sudo chsh -s /usr/bin/zsh will
 sudo chsh -s /usr/bin/zsh
