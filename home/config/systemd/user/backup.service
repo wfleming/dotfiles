@@ -7,7 +7,7 @@ ConditionACPower=true
 
 [Service]
 Type=oneshot
-ExecStartPre=/usr/bin/env netcat --wait=10 --zero 1.1.1.1 53
+ExecStartPre=/usr/bin/env nc --wait=10 -z 1.1.1.1 53
 ExecStart=/usr/bin/env /home/will/bin/backup.sh backup-and-trim
 TimeoutStartSec=3h
 Restart=on-failure
