@@ -13,8 +13,9 @@ sudo dnf install --assumeyes \
    https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
    https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf check-update || true
-sudo dnf groupinstall --assumeyes "Development Tools"
+#sudo dnf groupinstall --assumeyes "Development Tools"
 pkgs=""
+pkgs="${pkgs} git gcc make" # basic dev tools
 pkgs="${pkgs} openssh" # ssh
 pkgs="${pkgs} udisks2" # removable media in userland
 pkgs="${pkgs} zsh tmux foot foot-terminfo" # my preferred shell & terminal
@@ -26,7 +27,7 @@ pkgs="${pkgs} sway swaybg swaylock swayidle waybar mako grim slurp bemenu bright
 pkgs="${pkgs} nemo" # simple gui file manager
 pkgs="${pkgs} gammastep" # flux/redshift-esque night color temp for wayland
 pkgs="${pkgs} xdg-desktop-portal xdg-desktop-portal-wlr" # for screensharing in wayland
-pkgs="${pkgs} pass pass-otp" # password management
+pkgs="${pkgs} pass passmenu pass-otp" # password management
 pkgs="${pkgs} neomutt elinks offlineimap msmtp" # mail
 pkgs="${pkgs} docker docker-compose" # containers
 pkgs="${pkgs} chromium" # I use FF but need chrome for browser testing sometimes
@@ -35,7 +36,6 @@ pkgs="${pkgs} calibre" # media management
 pkgs="${pkgs} wf-recorder" # screen recorder for wayland
 pkgs="${pkgs} vdirsyncer" # sync caldav contacts
 pkgs="${pkgs} nfs-utils" # I use a NAS at home
-pkgs="${pkgs} gtk2" # gnupg pinentry use gtk if avail, then falls back to curses. qt version exists, but is not used by default.
 pkgs="${pkgs} restic" # backups
 pkgs="${pkgs} awscli2" # aws cli v2
 pkgs="${pkgs} urlview" # for mutt with html emails
@@ -63,13 +63,14 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 
 # the zsh-pure prompt
 test -d ~/src/vendor/zsh-pure || (
+(
   mkdir -p ~/src/vendor
   cd ~/src/vendor
   git clone https://github.com/sindresorhus/pure.git zsh-pure
   cd zsh-pure
-  mkdir -p /usr/share/zsh/functions/Prompts
-  install -Dm644 pure.zsh /usr/share/zsh/site-functions/prompt_pure_setup
-  install -Dm644 async.zsh /usr/share/zsh/site-functions/async
+  sudo mkdir -p /usr/share/zsh/functions/Prompts
+  sudo install -Dm644 pure.zsh /usr/share/zsh/site-functions/prompt_pure_setup
+  sudo install -Dm644 async.zsh /usr/share/zsh/site-functions/async
 )
 
 # tfenv
@@ -86,11 +87,12 @@ test -d ~/src/vendor/browserpass-native || (
   mkdir -p ~/src/vendor/browserpass-native
   cd ~/src/vendor/browserpass-native
   RELEASE="3.1.0"
-  PKG="browserpass-arm64-$RELEASE.tar.gz"
-  curl -L -o "$PKG" "https://github.com/browserpass/browserpass-native/releases/download/$RELEASE/$PKG"
-  tar -xzf "$PKG"
-  make BIN=browserpass-arm64 configure
-  sudo make BIN=browserpass-arm64 install
+  PKG="browserpass-arm64-$RELEASE"
+  curl -L -o "$PKG" "https://github.com/browserpass/browserpass-native/releases/download/$RELEASE/$PKG.tar.gz"
+  tar -xzf "$PKG.tar.gz"
+  cd "$PKG"
+  mv browserpass-arm64 browserpass
+  sudo make install hosts-firefox
 )
 
 # Mullvad VPN
