@@ -13,7 +13,9 @@ fi
 
 # modern laptop screen and boot media kernel mode == teeeeeensy fonts
 console_font="latarcyrheb-sun32"
-setfont "${console_font}.psfu.gz"
+if $(tty) | grep --quiet tty; then
+  setfont "${console_font}.psfu.gz"
+fi
 cat /etc/vconsole.conf | grep -v '^FONT= ' | printf 'FONT="%s"\n' "$console_font" | sudo dd of=/etc/vconsole.conf.new
 sudo mv /etc/vconsole.conf.new /etc/vconsole.conf
 sudo systemctl restart systemd-vconsole-setup
@@ -21,6 +23,7 @@ sudo systemctl restart systemd-vconsole-setup
 ############### MAIN SETUP ##################
 
 "${setup_base_dir}/setup_scripts/sudoers.sh"
+"${setup_base_dir}/setup_scripts/kde_cleanup.sh"
 "${setup_base_dir}/setup_scripts/packages.sh"
 "${setup_base_dir}/setup_scripts/home.sh"
 "${setup_base_dir}/setup_scripts/mullvad.sh"
