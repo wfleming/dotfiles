@@ -3,14 +3,23 @@
 ## 1. Base Install
 
 Asahi Linux installation doesn't seem easily scriptable from scratch given the constraints around
-setup on a Mac, so for setup I manually run through Asahi's official installer (using the "minimal"
-preset since I won't be using GNOME or KDE), and setup my user account that way.
+setup on a Mac, so for setup I manually ran through Asahi's official installer, then finished
+installation with the remaining steps here.
+
+Originally I tried the "minimal" install but saw some odd bugs once I had a GUI setup. Specifically,
+color in videos/images (but not the rest of the UI) had messed up color, mostly that a lot of things
+rendered with a strong blue/purple tint. Also, the UI performance became noticeably jerky and poor
+in Firefox and Chrome but not my terminal (guessing it's the same underlying cause with something
+involving rendering consuming more CPU, but not sure). I reinstalled with the KDE environment and
+had none of those issues so I guess there's some config difference between the minimal & KDE presets
+that needs to be addressed but I don't have time to figure it out right now. So I used the KDE
+preset as a base and have added some cleanup to the setup scripts to remove some unnecessary
+packages installed for that environment.
 
 ## 2. Encrypting root volume
 
 Asahi's installer does not currently support encrypting the root volume. So I go through some steps
 to encrypt it after initial setup.
-
 
 https://github.com/leifliddy/asahi-fedora-usb/
 https://github.com/NoisyCoil/encryptroot-asahi/
