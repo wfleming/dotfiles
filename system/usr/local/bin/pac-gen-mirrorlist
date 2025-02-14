@@ -13,7 +13,9 @@ tmp_mirrorlist=$(mktemp)
 
 printf "Writing mirrorlist to %s\n" "${tmp_mirrorlist}"
 
+# grep -v filtering is for some mirrors I've found to be unbearably slow
 curl --location "https://archlinux.org/mirrorlist/?country=CA&country=US&protocol=https&ip_version=4&use_mirror_status=on" \
+  | grep -F -v -e zxcvfdsa -e fcix \
   | sed 's/#Server/Server/' > "${tmp_mirrorlist}"
 
 if [ $(grep -c https "${tmp_mirrorlist}") = 0 ]; then
