@@ -32,7 +32,7 @@ gpg --search-keys aws-cli@amazon.com
 gpg --recv-keys A26581F219C8314C # mullvad code signing <admin@mullvad.net>
 # these steps fail inside the chroot during setup, so we needed to reboot
 aur_packages="firefox-beta-bin firefox-tridactyl-native" # browsers
-aur_packages="${aur_packages} aws-cli-v2-bin" # aws cli v2 (main repos are still v1)
+aur_packages="${aur_packages} aws-cli-bin" # aws cli v2 (main repos are still v1)
 aur_packages="${aur_packages} mullvad-vpn-bin" # vpn
 aur_packages="${aur_packages} rbenv ruby-build" # ruby language management
 aur_packages="${aur_packages} slack-desktop" # the productivity abyss into which we all stare
