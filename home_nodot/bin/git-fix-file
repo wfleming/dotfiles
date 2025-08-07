@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Automates fixup commmits.
+#
+# usage: git fix-file [<path>...]
+#
+# This script will iterate through every changed file under listed <path>s (or all changed files if
+# no paths are specified), lookup the last commit that file was changed in, and commit that file
+# with a --fixup for that commit.
+
+function error() {
+  printf "$@"
+  exit 1
+}
+
+fix_path() {
+  path=$1
+  if [ ! "$path" ]; then error "fix_path called without argument"; fi
+  for file in $(git diff --name-only $path); do
+    fix_file "$file"
+  done
+}
+
+fix_file() {
+  file=$1
+  if [ ! "$file" ]; then error "fix_file called without argument"; fi
+  sha=$(git log --pretty=format:"%h" -n1 "$file")
+  if [ ! "$sha" ]; then error "ERROR: Could not find prior commit for %s\n" "$file"; fi
+  git commit --fixup "$sha" "$file"
+}
+
+if [ "$#" -gt 0 ]; then
+  for path in "$@"; do
+    fix_path "$path"
+  done
+else
+  for file in $(git diff --name-only); do
+    fix_file "$file"
+  done
+fi
