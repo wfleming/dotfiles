@@ -3,8 +3,8 @@ Description=The mother NAS at home
 After=network-online.target
 
 [Mount]
-What=mother.local:/volume2/data2
-Where=/mnt/mother/data
+What=bragi.local:/mnt/pool
+Where=/mnt/bragi/pool
 Type=nfs
 Options=nofail,noatime,nolock,tcp,soft
 

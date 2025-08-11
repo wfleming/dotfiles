@@ -11,10 +11,10 @@ home_network_is_connected() {
 check_network_after_delay() {
   sleep 5
   if home_network_is_connected; then
-    sudo systemctl --no-block start mnt-mother-data.automount
+    sudo systemctl --no-block restart mnt-bragi-pool.automount
   else
-    sudo systemctl --no-block stop mnt-mother-data.automount
-    sudo systemctl --no-block stop mnt-mother-data.mount
+    sudo systemctl --no-block stop mnt-bragi-pool.automount
+    sudo systemctl --no-block stop mnt-bragi-pool.mount
   fi
 }
 

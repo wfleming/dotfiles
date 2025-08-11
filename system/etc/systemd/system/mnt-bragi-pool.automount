@@ -2,7 +2,7 @@
 Description=Automount the mother NAS at home
 
 [Automount]
-Where=/mnt/mother/data
+Where=/mnt/bragi/pool
 
 [Install]
 WantedBy=multi-user.target
