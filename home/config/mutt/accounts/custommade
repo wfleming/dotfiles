@@ -13,7 +13,7 @@ macro index,pager ,a \
   ": unset resolve\n;Wn;Wo;: set resolve\n;s=custommade/[Gmail].All<quote-char> Mail\n" \
   "archive message"
 
-macro index,pager ,s \
+macro index,pager ,j \
   ": unset resolve\n;Wn;Wo;: set resolve\n;s=custommade/[Gmail].Spam\n" \
   "mark as spam"
 

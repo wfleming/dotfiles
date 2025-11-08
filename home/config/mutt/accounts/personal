@@ -33,6 +33,6 @@ macro index,pager ,t \
   ": unset resolve\n;Wn;Wo;: set resolve\n;s=personal/Archive/transactional\n" \
   "archive transactional"
 
-macro index,pager ,s \
+macro index,pager ,j \
   ": unset resolve\n;Wn;Wo;: set resolve\n;s=personal/Learn<quote-char> Spam\n" \
   "mark as spam"
