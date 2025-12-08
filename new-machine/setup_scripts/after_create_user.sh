@@ -46,7 +46,6 @@ sudo systemctl enable --now \
   bluetooth \
   docker.socket \
   iwd \
-  mnt-mother-data.automount \
   mnt-bragi-pool.automount \
   pac-gen-mirrorlist.timer \
   systemd-networkd \
