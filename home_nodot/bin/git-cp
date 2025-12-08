@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# Copy files to a different location while preserving history. Useful for rewrites of modules
+# where both versions need to coexist in-tree for some time and conditional switches in-module would
+# be messy/inconvenient for whatever reason. Once new version is fully rolled out and old module can
+# be removed, new module can be be `git mv`-ed to old path if desired.
+#
+# Note that `blame` will track origins of lines correctly across the copy, but `git log $dst` needs
+# the --follow flag to see the full history.
+set -e
+
+recursive=0
+
+while getopts ":r" opt; do
+  case $opt in
+    r)
+      recursive=1;;
+    "?")
+      printf "Invalid option -%s\n" "$OPTARG"
+      exit 64;;
+  esac
+done
+
+shift $((OPTIND - 1))
+src="$1"
+dst="$2"
+
+if [ -z "$src" -o -z "$dst" ]; then
+  echo "Source and destination are required."
+  exit 64
+elif [ $# -gt 2 ]; then
+  echo "Too many positional parameters, only 2 expected."
+  exit 64
+elif [ -d "$src" -a "$recursive" = 0 ]; then
+  echo "-r was not specified and source is a directory, aborting."
+  exit 64
+fi
+
+branch="git-cp-$(date +%s)"
+
+git checkout -b "$branch"
+git mv "$src" "$dst"
+git commit -n "$src" "$dst" -m "copy $src to $dst"
+
+git checkout HEAD~ "$src"
+git commit -n "$src" -m "restore $src after copy"
+
+git checkout -  # checkout previous branch
+
+git merge --no-ff "$branch" -m "merge copying of $src to $dst"
+git branch -d "$branch"
