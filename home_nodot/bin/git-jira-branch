@@ -33,15 +33,20 @@ select_ticket() {
 '"'
 
   # only pay attention to tickets that are assigned to me and not done already
-  query='(status="In Progress" OR status="Open" OR status="Ready for Engineering") AND assignee=currentUser()'
+  query="(status='In Progress' OR status='Open' OR status='Ready for Engineering') AND assignee=currentUser()"
 
   curl \
-    --get \
-    --data-urlencode "jql=$query" \
+    --request POST \
     --user "$JIRA_USER:$JIRA_PASS" \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+    --data '{
+      "jql": "'"$query"'",
+      "fields": ["key", "summary", "reporter", "created", "updated", "description"]
+    }' \
     --silent \
     --compressed \
-    "$JIRA_DOMAIN/rest/api/2/search" |
+    "$JIRA_DOMAIN/rest/api/3/search/jql" |
     jq ".issues[] | $jq_template" |
     sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
     fzf \
