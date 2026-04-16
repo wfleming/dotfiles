@@ -1,2 +1,0 @@
-#!/bin/sh
-feh --no-fehbg --randomize --bg-fill ~/.local/share/wallpapers/space/*
