@@ -10,7 +10,7 @@ set trash = "+personal/Trash"
 set sig_dashes = no
 set signature = ""
 
-alternates "will@jwock.org" "wmf22@cornell.edu" "will.fleming@gmail.com"
+alternates "will@jwock.org" "will.fleming@gmail.com"
 
 macro index ,c "<change-folder>+custommade/INBOX<enter>" "change accounts"
 
