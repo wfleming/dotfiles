@@ -7,7 +7,11 @@ setopt always_to_end
 WORDCHARS=''
 
 autoload -U compinit
-compinit -i
+if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+  compinit -C
+else
+  compinit -i
+fi
 
 # aliases need to be listed for completion to work
 compdef g=git
