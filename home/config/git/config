@@ -1,7 +1,11 @@
 [user]
   name = Will Fleming
   email = will@flemi.ng
-  signingkey = AE1BBCB2
+  signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+  format = "ssh"
+[gpg "ssh"]
+	allowedSignersFile = /home/will/.ssh/allowed_signers
 [alias]
   amend = commit -C HEAD --amend
   assume   = update-index --assume-unchanged
@@ -32,7 +36,6 @@
 [core]
   editor = nvim
 [diff]
-  # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
   algorithm = patience
   compactionHeuristic = true
   colormoved = default
