@@ -1,5 +1,5 @@
 [Unit]
-Description=The mother NAS at home
+Description=The NAS at home
 After=network-online.target
 
 [Mount]

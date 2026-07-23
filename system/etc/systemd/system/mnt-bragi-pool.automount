@@ -1,5 +1,5 @@
 [Unit]
-Description=Automount the mother NAS at home
+Description=Automount the NAS at home
 
 [Automount]
 Where=/mnt/bragi/pool
