@@ -4,10 +4,19 @@ alias vim=nvim
 alias v=nvim
 alias ls='ls -F --color=auto'
 alias ll='ls -AFhl'
-
 alias pacman-rm-orphans='sudo pacman -Rsn $(pacman -Qqdt)'
 
 ####### FUNCTIONS ##########
+
+# default invocation should also add signing key
+ssh-add() {
+  real_bin="$(which -a ssh-add | grep -E '^/.+/bin/')"
+  if [[ $# > 0 ]]; then
+    "$real_bin" "$@"
+  else
+    "$real_bin" ~/.ssh/id_ed25519 ~/.ssh/id_sign
+  fi
+}
 
 # Shorten git to one letter, execute status by default if no
 # subcommand is specified

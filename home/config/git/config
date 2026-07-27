@@ -1,7 +1,7 @@
 [user]
   name = Will Fleming
   email = will@flemi.ng
-  signingkey = ~/.ssh/id_ed25519.pub
+  signingkey = ~/.ssh/id_sign.pub
 [gpg]
   format = "ssh"
 [gpg "ssh"]
