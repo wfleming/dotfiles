@@ -4,7 +4,7 @@
 set -e
 
 file=$(mktemp)
-trap 'rm "$file"' TERM
+trap 'rm "$file"' EXIT TERM
 
 removeCurrentBranch() {
   sed -E '/\*/d'
@@ -14,32 +14,75 @@ leftTrim() {
   sed -E 's/\*?[[:space:]]+//'
 }
 
+default_branch() {
+  ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && {
+    printf "%s\n" "${ref#refs/remotes/origin/}"
+    return
+  }
+  for b in master main; do
+    git show-ref --verify --quiet "refs/heads/$b" && { printf "%s\n" "$b"; return; }
+  done
+  git rev-parse --abbrev-ref HEAD
+}
+
+base=$(default_branch)
+
+# true if $1 is merged into $base: by direct/ff merge, by rebase (no merge
+# commit, but every commit's patch already landed in $base), or by squash
+# (the whole diff of $1 already landed in $base as a single commit).
+is_merged() {
+  branch=$1
+
+  if git merge-base --is-ancestor "$branch" "$base"; then
+    return 0
+  fi
+
+  cherry=$(git cherry "$base" "$branch" 2>/dev/null) || return 1
+  if [ -n "$cherry" ] && ! printf "%s\n" "$cherry" | grep -q '^+'; then
+    return 0
+  fi
+
+  merge_base=$(git merge-base "$base" "$branch" 2>/dev/null) || return 1
+  tree=$(git rev-parse "$branch^{tree}") || return 1
+  synthetic=$(git commit-tree "$tree" -p "$merge_base" -m squash-check) || return 1
+  squash_cherry=$(git cherry "$base" "$synthetic" 2>/dev/null) || return 1
+  if printf "%s\n" "$squash_cherry" | grep -q '^-'; then
+    return 0
+  fi
+
+  return 1
+}
+
 all_branches=$(git branch | removeCurrentBranch | leftTrim)
 
 # write branches to file
 for branch in $all_branches; do
-  printf "keep %s\n" "$branch" >> "$file"
+  [ "$branch" = "$base" ] && continue
+
+  if is_merged "$branch"; then
+    printf "d %s # merged\n" "$branch" >> "$file"
+  else
+    printf "keep %s\n" "$branch" >> "$file"
+  fi
 done
 
 # write instructions to file
 cat <<EOF >> "$file"
 
-# All of your branches are listed above,
-# (except for the current branch, which you can't delete).
-# Change keep to d to delete the branch.
-# All other lines are ignored.
+# All of your branches are listed above (except for the current & default branches).
+# Change keep to d to delete the branch. All other lines are ignored.
+# Branches already merged into $base (including rebased and squashed merges) are
+# pre-marked 'd' with a trailing '# merged' comment.
 EOF
 
 # prompt user to edit file
 $EDITOR "$file"
 
-# check each line of the file
+# check each line of the file, delete branches identified by "d <branch-name>" lines
 cat "$file" | while read -r line; do
-
-  # if the line starts with "d "
   if printf "%s" "$line" | grep --extended-regexp "^d " > /dev/null; then
-    # delete the branch
-    branch=$(printf "%s" "$line" | sed -E 's/^d //')
+    set -- $line
+    branch=$2
 
     git branch -D "$branch"
   fi
