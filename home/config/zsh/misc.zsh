@@ -8,7 +8,7 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 ## standard stuffs
-export PAGER="less -R"
+export PAGER="less -Ri"
 export LC_CTYPE=en_US.UTF-8
 export EDITOR="nvim"
 
