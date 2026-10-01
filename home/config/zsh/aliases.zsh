@@ -22,7 +22,7 @@ ssh-add() {
 # subcommand is specified
 g() {
   if [[ $# > 0 ]]; then
-    git $@
+    git "$@"
   else
     git status
   fi
